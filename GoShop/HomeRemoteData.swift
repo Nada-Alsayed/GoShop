@@ -7,34 +7,34 @@
 
 import Foundation
 
-// MARK: - Welcome
-struct Response: Codable {
-    let status: Bool
+// MARK: - BaseResponse
+struct BaseResponse<T: Codable>: Codable {
+    let status: Bool?
     let message: String?
-    let data: HomeData
+    let data: T?
 }
 
-// MARK: - DataClass
+// MARK: - HomeData
 struct HomeData: Codable {
-    let banners: [Banner]
-    let products: [Product]
-    let ad: String
+    let banners: [Banner]?
+    let products: [Product]?
+    let ad: String?
 }
 
 struct Banner: Codable {
     let id: Int
-    let image: String
+    let image: String?
     let category, product: String?
 }
 
 // MARK: - Product
 struct Product: Codable {
-    let id, price, oldPrice, discount: Int
-    let image: String
-    let name, description: String
-    let inFavorites, inCart: Bool
-    let images: [String]
-
+    let id, price, oldPrice, discount: Double?
+    let image: String?
+    let name, description: String?
+    let inFavorites, inCart: Bool?
+    let images: [String]?
+    
     enum CodingKeys: String, CodingKey {
         case id, price
         case oldPrice = "old_price"
@@ -43,4 +43,16 @@ struct Product: Codable {
         case inCart = "in_cart"
         case images
     }
+}
+
+// MARK: - CategoryData
+struct CategoryData: Codable {
+    let data: [Category]
+}
+
+// MARK: - Category
+struct Category: Codable {
+    let id: Int?
+    let name: String?
+    let image: String?
 }

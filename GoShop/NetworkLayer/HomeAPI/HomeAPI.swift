@@ -8,10 +8,11 @@
 import Foundation
 
 class HomeAPI:BaseAPI<HomeNetworking>{
-   
-    func getData(compelition :@escaping (Response?,Error?)->())
+    func getData(compelition :@escaping (BaseResponse<HomeData>?,Error?)->())
     {
-        self.fetchData(target: .getData, responseClass: Response.self) { response, err in
+        self.fetchData(target: .getData, responseClass: BaseResponse<HomeData>.self) { response, err in
+            guard let response = response else { return  compelition(nil,err) }
+          //  print("hhhhh")
             compelition(response, nil)
         }
     }

@@ -8,8 +8,8 @@
 import Foundation
 import UIKit
 
-extension Home_VC : UICollectionViewDelegate,UICollectionViewDataSource {
-
+extension Home_VC : UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    
     func setUpCollectionViews(){
         bannerCollectionView.delegate = self
         bannerCollectionView.dataSource = self
@@ -27,11 +27,38 @@ extension Home_VC : UICollectionViewDelegate,UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        if collectionView.tag == 0{
+            return viewModel.bannersNumberInSection(section: section)
+        }else if collectionView.tag == 1{
+            return  viewModel.productsNumberInSection(section: section)
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        if collectionView.tag == 0{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Banner_Cell.id, for: indexPath) as! Banner_Cell
+            cell.setupCell(banners[indexPath.row])
+            return cell
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Product_Cell.id, for: indexPath) as! Product_Cell
+            cell.setupCell(products[indexPath.row])
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView.tag == 0{
+           // print("jjjj")
+            let bannerWidth = collectionView.bounds.width
+            let bannerHeight: CGFloat = 180
+            return CGSize(width: bannerWidth, height: bannerHeight)
+        }else {
+            let collectionViewWidth = collectionView.bounds.width
+            let cellWidth = collectionViewWidth / 2
+            let cellHeight: CGFloat = 320
+            return CGSize(width: cellWidth, height: cellHeight)
+        }
     }
     
 }

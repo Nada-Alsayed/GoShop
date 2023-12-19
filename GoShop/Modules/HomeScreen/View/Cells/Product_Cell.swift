@@ -30,15 +30,19 @@ class Product_Cell: UICollectionViewCell {
         setUpCellUI()
     }
     
-    func setUpCellUI(){
-        containerView.layer.cornerRadius = 25
+    private func setUpCellUI(){
         productImg.layer.cornerRadius = 25
         discountView.layer.cornerRadius = discountView.bounds.size.height / 2
         LoveView.layer.cornerRadius = LoveView.bounds.size.height / 2
-        containerView.layer.shadowColor = UIColor.darkGray.cgColor
-        containerView.layer.shadowOffset = CGSize(width: 2, height: 4)
-        containerView.layer.shadowOpacity = 0.8
-        containerView.layer.shadowRadius = 3.0
     }
+    
+    func setupCell(_ product : Product){
+        productImg.kf.setImage(with:URL(string: product.image ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo54hpuEkGK1gxr7JFQ6e9J7JoVv_PaFVDZVr9fvbhJTBBiyRxUpcpA360_JbGE_nrMAk&usqp=CAU"))
+        productTitle.text = product.name
+        discountLabel.text = "\(Int(product.discount ?? 0))%"
+        oldPrice.text = "\(Float(product.oldPrice ?? 0))"
+        currentPrice.text = "\(Float(product.price ?? 0))"
+    }
+    
 
 }

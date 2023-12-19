@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnBoarding_VC" customModule="GoShop" customModuleProvider="target">
+            <connections>
+                <outlet property="nextBtn" destination="zbI-B6-iGJ" id="bW0-6a-axF"/>
+                <outlet property="pageControl" destination="KCQ-Va-1r7" id="B0P-vL-3ZK"/>
+                <outlet property="slideCollectionView" destination="THd-3q-y9U" id="4x0-5h-8KB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <pageControl opaque="NO" contentMode="scaleAspectFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="KCQ-Va-1r7">
+                    <rect key="frame" x="0.0" y="744" width="116" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="116" id="LiK-vi-hE2"/>
+                        <constraint firstAttribute="height" constant="26" id="hE9-Wk-eMX"/>
+                    </constraints>
+                    <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="currentPageIndicatorTintColor" red="0.074363862629999999" green="0.074363862629999999" blue="0.074363862629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </pageControl>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="zbI-B6-iGJ">
+                    <rect key="frame" x="297" y="722" width="70" height="70"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="70" id="C3G-6G-URs"/>
+                        <constraint firstAttribute="width" constant="70" id="HXp-PN-WhO"/>
+                    </constraints>
+                </imageView>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="THd-3q-y9U">
+                    <rect key="frame" x="0.0" y="59" width="393" height="655"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="uRn-sQ-EaH">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="zbI-B6-iGJ" secondAttribute="bottom" constant="26" id="9YT-a5-Vmq"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zbI-B6-iGJ" secondAttribute="trailing" constant="26" id="B1e-oB-GlA"/>
+                <constraint firstItem="THd-3q-y9U" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="HQC-0S-taa"/>
+                <constraint firstItem="KCQ-Va-1r7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="KQ0-Mk-4UO"/>
+                <constraint firstItem="THd-3q-y9U" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="cXL-dH-gBi"/>
+                <constraint firstItem="THd-3q-y9U" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="dsW-AD-hwf"/>
+                <constraint firstItem="zbI-B6-iGJ" firstAttribute="top" secondItem="THd-3q-y9U" secondAttribute="bottom" constant="8" symbolic="YES" id="liA-rg-gZ3"/>
+                <constraint firstItem="KCQ-Va-1r7" firstAttribute="centerY" secondItem="zbI-B6-iGJ" secondAttribute="centerY" id="ySs-42-16K"/>
+            </constraints>
+            <point key="canvasLocation" x="11.450381679389313" y="-11.267605633802818"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow" width="60" height="60"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -12,8 +12,18 @@ class HomeViewModel{
     //MARK: - Variables
 
     private let api : HomeAPI = HomeAPI()
-    var banners: [Banner]?
-    var products: [Product]?
+    var bindBannersToView : (()->()) = {}
+    var bindProductsToView : (()->()) = {}
+    var banners: [Banner] = []{
+        didSet{
+            bindBannersToView()
+        }
+    }
+    var products: [Product] = []{
+        didSet{
+            bindProductsToView()
+        }
+    }
     
     //MARK: - Methods
 
@@ -22,19 +32,19 @@ class HomeViewModel{
     }
     
     func bannersNumberInSection(section:Int) -> Int{
-        return banners?.count ?? 0
+        return banners.count
     }
     
     func productsNumberInSection(section:Int) -> Int{
-        return products?.count ?? 0
+        return products.count
     }
     
     func getData(){
         api.getData { [weak self] response, error in
             guard let self = self else{return}
             guard let response = response else {return}
-            self.banners = response.data.banners
-            self.products = response.data.products
+            self.banners = response.data?.banners ?? []
+            self.products = response.data?.products ?? []
         }
     }
 }
