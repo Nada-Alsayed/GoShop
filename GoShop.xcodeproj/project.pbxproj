@@ -12,6 +12,7 @@
 		040149C32B2F4706005D6107 /* OnBoardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040149C12B2F4706005D6107 /* OnBoardingCell.swift */; };
 		040149C42B2F4706005D6107 /* OnBoardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040149C22B2F4706005D6107 /* OnBoardingCell.xib */; };
 		040149C72B2F49FF005D6107 /* onBoardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040149C62B2F49FF005D6107 /* onBoardingSlide.swift */; };
+		044EF03B2B333F640016EFDA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF03A2B333F640016EFDA /* SignUpViewModel.swift */; };
 		048140602B209E280049B7D9 /* Splash_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481405E2B209E280049B7D9 /* Splash_VC.swift */; };
 		048140612B209E280049B7D9 /* Splash_VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0481405F2B209E280049B7D9 /* Splash_VC.xib */; };
 		048140642B20AE700049B7D9 /* SignUp_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048140622B20AE700049B7D9 /* SignUp_VC.swift */; };
@@ -68,6 +69,7 @@
 		040149C12B2F4706005D6107 /* OnBoardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCell.swift; sourceTree = "<group>"; };
 		040149C22B2F4706005D6107 /* OnBoardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardingCell.xib; sourceTree = "<group>"; };
 		040149C62B2F49FF005D6107 /* onBoardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoardingSlide.swift; sourceTree = "<group>"; };
+		044EF03A2B333F640016EFDA /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		0481405E2B209E280049B7D9 /* Splash_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash_VC.swift; sourceTree = "<group>"; };
 		0481405F2B209E280049B7D9 /* Splash_VC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Splash_VC.xib; sourceTree = "<group>"; };
 		048140622B20AE700049B7D9 /* SignUp_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp_VC.swift; sourceTree = "<group>"; };
@@ -154,6 +156,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		044EF0392B333F410016EFDA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				044EF03A2B333F640016EFDA /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		048140552B209AE10049B7D9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +181,7 @@
 		048140562B209AEF0049B7D9 /* SignUpScreen */ = {
 			isa = PBXGroup;
 			children = (
+				044EF0392B333F410016EFDA /* ViewModel */,
 				048140572B209AFD0049B7D9 /* View */,
 			);
 			path = SignUpScreen;
@@ -624,6 +635,7 @@
 				04BA7D8D2B29AEE9007C093A /* Product_Cell.swift in Sources */,
 				04BA7D992B29DDB2007C093A /* RealmManager.swift in Sources */,
 				048892852B25FCD300EDBFED /* BottomTaPBar.swift in Sources */,
+				044EF03B2B333F640016EFDA /* SignUpViewModel.swift in Sources */,
 				0488927F2B25FBB100EDBFED /* Home_VC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
