@@ -20,7 +20,8 @@ extension Categories_VC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoriesCell.identifier, for: indexPath) as! CategoriesCell
-        cell.setupCell(category: categories[indexPath.row])
+        cell.index = indexPath.row
+        cell.setupCell(category: categories[indexPath.row],index: indexPath.row)
         return cell
     }
     

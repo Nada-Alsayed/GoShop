@@ -37,12 +37,20 @@ class Product_Cell: UICollectionViewCell {
     }
     
     func setupCell(_ product : Product){
-        productImg.kf.setImage(with:URL(string: product.image ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo54hpuEkGK1gxr7JFQ6e9J7JoVv_PaFVDZVr9fvbhJTBBiyRxUpcpA360_JbGE_nrMAk&usqp=CAU"))
+        checkIfDiscountExist(value: Int(product.discount ?? 0))
+        productImg.kf.setImage(with:URL(string: product.image ?? ""),placeholder: UIImage(named: "placeHolder"))
         productTitle.text = product.name
         discountLabel.text = "\(Int(product.discount ?? 0))%"
-        oldPrice.text = "\(Float(product.oldPrice ?? 0))"
-        currentPrice.text = "\(Float(product.price ?? 0))"
+        oldPrice.text = "\(Float(product.oldPrice ?? 0))$"
+        currentPrice.text = "\(Float(product.price ?? 0))$"
     }
     
+    func checkIfDiscountExist(value:Int){
+        if value == 0{
+            discountView.isHidden = true
+        }else{
+            discountView.isHidden = false
+        }
+    }
 
 }
