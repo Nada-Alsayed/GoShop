@@ -24,6 +24,8 @@ class SignUp_VC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
+        viewModel.delegate = self
+
     }
 
     //MARK: - IBActions

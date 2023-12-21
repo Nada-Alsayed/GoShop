@@ -8,6 +8,7 @@
 import Foundation
 
 extension SignUp_VC: SignUpDelegate {
+        
     func signUpSuccessfully() {
         let vc = Login_VC()
         vc.modalPresentationStyle = .fullScreen

@@ -15,4 +15,9 @@ pod 'KeychainSwift', '~> 20.0'
 
 pod 'ReachabilitySwift'
 
+pod 'FBSDKCoreKit', '~> 16.2.1'
+    
+pod 'FBSDKLoginKit', '~> 16.2.1'
+
+    
 end

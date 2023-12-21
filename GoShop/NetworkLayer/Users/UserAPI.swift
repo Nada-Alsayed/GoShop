@@ -18,4 +18,14 @@ class UserAPI:BaseAPI<UsersNetworking>{
             compelition(result, nil)
         }
     }
+    
+    func loginUser(user:User,compelition :@escaping (BaseResponse<Customer>?,Error?)->())
+    {
+        print("HHH")
+        self.fetchData(target: .loginUser(email: user.email, password:  user.password), responseClass: BaseResponse<Customer>.self) { result, err in
+            print("B:\(result?.status)")
+            print("B:\(result?.message)")
+            compelition(result, nil)
+        }
+    }
 }

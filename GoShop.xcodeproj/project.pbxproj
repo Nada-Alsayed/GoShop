@@ -12,6 +12,9 @@
 		040149C32B2F4706005D6107 /* OnBoardingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040149C12B2F4706005D6107 /* OnBoardingCell.swift */; };
 		040149C42B2F4706005D6107 /* OnBoardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040149C22B2F4706005D6107 /* OnBoardingCell.xib */; };
 		040149C72B2F49FF005D6107 /* onBoardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040149C62B2F49FF005D6107 /* onBoardingSlide.swift */; };
+		043A94A82B3473A400C18190 /* ExtensionsSignIn_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A94A72B3473A400C18190 /* ExtensionsSignIn_VC.swift */; };
+		043A94AD2B347DC600C18190 /* Details_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043A94AB2B347DC600C18190 /* Details_VC.swift */; };
+		043A94AE2B347DC600C18190 /* Details_VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043A94AC2B347DC600C18190 /* Details_VC.xib */; };
 		044EF03B2B333F640016EFDA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF03A2B333F640016EFDA /* SignUpViewModel.swift */; };
 		047366E12B339E9C0084F34E /* ConstantStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047366E02B339E9C0084F34E /* ConstantStrings.swift */; };
 		047366E42B33B49B0084F34E /* ExtensionsSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047366E32B33B49B0084F34E /* ExtensionsSignUp.swift */; };
@@ -72,6 +75,10 @@
 		040149C12B2F4706005D6107 /* OnBoardingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCell.swift; sourceTree = "<group>"; };
 		040149C22B2F4706005D6107 /* OnBoardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardingCell.xib; sourceTree = "<group>"; };
 		040149C62B2F49FF005D6107 /* onBoardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoardingSlide.swift; sourceTree = "<group>"; };
+		04158F6B2B33FAB700E87160 /* GoShop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoShop.entitlements; sourceTree = "<group>"; };
+		043A94A72B3473A400C18190 /* ExtensionsSignIn_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsSignIn_VC.swift; sourceTree = "<group>"; };
+		043A94AB2B347DC600C18190 /* Details_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details_VC.swift; sourceTree = "<group>"; };
+		043A94AC2B347DC600C18190 /* Details_VC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Details_VC.xib; sourceTree = "<group>"; };
 		044EF03A2B333F640016EFDA /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		047366E02B339E9C0084F34E /* ConstantStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantStrings.swift; sourceTree = "<group>"; };
 		047366E32B33B49B0084F34E /* ExtensionsSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsSignUp.swift; sourceTree = "<group>"; };
@@ -162,6 +169,23 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		043A94A92B347D8100C18190 /* Details_VC */ = {
+			isa = PBXGroup;
+			children = (
+				043A94AA2B347D9100C18190 /* View */,
+			);
+			path = Details_VC;
+			sourceTree = "<group>";
+		};
+		043A94AA2B347D9100C18190 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				043A94AB2B347DC600C18190 /* Details_VC.swift */,
+				043A94AC2B347DC600C18190 /* Details_VC.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		044EF0392B333F410016EFDA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +213,7 @@
 		048140552B209AE10049B7D9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				043A94A92B347D8100C18190 /* Details_VC */,
 				04C82EA92B30731800F05734 /* CategoriesScreen */,
 				040149BC2B2F42A1005D6107 /* OnBoardingScreens */,
 				048892812B25FC8800EDBFED /* BottomTapBar */,
@@ -250,6 +275,7 @@
 			children = (
 				048892742B25B58500EDBFED /* Login_VC.swift */,
 				048892752B25B58500EDBFED /* Login_VC.xib */,
+				043A94A72B3473A400C18190 /* ExtensionsSignIn_VC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -457,6 +483,7 @@
 		04FB68DD2B177101000CB104 /* GoShop */ = {
 			isa = PBXGroup;
 			children = (
+				04158F6B2B33FAB700E87160 /* GoShop.entitlements */,
 				047366DF2B339E7D0084F34E /* Utilities */,
 				04A8E75A2B3244B3008D576A /* GoogleService-Info.plist */,
 				04BA7D972B29DD93007C093A /* RealmManager */,
@@ -568,6 +595,7 @@
 				048892802B25FBB100EDBFED /* Home_VC.xib in Resources */,
 				048140612B209E280049B7D9 /* Splash_VC.xib in Resources */,
 				040149C02B2F431B005D6107 /* OnBoarding_VC.xib in Resources */,
+				043A94AE2B347DC600C18190 /* Details_VC.xib in Resources */,
 				040149C42B2F4706005D6107 /* OnBoardingCell.xib in Resources */,
 				04BA7D8E2B29AEE9007C093A /* Product_Cell.xib in Resources */,
 				04FB68EE2B177104000CB104 /* LaunchScreen.storyboard in Resources */,
@@ -644,6 +672,7 @@
 				04FB68DF2B177101000CB104 /* AppDelegate.swift in Sources */,
 				04BA7D912B29B145007C093A /* HomeRemoteData.swift in Sources */,
 				040149BF2B2F431B005D6107 /* OnBoarding_VC.swift in Sources */,
+				043A94AD2B347DC600C18190 /* Details_VC.swift in Sources */,
 				04BA7D892B29AECA007C093A /* Banner_Cell.swift in Sources */,
 				04BA7D932B29D4F1007C093A /* HomeExtensions.swift in Sources */,
 				048892762B25B58500EDBFED /* Login_VC.swift in Sources */,
@@ -651,6 +680,7 @@
 				04C82EB62B307B1500F05734 /* CategoriesExtensions.swift in Sources */,
 				047366E12B339E9C0084F34E /* ConstantStrings.swift in Sources */,
 				04BFE0F52B1CABE3008193FB /* User.swift in Sources */,
+				043A94A82B3473A400C18190 /* ExtensionsSignIn_VC.swift in Sources */,
 				04C82EBC2B307DD300F05734 /* CategoriesAPI.swift in Sources */,
 				040149C32B2F4706005D6107 /* OnBoardingCell.swift in Sources */,
 				04FB68E12B177101000CB104 /* SceneDelegate.swift in Sources */,
@@ -802,6 +832,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GoShop/GoShop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8A4P64DS67;
@@ -830,6 +861,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GoShop/GoShop.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8A4P64DS67;
