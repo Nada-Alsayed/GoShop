@@ -10,9 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUp_VC" customModule="GoShop" customModuleProvider="target">
             <connections>
-                <outlet property="confirmPasswordTF" destination="eCg-5b-pMB" id="4au-gq-ol5"/>
                 <outlet property="emailTF" destination="os9-qN-APW" id="wnq-uA-uj1"/>
-                <outlet property="passwordTF" destination="m9P-eJ-kc6" id="1qD-xl-1ca"/>
+                <outlet property="passwordTF" destination="eCg-5b-pMB" id="HoW-cf-aSb"/>
+                <outlet property="phoneTF" destination="m9P-eJ-kc6" id="ZEc-Is-bax"/>
                 <outlet property="userNameTF" destination="ccD-t3-D5B" id="RI7-pf-PXN"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -75,33 +75,33 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYH-Du-9D4">
-                                    <rect key="frame" x="16" y="477.33333333333337" width="89.333333333333329" height="24"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xYH-Du-9D4">
+                                    <rect key="frame" x="16.000000000000004" y="477.33333333333337" width="58.333333333333343" height="24"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m9P-eJ-kc6">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m9P-eJ-kc6">
                                     <rect key="frame" x="16" y="507.33333333333337" width="343" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="b69-D7-ASZ"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHw-r3-T0O">
-                                    <rect key="frame" x="16" y="569.33333333333337" width="168" height="24"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cHw-r3-T0O">
+                                    <rect key="frame" x="16" y="569.33333333333337" width="89.333333333333329" height="24"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Rewrite the password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eCg-5b-pMB">
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eCg-5b-pMB">
                                     <rect key="frame" x="16" y="599.33333333333337" width="343" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="36" id="1ra-nj-Y0Z"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Xv-No-ja3">
                                     <rect key="frame" x="25" y="685.33333333333337" width="325" height="50"/>

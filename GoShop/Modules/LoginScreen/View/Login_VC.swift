@@ -17,6 +17,8 @@ class Login_VC: UIViewController {
     @IBOutlet weak var googleView: UIView!
     @IBOutlet weak var appleView: UIView!
     
+    //MARK: - Variables
+    var viewModel = LoginViewModel()
     
     //MARK: - View Controller Lifecycle
     
@@ -24,9 +26,15 @@ class Login_VC: UIViewController {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
         setupSubViewsDesign()
+        addActions()
     }
     
     //MARK: - IBActions
+
+    @IBAction func loginBtn(_ sender: Any) {
+        print("login")
+
+    }
     
     //MARK: - Methods
     
@@ -42,5 +50,38 @@ class Login_VC: UIViewController {
         appleView.layer.cornerRadius = 25
         appleView.layer.borderWidth = 1
         appleView.layer.borderColor = UIColor.darkGray.cgColor
+    }
+    
+    func addActions(){
+        let tap_1 = UITapGestureRecognizer(target: self, action: #selector(signInWithApple) )
+        facebookView.isUserInteractionEnabled = true
+        facebookView.addGestureRecognizer(tap_1)
+        
+        let tap_2 = UITapGestureRecognizer(target: self, action: #selector(signInWithGoogle) )
+        googleView.isUserInteractionEnabled = true
+        googleView.addGestureRecognizer(tap_2)
+        
+        let tap_3 = UITapGestureRecognizer(target: self, action: #selector(signInWithFacebook) )
+        appleView.isUserInteractionEnabled = true
+        appleView.addGestureRecognizer(tap_3)
+    }
+    
+    @objc func signInWithGoogle(){
+        print("Google")
+        viewModel.Google_Login(_vc: self)
+    }
+    
+    @objc func signInWithFacebook(){
+        print("Facebook")
+        let password = passwordTF.text ?? ""
+        let email = emailTF.text ?? ""
+
+    }
+    
+    @objc func signInWithApple(){
+        print("Apple")
+        let password = passwordTF.text ?? ""
+        let email = emailTF.text ?? ""
+
     }
 }

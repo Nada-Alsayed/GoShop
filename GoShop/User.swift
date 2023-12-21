@@ -7,7 +7,34 @@
 
 import Foundation
  
-class User : Decodable{
-    var id : String?
-    var name: String?
+//MARK: - what i post
+
+class User : Codable{
+    var name, phone, email, password: String
+    var image: String
+    init(name: String, phone: String, email: String, password: String, image: String) {
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.password = password
+        self.image = image
+    }
+}
+
+//MARK: - what i Get
+
+class Customer : Codable{
+    var name, phone, email: String
+    var id: Int
+    var image: String
+    var token: String
+    
+    init() {
+        self.name = ""
+        self.phone = ""
+        self.email = ""
+        self.id = 0
+        self.image = ""
+        self.token = ""
+    }
 }

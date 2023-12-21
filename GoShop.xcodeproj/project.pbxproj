@@ -13,6 +13,9 @@
 		040149C42B2F4706005D6107 /* OnBoardingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 040149C22B2F4706005D6107 /* OnBoardingCell.xib */; };
 		040149C72B2F49FF005D6107 /* onBoardingSlide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040149C62B2F49FF005D6107 /* onBoardingSlide.swift */; };
 		044EF03B2B333F640016EFDA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF03A2B333F640016EFDA /* SignUpViewModel.swift */; };
+		047366E12B339E9C0084F34E /* ConstantStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047366E02B339E9C0084F34E /* ConstantStrings.swift */; };
+		047366E42B33B49B0084F34E /* ExtensionsSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047366E32B33B49B0084F34E /* ExtensionsSignUp.swift */; };
+		047366E82B33BB3D0084F34E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047366E72B33BB3D0084F34E /* LoginViewModel.swift */; };
 		048140602B209E280049B7D9 /* Splash_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0481405E2B209E280049B7D9 /* Splash_VC.swift */; };
 		048140612B209E280049B7D9 /* Splash_VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0481405F2B209E280049B7D9 /* Splash_VC.xib */; };
 		048140642B20AE700049B7D9 /* SignUp_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048140622B20AE700049B7D9 /* SignUp_VC.swift */; };
@@ -44,7 +47,7 @@
 		04BA7DA12B29EED6007C093A /* HomeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BA7DA02B29EED6007C093A /* HomeAPI.swift */; };
 		04BFE0ED2B1C7993008193FB /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFE0EC2B1C7993008193FB /* TargetType.swift */; };
 		04BFE0EF2B1C7EFB008193FB /* BaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFE0EE2B1C7EFB008193FB /* BaseAPI.swift */; };
-		04BFE0F22B1CAA4A008193FB /* MoviesNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFE0F12B1CAA4A008193FB /* MoviesNetworking.swift */; };
+		04BFE0F22B1CAA4A008193FB /* UsersNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFE0F12B1CAA4A008193FB /* UsersNetworking.swift */; };
 		04BFE0F52B1CABE3008193FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFE0F42B1CABE3008193FB /* User.swift */; };
 		04BFE0F72B1CAC14008193FB /* UserAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BFE0F62B1CAC14008193FB /* UserAPI.swift */; };
 		04C82EAD2B30737900F05734 /* Categories_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C82EAB2B30737800F05734 /* Categories_VC.swift */; };
@@ -70,6 +73,9 @@
 		040149C22B2F4706005D6107 /* OnBoardingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoardingCell.xib; sourceTree = "<group>"; };
 		040149C62B2F49FF005D6107 /* onBoardingSlide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onBoardingSlide.swift; sourceTree = "<group>"; };
 		044EF03A2B333F640016EFDA /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		047366E02B339E9C0084F34E /* ConstantStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantStrings.swift; sourceTree = "<group>"; };
+		047366E32B33B49B0084F34E /* ExtensionsSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsSignUp.swift; sourceTree = "<group>"; };
+		047366E72B33BB3D0084F34E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		0481405E2B209E280049B7D9 /* Splash_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Splash_VC.swift; sourceTree = "<group>"; };
 		0481405F2B209E280049B7D9 /* Splash_VC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Splash_VC.xib; sourceTree = "<group>"; };
 		048140622B20AE700049B7D9 /* SignUp_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp_VC.swift; sourceTree = "<group>"; };
@@ -95,7 +101,7 @@
 		04BA7DA02B29EED6007C093A /* HomeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAPI.swift; sourceTree = "<group>"; };
 		04BFE0EC2B1C7993008193FB /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		04BFE0EE2B1C7EFB008193FB /* BaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseAPI.swift; sourceTree = "<group>"; };
-		04BFE0F12B1CAA4A008193FB /* MoviesNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesNetworking.swift; sourceTree = "<group>"; };
+		04BFE0F12B1CAA4A008193FB /* UsersNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersNetworking.swift; sourceTree = "<group>"; };
 		04BFE0F42B1CABE3008193FB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		04BFE0F62B1CAC14008193FB /* UserAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAPI.swift; sourceTree = "<group>"; };
 		04C82EAB2B30737800F05734 /* Categories_VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categories_VC.swift; sourceTree = "<group>"; };
@@ -164,6 +170,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		047366DF2B339E7D0084F34E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				047366E02B339E9C0084F34E /* ConstantStrings.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		047366E52B33BB0C0084F34E /* viewModel */ = {
+			isa = PBXGroup;
+			children = (
+				047366E72B33BB3D0084F34E /* LoginViewModel.swift */,
+			);
+			path = viewModel;
+			sourceTree = "<group>";
+		};
 		048140552B209AE10049B7D9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +214,7 @@
 			children = (
 				048140622B20AE700049B7D9 /* SignUp_VC.swift */,
 				048140632B20AE700049B7D9 /* SignUp_VC.xib */,
+				047366E32B33B49B0084F34E /* ExtensionsSignUp.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -216,6 +239,7 @@
 		048140662B20AE980049B7D9 /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				047366E52B33BB0C0084F34E /* viewModel */,
 				048140672B20AEA40049B7D9 /* View */,
 			);
 			path = LoginScreen;
@@ -351,7 +375,7 @@
 		04BFE0F02B1CAA27008193FB /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				04BFE0F12B1CAA4A008193FB /* MoviesNetworking.swift */,
+				04BFE0F12B1CAA4A008193FB /* UsersNetworking.swift */,
 				04BFE0F62B1CAC14008193FB /* UserAPI.swift */,
 			);
 			path = Users;
@@ -433,6 +457,7 @@
 		04FB68DD2B177101000CB104 /* GoShop */ = {
 			isa = PBXGroup;
 			children = (
+				047366DF2B339E7D0084F34E /* Utilities */,
 				04A8E75A2B3244B3008D576A /* GoogleService-Info.plist */,
 				04BA7D972B29DD93007C093A /* RealmManager */,
 				048892782B25D88500EDBFED /* Extensions */,
@@ -612,8 +637,10 @@
 				04BA7DA12B29EED6007C093A /* HomeAPI.swift in Sources */,
 				048140642B20AE700049B7D9 /* SignUp_VC.swift in Sources */,
 				04BFE0ED2B1C7993008193FB /* TargetType.swift in Sources */,
+				047366E82B33BB3D0084F34E /* LoginViewModel.swift in Sources */,
 				04BA7D9C2B29DF0E007C093A /* LocalProduct.swift in Sources */,
 				048140602B209E280049B7D9 /* Splash_VC.swift in Sources */,
+				047366E42B33B49B0084F34E /* ExtensionsSignUp.swift in Sources */,
 				04FB68DF2B177101000CB104 /* AppDelegate.swift in Sources */,
 				04BA7D912B29B145007C093A /* HomeRemoteData.swift in Sources */,
 				040149BF2B2F431B005D6107 /* OnBoarding_VC.swift in Sources */,
@@ -622,6 +649,7 @@
 				048892762B25B58500EDBFED /* Login_VC.swift in Sources */,
 				04BFE0EF2B1C7EFB008193FB /* BaseAPI.swift in Sources */,
 				04C82EB62B307B1500F05734 /* CategoriesExtensions.swift in Sources */,
+				047366E12B339E9C0084F34E /* ConstantStrings.swift in Sources */,
 				04BFE0F52B1CABE3008193FB /* User.swift in Sources */,
 				04C82EBC2B307DD300F05734 /* CategoriesAPI.swift in Sources */,
 				040149C32B2F4706005D6107 /* OnBoardingCell.swift in Sources */,
@@ -629,7 +657,7 @@
 				0488927A2B25D8B200EDBFED /* UIViewControllerExtension.swift in Sources */,
 				04FB68E92B177101000CB104 /* GoShop.xcdatamodeld in Sources */,
 				04C82EB92B307DA300F05734 /* CategoriesViewModel.swift in Sources */,
-				04BFE0F22B1CAA4A008193FB /* MoviesNetworking.swift in Sources */,
+				04BFE0F22B1CAA4A008193FB /* UsersNetworking.swift in Sources */,
 				040149C72B2F49FF005D6107 /* onBoardingSlide.swift in Sources */,
 				04BFE0F72B1CAC14008193FB /* UserAPI.swift in Sources */,
 				04BA7D8D2B29AEE9007C093A /* Product_Cell.swift in Sources */,
