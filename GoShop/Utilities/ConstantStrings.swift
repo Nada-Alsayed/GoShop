@@ -24,9 +24,12 @@ class ConstantStrings{
     static let SignUp_Failed = "Register Failed."
     
     //MARK: - UserDefaults
-    static let KEY_USERNAME = "UserFirstName"
+    static let KEY_USERNAME = "UserName"
     static let KEY_USEREMAIL = "UserEmail"
     static let KEY_USER_ID = "CustomerID"
     static let KEY_USER_TOKEN = "CustomerToken"
-
+    
+    static let lables = ["Personal Details","My Order","My Favorites","Shipping Address","My Card" ,"Settings"]
+    static let images = ["icon-profile","icon-order","icon-favs","icon-address","icon-card" ,"icon-settings"]
+    
 }

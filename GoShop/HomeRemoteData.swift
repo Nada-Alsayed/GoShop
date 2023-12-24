@@ -34,7 +34,18 @@ struct Product: Codable {
     let name, description: String?
     let inFavorites, inCart: Bool?
     let images: [String]?
-    
+    init() {
+        self.id = 0
+        self.price = 0
+        self.oldPrice = 0
+        self.discount = 0
+        self.image = "image"
+        self.name = "name"
+        self.description = "description"
+        self.inFavorites = false
+        self.inCart = false
+        self.images = []
+    }
     enum CodingKeys: String, CodingKey {
         case id, price
         case oldPrice = "old_price"
@@ -43,6 +54,16 @@ struct Product: Codable {
         case inCart = "in_cart"
         case images
     }
+}
+
+// MARK: - Data
+struct MyData <T: Codable>: Codable {
+    let data: T
+}
+// MARK: - Datum
+struct Favourite: Codable {
+    let id: Int
+    let product: Product
 }
 
 // MARK: - CategoryData

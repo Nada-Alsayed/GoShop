@@ -65,9 +65,9 @@ class LoginViewModel{
         defaults.set(customer.token, forKey: ConstantStrings.KEY_USER_TOKEN)
         defaults.set(customer.email, forKey: ConstantStrings.KEY_USEREMAIL)
         defaults.set(customer.id, forKey: ConstantStrings.KEY_USER_ID)
-        if let customer_id = UserDefaults.standard.string(forKey: ConstantStrings.KEY_USER_ID)
+        if let customer_token = UserDefaults.standard.string(forKey: ConstantStrings.KEY_USER_TOKEN)
         {
-            print("Customer ID : \(customer_id)!")
+            print("Customer Token : \(customer_token)!")
         } else {
             print("No username found.")
         }

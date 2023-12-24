@@ -18,8 +18,8 @@ class Product_Cell: UICollectionViewCell {
     @IBOutlet weak var currentPrice: UILabel!
     @IBOutlet weak var discountView: UIView!
     @IBOutlet weak var discountLabel: UILabel!
-    @IBOutlet weak var LoveView: UIView!
-    @IBOutlet weak var loveImg: UIImageView!
+
+    @IBOutlet weak var favouriteBtn: UIButton!
     
     //MARK: -Variables
     
@@ -33,16 +33,23 @@ class Product_Cell: UICollectionViewCell {
     private func setUpCellUI(){
         productImg.layer.cornerRadius = 25
         discountView.layer.cornerRadius = discountView.bounds.size.height / 2
-        LoveView.layer.cornerRadius = LoveView.bounds.size.height / 2
     }
     
     func setupCell(_ product : Product){
         checkIfDiscountExist(value: Int(product.discount ?? 0))
-        productImg.kf.setImage(with:URL(string: product.image ?? ""),placeholder: UIImage(named: "placeHolder"))
+        productImg.kf.setImage(with:URL(string: product.image ?? ""),placeholder: UIImage(named: "black logo"))
         productTitle.text = product.name
         discountLabel.text = "\(Int(product.discount ?? 0))%"
         oldPrice.text = "\(Float(product.oldPrice ?? 0))$"
         currentPrice.text = "\(Float(product.price ?? 0))$"
+        if product.inFavorites ?? false {
+            favouriteBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }else{
+            favouriteBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
+    }
+    
+    @IBAction func addToFavorites(_ sender: UIButton) {
     }
     
     func checkIfDiscountExist(value:Int){

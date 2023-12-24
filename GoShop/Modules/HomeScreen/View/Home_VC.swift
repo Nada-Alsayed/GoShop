@@ -11,6 +11,8 @@ class Home_VC: UIViewController {
     
     //MARK: - IBOutlets
     
+    @IBOutlet weak var searchView: UIView!
+    
     @IBOutlet weak var personImg: UIImageView!
     @IBOutlet weak var bannerCollectionView: UICollectionView!
     @IBOutlet weak var productsCollectionView: UICollectionView!
@@ -45,6 +47,7 @@ class Home_VC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchView.layer.cornerRadius = searchView.bounds.size.height / 2
         setUpCollectionViews()
         addAction()
         bindData()

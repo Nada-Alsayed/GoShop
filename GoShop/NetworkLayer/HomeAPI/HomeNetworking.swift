@@ -8,7 +8,7 @@
 import Foundation
 
 enum HomeNetworking{
-    case getData
+    case getData(token:String)
 }
 
 extension HomeNetworking : TargetType{
@@ -42,10 +42,10 @@ extension HomeNetworking : TargetType{
     
     var headers: [String : String]? {
         switch self{
-        case .getData:
+        case .getData(token: let token):
             return ["lang":"en"
                     ,"Content-Type":"application/json"
-                    ,"Authorization":"b676yF4HQTAGtP9bYNM2kjAw3VZ6vd63Ar7dr7jQvhISokVKIK5K3Emr4tiPctOBgBlZhV"]
+                    ,"Authorization":token ]
         }
     }
 }

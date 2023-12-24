@@ -10,7 +10,7 @@ import Foundation
 extension SignUp_VC: SignUpDelegate {
         
     func signUpSuccessfully() {
-        let vc = Login_VC()
+        let vc = BottomTaPBar()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc,animated: true)
     }

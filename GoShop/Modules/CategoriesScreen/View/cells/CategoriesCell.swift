@@ -53,7 +53,7 @@ class CategoriesCell: UITableViewCell {
     
     func setupCell(category : Category , index : Int){
         categoryLabel.text = category.name
-        categoryImg.kf.setImage(with:URL(string: category.image ?? ""),placeholder: UIImage(named: "placeHolder"))
+        categoryImg.kf.setImage(with:URL(string: category.image ?? ""),placeholder: UIImage(named: "black logo"))
     }
     
 }

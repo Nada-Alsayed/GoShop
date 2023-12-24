@@ -61,4 +61,12 @@ extension Home_VC : UICollectionViewDelegate,UICollectionViewDataSource,UICollec
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if collectionView.tag == 1{
+            let vc = Details_VC()
+            vc.modalPresentationStyle = .popover
+            vc.id = products[indexPath.row].id ?? 0
+            present(vc,animated: true)
+        }
+    }
 }
