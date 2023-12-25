@@ -10,7 +10,7 @@ import Alamofire
 
 enum CartNetworking{
     case postToCart(token: String,productID: Double)
-    // case getWishlist(email: String,password: String)
+    case getCart(token: String)
 }
 
 extension CartNetworking : TargetType{
@@ -20,6 +20,8 @@ extension CartNetworking : TargetType{
         case .postToCart:
             return "https://student.valuxapps.com/api/"
             
+        case .getCart:
+            return "https://student.valuxapps.com/api/"
         }
     }
     var endPoint: String {
@@ -27,6 +29,8 @@ extension CartNetworking : TargetType{
         case .postToCart:
             return "carts"
             
+        case .getCart:
+            return "carts"
         }
     }
     
@@ -34,6 +38,8 @@ extension CartNetworking : TargetType{
         switch self{
         case .postToCart(token: _,productID: let id):
             return .requestWithParameters(parameters: ["product_id":id], encoding: JSONEncoding.default)
+        case .getCart:
+            return .requestPlain
         }
     }
     
@@ -42,12 +48,18 @@ extension CartNetworking : TargetType{
         case .postToCart:
             return .post
             
+        case .getCart:
+            return .get
         }
     }
     
     var headers: [String : String]? {
         switch self{
         case .postToCart(token: let token,productID: _):
+            return ["lang":"en"
+                    ,"Content-Type":"application/json"
+                    ,"Authorization":token ]
+        case .getCart(token: let token):
             return ["lang":"en"
                     ,"Content-Type":"application/json"
                     ,"Authorization":token ]

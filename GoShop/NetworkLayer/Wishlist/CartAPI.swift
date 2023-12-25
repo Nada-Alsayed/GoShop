@@ -15,4 +15,12 @@ class CartAPI:BaseAPI<CartNetworking>{
             compelition(response, nil)
         }
     }
+    
+    func getFromCart(token:String,compelition :@escaping (BaseResponse<DataClass>?,Error?)->()){
+        self.fetchData(target: .getCart(token: token), responseClass: BaseResponse<DataClass>.self) { response, err in
+            guard let response = response else { return  compelition(nil,err) }
+          //  print("hhhhh")
+            compelition(response, nil)
+        }
+    }
 }

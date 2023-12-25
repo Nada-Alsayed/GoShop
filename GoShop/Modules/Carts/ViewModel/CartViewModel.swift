@@ -1,17 +1,17 @@
 //
-//  FavoritesViewModel.swift
+//  CartViewModel.swift
 //  GoShop
 //
-//  Created by MAC on 24/12/2023.
+//  Created by MAC on 25/12/2023.
 //
 
 import Foundation
 
-class FavoritesViewModel{
+class CartViewModel{
     
     //MARK: - Variables
     
-    private let api : WishlistAPI = WishlistAPI()
+    private let api : CartAPI = CartAPI()
     let customer_token = UserDefaults.standard.string(forKey: ConstantStrings.KEY_USER_TOKEN)
     var bindProductsToView : (()->()) = {}
     var products: [Favourite] = []{
@@ -31,11 +31,11 @@ class FavoritesViewModel{
     }
     
     func getData(){
-        api.getFromWishlist(token:customer_token ?? "nil" ) { [weak self] response, error in
+        api.getFromCart(token:customer_token ?? "nil" ) { [weak self] response, error in
             guard let self = self else{return}
             guard let response = response else {return}
            // print(response.data?.data)
-            self.products = response.data?.data ?? []
+            self.products = response.data?.cartItems ?? []
         }
     }
 }

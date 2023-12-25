@@ -1,33 +1,35 @@
 //
-//  Favorites_VC.swift
+//  Carts_VC.swift
 //  GoShop
 //
-//  Created by MAC on 24/12/2023.
+//  Created by MAC on 25/12/2023.
 //
 
 import UIKit
 
-class Favorites_VC: UIViewController {
-    
-    @IBOutlet weak var backImg: UIImageView!
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchView: UIView!
-   
-    var viewModel = FavoritesViewModel()
-    var products = [Favourite]()
+class Carts_VC: UIViewController {
 
+    @IBOutlet weak var totalPrice: UILabel!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var viewModel = CartViewModel()
+    var products = [Favourite]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchView.layer.cornerRadius = searchView.bounds.size.height / 2
-        addbackImgAction()
+        bottomView.layer.cornerRadius = 25
         setUpTableView()
+        bindData()
+        viewModel.getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("Called")
-        bindData()
-        viewModel.getData()
         tableView.reloadData()
+    }
+
+    @IBAction func navigateToCard(_ sender: Any) {
+        print("Navigate To Card")
     }
     
     func bindData(){
@@ -45,17 +47,6 @@ class Favorites_VC: UIViewController {
     func setUpTableView(){
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: FavoritesCell.id, bundle: nil), forCellReuseIdentifier: FavoritesCell.id)
+        tableView.register(UINib(nibName: CartCell.id, bundle: nil), forCellReuseIdentifier: CartCell.id)
     }
-    
-    func addbackImgAction(){
-        let tap = UITapGestureRecognizer(target: self, action: #selector(goBack))
-        backImg.isUserInteractionEnabled = true
-        backImg.addGestureRecognizer(tap)
-    }
-    
-    @objc func goBack(){
-        self.dismiss(animated: true)
-    }
-
 }

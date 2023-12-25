@@ -8,31 +8,31 @@
 import Foundation
 
 // MARK: - BaseResponse
-struct BaseResponse<T: Codable>: Codable {
+class BaseResponse<T: Codable>: Codable {
     let status: Bool?
     let message: String?
     let data: T?
 }
 
 // MARK: - HomeData
-struct HomeData: Codable {
+class HomeData: Codable {
     let banners: [Banner]?
     let products: [Product]?
     let ad: String?
 }
 
-struct Banner: Codable {
+class Banner: Codable {
     let id: Int
     let image: String?
     let category, product: String?
 }
 
 // MARK: - Product
-struct Product: Codable {
+class Product: Codable {
     let id, price, oldPrice, discount: Double?
     let image: String?
     let name, description: String?
-    let inFavorites, inCart: Bool?
+    var inFavorites, inCart: Bool?
     let images: [String]?
     init() {
         self.id = 0
@@ -57,22 +57,34 @@ struct Product: Codable {
 }
 
 // MARK: - Data
-struct MyData <T: Codable>: Codable {
+class MyData <T: Codable>: Codable {
     let data: T
 }
+
+class DataClass: Codable {
+    let cartItems: [Favourite]
+    let subTotal, total: Double
+
+    enum CodingKeys: String, CodingKey {
+        case cartItems = "cart_items"
+        case subTotal = "sub_total"
+        case total
+    }
+}
+
 // MARK: - Datum
-struct Favourite: Codable {
+class Favourite: Codable {
     let id: Int
     let product: Product
 }
 
 // MARK: - CategoryData
-struct CategoryData: Codable {
+class CategoryData: Codable {
     let data: [Category]
 }
 
 // MARK: - Category
-struct Category: Codable {
+class Category: Codable {
     let id: Int?
     let name: String?
     let image: String?

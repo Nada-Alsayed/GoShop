@@ -22,6 +22,7 @@ class DetailsViewModel{
             bindProductToView()
         }
     }
+    var delegate : ResponceMessage?
     
     //MARK: -Methods
     
@@ -30,6 +31,7 @@ class DetailsViewModel{
             guard let self = self else{return}
             guard let response = response else {return}
             self.product = response.data ?? Product()
+            print("product details:\(self.product) ")
         }
     }
     
@@ -40,7 +42,8 @@ class DetailsViewModel{
             guard let response = response else {return}
          //   print("llll")
             print(response.message!)
-            vc.showToast(controller: vc, message: response.message!, seconds: 0.8)
+            self.delegate?.responsIsDone(message: response.message!)
+            //vc.showToast(controller: vc, message: response.message!, seconds: 0.8)
         }
     }
     

@@ -12,5 +12,9 @@ protocol ReloadViewDelegate {
 }
 
 protocol ClickToFavBtnDelegate {
-    func clicked(_ row: Int)
+    func clicked(_ row: Int, opertion:@escaping(Bool)->Void)
+}
+
+protocol ResponceMessage{
+    func responsIsDone(message: String)
 }

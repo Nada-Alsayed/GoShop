@@ -33,7 +33,7 @@ extension UIViewController {
         }
     }
     
-    func showAlertWithAction(title: String?,titleAction: String?,titleNoAction: String?, message: String?, viewController: UIViewController, compilitionHandler: @escaping () -> Void){
+    func showAlertWithAction(title: String?,titleAction: String?,titleNoAction: String?, message: String?, viewController: UIViewController, compilitionHandler:@escaping () -> Void){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: titleAction, style: .destructive) {_ in
             compilitionHandler()

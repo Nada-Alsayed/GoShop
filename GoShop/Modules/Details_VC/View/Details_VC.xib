@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Details_VC" customModule="GoShop" customModuleProvider="target">
             <connections>
+                <outlet property="cartBtn" destination="K03-s2-KOY" id="qgw-V5-LDb"/>
                 <outlet property="favoriteBtn" destination="3iq-Gm-8In" id="B3q-mP-N0W"/>
                 <outlet property="imageCollection" destination="Kst-jb-zxi" id="HN9-5m-dHd"/>
                 <outlet property="pageControler" destination="5wd-sX-hEz" id="POu-ac-b2A"/>
@@ -151,7 +152,7 @@
                                 <constraint firstAttribute="height" constant="70" id="nFH-01-UMU"/>
                             </constraints>
                             <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="cart.fill" catalog="system" title="  Add To Cart">
+                            <buttonConfiguration key="configuration" style="plain" image="cart.fill" catalog="system" title="">
                                 <backgroundConfiguration key="background" cornerRadius="50">
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </backgroundConfiguration>

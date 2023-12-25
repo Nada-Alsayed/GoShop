@@ -34,8 +34,13 @@ class Product_Cell: UICollectionViewCell {
     //MARK: -IBActions
     
     @IBAction func addToFavorites(_ sender: UIButton) {
-        delegate?.clicked(cellIndex!)
-        favouriteBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        delegate?.clicked(cellIndex!, opertion: { state in
+            if state{
+                self.favouriteBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            }else{
+                self.favouriteBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+        })
     }
     
     //MARK: -Methods

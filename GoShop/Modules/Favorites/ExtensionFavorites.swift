@@ -41,6 +41,7 @@ extension Favorites_VC :UITableViewDelegate,UITableViewDataSource{
 
 extension Favorites_VC : ReloadViewDelegate{
     func reloadView() {
+        print("Implementation")
         tableView.reloadData()
     }
 }

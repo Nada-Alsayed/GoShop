@@ -44,20 +44,15 @@ class BottomTaPBar: UIViewController {
     }
     
     @IBAction func tabBarTapped(_ sender: UIButton) {
-        // Check if the tapped button is different from the currently selected button
         guard sender != selectedButton else {
             return
         }
         
-        // Reset the image for the previously selected button
         if let previousSelectedButton = selectedButton {
             resetButtonImage(previousSelectedButton)
         }
         
-        // Set the selected image for the tapped button
         setSelectedImage(sender)
-        
-        // Update the selectedButton reference
         selectedButton = sender
     }
     
@@ -116,16 +111,14 @@ class BottomTaPBar: UIViewController {
     }
     
     func showCartVC(){
-       // print("Cart")
-        //        let home = Home_VC()
-        //        self.addChild(home)
-        //        home.view.frame = containerView.bounds
-        //        containerView.addSubview(home.view)
-        //        home.didMove(toParent: self)
+        let vc = Carts_VC()
+        self.addChild(vc)
+        vc.view.frame = containerView.bounds
+        containerView.addSubview(vc.view)
+        vc.didMove(toParent: self)
     }
     
     func showProfileVC(){
-       // print("Profile")
         let vc = Profile_VC()
         self.addChild(vc)
         vc.view.frame = containerView.bounds

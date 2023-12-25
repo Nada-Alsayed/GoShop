@@ -44,7 +44,6 @@ class Home_VC: UIViewController {
         }
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchView.layer.cornerRadius = searchView.bounds.size.height / 2
@@ -52,6 +51,7 @@ class Home_VC: UIViewController {
         addAction()
         bindData()
         viewModel.getData()
+        favViewModel.delegate = self
     }
     
     func bindData(){
@@ -64,6 +64,7 @@ class Home_VC: UIViewController {
                 self.bannerCollectionView.reloadData()
             }
         }
+        
         viewModel.bindProductsToView = { [weak self] in
             guard let self = self else {return}
             DispatchQueue.main.async {

@@ -75,13 +75,37 @@ extension Home_VC : UICollectionViewDelegate,UICollectionViewDataSource,UICollec
 }
 
 extension Home_VC :ClickToFavBtnDelegate{
-    func clicked(_ row: Int) {
-        favViewModel.postToWishlist(product_id: products[row].id ?? 0, vc: self)
+    func clicked(_ row: Int, opertion:@escaping (Bool) -> Void) {
+        //favViewModel.postToWishlist(product_id: products[row].id ?? 0, vc: self)
+        if(products[row].inFavorites == false){
+            products[row].inFavorites = true
+            favViewModel.postToWishlist(product_id: products[row].id ?? 0, vc: self)
+            //btn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            opertion(true)
+        }else{
+            showAlertWithAction(title: ConstantStrings.ALERT, titleAction:  ConstantStrings.DELETE_BTN, titleNoAction:  ConstantStrings.NO_ACTION_BTN, message:  ConstantStrings.CONFIRM_DELETE_WISHLIST, viewController: self) {
+                self.products[row].inFavorites = false
+                self.favViewModel.postToWishlist(product_id: self.products[row].id ?? 0, vc: self)
+                opertion(false)
+              
+            }
+        }
+    }
+    
+   
+}
+
+extension Home_VC : ResponceMessage {
+    func responsIsDone(message: String) {
+        showToast(controller: self, message: message, seconds: 1)
     }
 }
 
+
 extension Home_VC : ReloadViewDelegate{
     func reloadView() {
-        productsCollectionView.reloadData()
+        print("getCalled")
+        bindData()
+        viewModel.getData()
     }
 }
