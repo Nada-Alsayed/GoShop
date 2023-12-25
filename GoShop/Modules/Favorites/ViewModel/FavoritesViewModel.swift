@@ -33,7 +33,7 @@ class FavoritesViewModel{
         api.getFromWishlist(token:customer_token ?? "nil" ) { [weak self] response, error in
             guard let self = self else{return}
             guard let response = response else {return}
-            print(response.data?.data)
+           // print(response.data?.data)
             self.products = response.data?.data ?? []
         }
     }

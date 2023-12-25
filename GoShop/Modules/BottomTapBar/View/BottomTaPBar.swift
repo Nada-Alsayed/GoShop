@@ -116,7 +116,7 @@ class BottomTaPBar: UIViewController {
     }
     
     func showCartVC(){
-        print("Cart")
+       // print("Cart")
         //        let home = Home_VC()
         //        self.addChild(home)
         //        home.view.frame = containerView.bounds
@@ -125,7 +125,7 @@ class BottomTaPBar: UIViewController {
     }
     
     func showProfileVC(){
-        print("Profile")
+       // print("Profile")
         let vc = Profile_VC()
         self.addChild(vc)
         vc.view.frame = containerView.bounds

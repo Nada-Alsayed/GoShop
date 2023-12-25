@@ -43,6 +43,8 @@ extension Home_VC : UICollectionViewDelegate,UICollectionViewDataSource,UICollec
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Product_Cell.id, for: indexPath) as! Product_Cell
             cell.setupCell(products[indexPath.row])
+            cell.delegate = self
+            cell.cellIndex = indexPath.row
             return cell
         }
     }
@@ -66,7 +68,20 @@ extension Home_VC : UICollectionViewDelegate,UICollectionViewDataSource,UICollec
             let vc = Details_VC()
             vc.modalPresentationStyle = .popover
             vc.id = products[indexPath.row].id ?? 0
+            vc.delegate = self
             present(vc,animated: true)
         }
+    }
+}
+
+extension Home_VC :ClickToFavBtnDelegate{
+    func clicked(_ row: Int) {
+        favViewModel.postToWishlist(product_id: products[row].id ?? 0, vc: self)
+    }
+}
+
+extension Home_VC : ReloadViewDelegate{
+    func reloadView() {
+        productsCollectionView.reloadData()
     }
 }

@@ -12,7 +12,6 @@ class Home_VC: UIViewController {
     //MARK: - IBOutlets
     
     @IBOutlet weak var searchView: UIView!
-    
     @IBOutlet weak var personImg: UIImageView!
     @IBOutlet weak var bannerCollectionView: UICollectionView!
     @IBOutlet weak var productsCollectionView: UICollectionView!
@@ -23,6 +22,7 @@ class Home_VC: UIViewController {
     //MARK: - Variables
     
     var viewModel = HomeViewModel()
+    var favViewModel = DetailsViewModel()
     var banners = [Banner]()
     var products = [Product]()
     
@@ -86,6 +86,4 @@ class Home_VC: UIViewController {
        vc.modalPresentationStyle = .fullScreen
        self.present(vc, animated: true)
     }
-
-    
 }

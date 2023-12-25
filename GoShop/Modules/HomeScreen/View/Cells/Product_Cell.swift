@@ -18,18 +18,28 @@ class Product_Cell: UICollectionViewCell {
     @IBOutlet weak var currentPrice: UILabel!
     @IBOutlet weak var discountView: UIView!
     @IBOutlet weak var discountLabel: UILabel!
-
     @IBOutlet weak var favouriteBtn: UIButton!
     
     //MARK: -Variables
     
     static let id = String(describing: Product_Cell.self)
+    var delegate:ClickToFavBtnDelegate?
+    var cellIndex: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpCellUI()
     }
     
+    //MARK: -IBActions
+    
+    @IBAction func addToFavorites(_ sender: UIButton) {
+        delegate?.clicked(cellIndex!)
+        favouriteBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+    }
+    
+    //MARK: -Methods
+
     private func setUpCellUI(){
         productImg.layer.cornerRadius = 25
         discountView.layer.cornerRadius = discountView.bounds.size.height / 2
@@ -49,9 +59,6 @@ class Product_Cell: UICollectionViewCell {
         }
     }
     
-    @IBAction func addToFavorites(_ sender: UIButton) {
-    }
-    
     func checkIfDiscountExist(value:Int){
         if value == 0{
             discountView.isHidden = true
@@ -59,5 +66,4 @@ class Product_Cell: UICollectionViewCell {
             discountView.isHidden = false
         }
     }
-
 }

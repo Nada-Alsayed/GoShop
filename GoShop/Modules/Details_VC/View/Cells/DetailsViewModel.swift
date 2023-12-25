@@ -36,9 +36,9 @@ class DetailsViewModel{
     func postToWishlist(product_id: Double,vc:UIViewController){
         apiWishList.postToWishlist(token: customer_token ?? "nil", product_ID: product_id) { response, error in
         //    guard let self = self else{return}
-            print("llll")
+          //  print("llll")
             guard let response = response else {return}
-            print("llll")
+         //   print("llll")
             print(response.message!)
             vc.showToast(controller: vc, message: response.message!, seconds: 0.8)
         }
@@ -47,9 +47,9 @@ class DetailsViewModel{
     func postToCart(product_id: Double,vc:UIViewController){
         apiCart.postToCart(token: customer_token ?? "nil", product_ID: product_id) { response, error in
         //    guard let self = self else{return}
-            print("llll")
+         //   print("llll")
             guard let response = response else {return}
-            print("llll")
+        //    print("llll")
             print(response.message!)
 
             vc.showToast(controller: vc, message: response.message!, seconds: 0.8)

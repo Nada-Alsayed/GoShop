@@ -33,7 +33,14 @@ extension Favorites_VC :UITableViewDelegate,UITableViewDataSource{
         let vc = Details_VC()
         vc.modalPresentationStyle = .popover
         vc.id = products[indexPath.row].product.id ?? 0
+        vc.delegate = self
         present(vc,animated: true)
     }
     
+}
+
+extension Favorites_VC : ReloadViewDelegate{
+    func reloadView() {
+        tableView.reloadData()
+    }
 }

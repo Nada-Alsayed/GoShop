@@ -25,7 +25,7 @@ class LoginViewModel{
     func Original_Login(password : String, email:String){
         let user = User(name: "", phone: "", email: email, password: password, image: "")
         api.loginUser(user: user) { response, err in
-            print("post method")
+          //  print("post method")
             guard let response = response else{return}
             if response.status == true{
                 print("messege: \(response.message)")

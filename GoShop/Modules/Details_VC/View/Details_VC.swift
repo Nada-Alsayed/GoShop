@@ -22,6 +22,7 @@ class Details_VC: UIViewController {
 
     var viewModel : DetailsViewModel = DetailsViewModel()
     var id: Double = 0.0
+    var delegate : ReloadViewDelegate?
     var product:Product?
     var currentPage = 0 {
         didSet {
@@ -49,14 +50,21 @@ class Details_VC: UIViewController {
     //MARK: -IBActions
 
     @IBAction func addToFavourite(_ sender: Any) {
-        print("addtofav")
+        //print("addtofav")
         viewModel.postToWishlist(product_id: (product?.id)! , vc: self)
         favoriteBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
     }
     
     @IBAction func addToCart(_ sender: Any) {
-        print("addtocart")
+       // print("addtocart")
         viewModel.postToCart(product_id: (product?.id)! , vc: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if isBeingDismissed {
+            delegate?.reloadView()
+        }
     }
     
     //MARK: -Methods
