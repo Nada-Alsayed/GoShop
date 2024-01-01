@@ -15,6 +15,8 @@ class CartCell: UITableViewCell {
     @IBOutlet weak var stack: UIStackView!
     @IBOutlet weak var numberOfPices: UILabel!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var decreaseBtn: UIButton!
+    
     
     static let id = String(describing: CartCell.self)
     var delegate : OnClickDelegate?
@@ -36,7 +38,6 @@ class CartCell: UITableViewCell {
     }
     
     @IBAction func deleteBtn(_ sender: Any) {
-        print("kkkkk")
         delegate?.clicked(cellIndex!, opertion: { state in
             print("deleted")
             if state{
@@ -47,7 +48,13 @@ class CartCell: UITableViewCell {
     }
     
     @IBAction func decreaseBtn(_ sender: Any) {
-        calculateQuantity(op: "-")
+        if quantity == 1{
+            decreaseBtn.setTitle("", for: .normal)
+            decreaseBtn.setImage(UIImage(named: "icon-delete"), for: .normal)
+            deleteItemFromCart()
+        }else{
+            calculateQuantity(op: "-")
+        }
     }
     
     @IBAction func increaseBtn(_ sender: Any) {
@@ -55,12 +62,7 @@ class CartCell: UITableViewCell {
     }
     
     func setUpCellUI(){
-//        containerView.layer.cornerRadius = 25
         productImg.layer.cornerRadius = 13
-        //        containerView.layer.shadowColor = UIColor.darkGray.cgColor
-//        containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
-//        containerView.layer.shadowOpacity = 0.6
-//        containerView.layer.shadowRadius = 3.0
         stack.layer.cornerRadius = 20
         stack.layer.masksToBounds = true
     }
@@ -71,6 +73,13 @@ class CartCell: UITableViewCell {
         productTitle.text = product.product.name
         productPrice.text = calc(price: product.product.price ?? 0, quantity: product.quantity ?? 1)
         productImg.kf.setImage(with:URL(string: product.product.image ?? ""),placeholder: UIImage(named: "black logo"))
+        if quantity == 1{
+            decreaseBtn.setTitle("", for: .normal)
+            decreaseBtn.setImage(UIImage(named: "icon-delete"), for: .normal)
+        }else{
+            decreaseBtn.setTitle("-", for: .normal)
+            decreaseBtn.setImage(nil, for: .normal)
+        }
     }
     
     func calculateQuantity(op : String){
@@ -88,4 +97,14 @@ class CartCell: UITableViewCell {
         let total = Float(price * Double(quantity))
         return "\(total)"
     }
+    
+    func deleteItemFromCart(){
+        delegate?.clicked(cellIndex!, opertion: { state in
+            print("deleted")
+            if state{
+                self.delegateReload?.reloadView()
+            }
+        })
+    }
+    
 }

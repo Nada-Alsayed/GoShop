@@ -118,6 +118,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="containerView" destination="OOK-0y-2dL" id="SqJ-lv-pqH"/>
+                <outlet property="decreaseBtn" destination="EBo-zW-4Da" id="dTg-o9-4MV"/>
                 <outlet property="numberOfPices" destination="Da7-wD-XC3" id="HJ6-5d-fDW"/>
                 <outlet property="productImg" destination="x1x-be-pnV" id="6C6-nC-bza"/>
                 <outlet property="productPrice" destination="gkN-wz-1zs" id="8Rw-hA-b7Y"/>
