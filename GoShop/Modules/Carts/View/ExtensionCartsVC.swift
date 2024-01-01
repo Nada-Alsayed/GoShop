@@ -8,7 +8,16 @@
 import Foundation
 import UIKit
 
-extension Carts_VC :UITableViewDelegate,UITableViewDataSource{
+extension Carts_VC :UITableViewDelegate,UITableViewDataSource, OnClickDelegate{
+    
+    func clicked(_ row: Int, opertion: @escaping (Bool) -> Void) {
+        print("lllllll")
+        tableView.isUserInteractionEnabled = false
+        viewModel.postToCart(product_id: products[row].product.id ?? 0, vc: self){
+            opertion(true)
+        }
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
@@ -21,6 +30,9 @@ extension Carts_VC :UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: CartCell.id, for: indexPath) as! CartCell
             cell.setUpData(product: products[indexPath.row])
+            cell.delegate = self
+            cell.cellIndex = indexPath.row
+            cell.delegateReload = self
             return cell
     }
     
@@ -35,36 +47,11 @@ extension Carts_VC :UITableViewDelegate,UITableViewDataSource{
         vc.delegate = self
         present(vc,animated: true)
     }
-    
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-
-        let deleteAction = UIContextualAction(style: .destructive, title: "") { (action, view, completionHandler) in
-            print("gggggggggg")
-            completionHandler(true)
-        }
-
-        // You can customize the appearance of the action, such as its background color
-        deleteAction.backgroundColor = .black
-        deleteAction.image = UIImage(named: "icon-table-delete")
-
-        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
-        swipeConfiguration.performsFirstActionWithFullSwipe = false
-
-        return swipeConfiguration
-    }
-    
-    func imageWithView(view: UIView) -> UIImage {
-        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
-        let image = renderer.image { (context) in
-            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
-        }
-        return image
-    }
-
 }
 
 extension Carts_VC : ReloadViewDelegate{
     func reloadView() {
-        tableView.reloadData()
-}
+        bindData()
+        viewModel.getData()
+    }
 }

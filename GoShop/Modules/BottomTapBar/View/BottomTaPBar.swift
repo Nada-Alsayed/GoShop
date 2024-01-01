@@ -10,7 +10,8 @@ import UIKit
 class BottomTaPBar: UIViewController {
     
     //MARK: - IBOutlets
-    @IBOutlet weak var bottomView: UIStackView!
+    @IBOutlet weak var bottomView: UIView!
+    
     @IBOutlet weak var homeBtn: UIButton!
     @IBOutlet weak var cartBtn: UIButton!
     @IBOutlet weak var profileBtn: UIButton!
@@ -36,11 +37,13 @@ class BottomTaPBar: UIViewController {
     }
     
     func tabBarDesign(){
-        bottomView.layer.cornerRadius = bottomView.layer.bounds.height/2
+        bottomView.layer.cornerRadius = 30
+        bottomView.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMinXMinYCorner]
+       // bottomView.layer.masksToBounds = true
         bottomView.layer.shadowColor = UIColor.black.cgColor
-        bottomView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        bottomView.layer.shadowOpacity = 0.5
-        bottomView.layer.shadowRadius = 5.0
+        bottomView.layer.shadowOffset = CGSize(width: 2, height: 3)
+        bottomView.layer.shadowOpacity = 0.8
+        bottomView.layer.shadowRadius = 8.0
     }
     
     @IBAction func tabBarTapped(_ sender: UIButton) {

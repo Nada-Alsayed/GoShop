@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class CartViewModel{
     
@@ -34,8 +35,16 @@ class CartViewModel{
         api.getFromCart(token:customer_token ?? "nil" ) { [weak self] response, error in
             guard let self = self else{return}
             guard let response = response else {return}
-           // print(response.data?.data)
             self.products = response.data?.cartItems ?? []
+        }
+    }
+    
+    func postToCart(product_id: Double,vc:UIViewController,operation:@escaping()->()){
+        api.postToCart(token: customer_token ?? "nil", product_ID: product_id) { response, error in
+            guard let response = response else {return}
+            print(response.message!)
+            vc.showToast(controller: vc, message: response.message!, seconds: 0.8)
+            operation()
         }
     }
 }

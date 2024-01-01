@@ -21,7 +21,7 @@
                         <rect key="frame" x="6" y="10" width="308" height="180"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="248" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IUe-Kl-gmz">
-                                <rect key="frame" x="116" y="15" width="182" height="86.666666666666686"/>
+                                <rect key="frame" x="116" y="15" width="182" height="86.666666666666671"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -79,6 +79,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="cartCellBtn" destination="UHU-E5-BsH" id="aHM-Q4-O5M"/>
                 <outlet property="containerView" destination="1xT-FB-fhb" id="Ppp-3F-Oby"/>
                 <outlet property="img" destination="7Wi-6G-kwb" id="hq6-oT-hST"/>
                 <outlet property="name" destination="IUe-Kl-gmz" id="cEj-wa-KqN"/>

@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomTaPBar" customModule="GoShop" customModuleProvider="target">
             <connections>
-                <outlet property="bottomView" destination="t2X-w3-MFd" id="nXY-B5-nS0"/>
+                <outlet property="bottomView" destination="K8I-hO-exK" id="Tfz-ZU-UoW"/>
                 <outlet property="cartBtn" destination="SgX-VN-Fyi" id="SaX-p3-pIL"/>
                 <outlet property="containerView" destination="Oeu-2H-pa1" id="5jc-ng-0za"/>
                 <outlet property="homeBtn" destination="aOt-0B-8Yw" id="2W8-q7-GmJ"/>
@@ -23,63 +23,75 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="t2X-w3-MFd" userLabel="ParentHS">
-                    <rect key="frame" x="10" y="748" width="373" height="70"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8I-hO-exK">
+                    <rect key="frame" x="1" y="752" width="393" height="100"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOt-0B-8Yw" userLabel="Home">
-                            <rect key="frame" x="0.0" y="0.0" width="124.33333333333333" height="70"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" title="Button" image="home">
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="16" scale="large"/>
-                            </state>
-                            <buttonConfiguration key="configuration" style="plain" image="home">
-                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="16" scale="large"/>
-                            </buttonConfiguration>
-                            <connections>
-                                <action selector="tabBarTapped:" destination="-1" eventType="touchUpInside" id="id7-YA-pRl"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SgX-VN-Fyi" userLabel="Cart">
-                            <rect key="frame" x="124.33333333333334" y="0.0" width="124.33333333333334" height="70"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="cart">
-                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="16" scale="large"/>
-                            </buttonConfiguration>
-                            <connections>
-                                <action selector="tabBarTapped:" destination="-1" eventType="touchUpInside" id="gSg-T7-NfU"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rh-dm-DHj" userLabel="Profile">
-                            <rect key="frame" x="248.66666666666671" y="0.0" width="124.33333333333334" height="70"/>
-                            <state key="normal" title="Button"/>
-                            <buttonConfiguration key="configuration" style="plain" image="profile">
-                                <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
-                            </buttonConfiguration>
-                            <connections>
-                                <action selector="tabBarTapped:" destination="-1" eventType="touchUpInside" id="tdb-rx-z75"/>
-                            </connections>
-                        </button>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="t2X-w3-MFd" userLabel="ParentHS">
+                            <rect key="frame" x="16" y="4" width="361" height="70"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOt-0B-8Yw" userLabel="Home">
+                                    <rect key="frame" x="0.0" y="0.0" width="120.33333333333333" height="70"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Button" image="home">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="16" scale="large"/>
+                                    </state>
+                                    <buttonConfiguration key="configuration" style="plain" image="home">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="16" scale="large"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="tabBarTapped:" destination="-1" eventType="touchUpInside" id="id7-YA-pRl"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SgX-VN-Fyi" userLabel="Cart">
+                                    <rect key="frame" x="120.33333333333334" y="0.0" width="120.33333333333334" height="70"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="cart">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="16" scale="large"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="tabBarTapped:" destination="-1" eventType="touchUpInside" id="gSg-T7-NfU"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Rh-dm-DHj" userLabel="Profile">
+                                    <rect key="frame" x="240.66666666666671" y="0.0" width="120.33333333333334" height="70"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="profile">
+                                        <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large"/>
+                                    </buttonConfiguration>
+                                    <connections>
+                                        <action selector="tabBarTapped:" destination="-1" eventType="touchUpInside" id="tdb-rx-z75"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="70" id="sMF-mn-WPg"/>
+                            </constraints>
+                        </stackView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="70" id="sMF-mn-WPg"/>
+                        <constraint firstItem="t2X-w3-MFd" firstAttribute="leading" secondItem="K8I-hO-exK" secondAttribute="leading" constant="16" id="1w7-aw-d9g"/>
+                        <constraint firstItem="t2X-w3-MFd" firstAttribute="top" secondItem="K8I-hO-exK" secondAttribute="top" constant="4" id="3Vp-aU-8pJ"/>
+                        <constraint firstAttribute="height" constant="100" id="6q3-CV-XaY"/>
+                        <constraint firstAttribute="trailing" secondItem="t2X-w3-MFd" secondAttribute="trailing" constant="16" id="TIv-NW-vWA"/>
                     </constraints>
-                </stackView>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oeu-2H-pa1" userLabel="ContainerView">
-                    <rect key="frame" x="0.0" y="59" width="393" height="681"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="687"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="K8I-hO-exK" firstAttribute="top" secondItem="Oeu-2H-pa1" secondAttribute="bottom" constant="6" id="38c-K2-3ej"/>
+                <constraint firstItem="K8I-hO-exK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="1" id="5oD-6m-dzx"/>
+                <constraint firstAttribute="trailing" secondItem="K8I-hO-exK" secondAttribute="trailing" constant="-1" id="5td-Jw-bxx"/>
                 <constraint firstItem="Oeu-2H-pa1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Elg-44-TPr"/>
-                <constraint firstItem="t2X-w3-MFd" firstAttribute="top" secondItem="Oeu-2H-pa1" secondAttribute="bottom" constant="8" id="IT3-Bc-pip"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="t2X-w3-MFd" secondAttribute="bottom" id="Pfg-8j-lMS"/>
+                <constraint firstAttribute="bottom" secondItem="K8I-hO-exK" secondAttribute="bottom" id="KLG-qf-Dni"/>
                 <constraint firstItem="Oeu-2H-pa1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VfN-GN-Ilr"/>
                 <constraint firstItem="Oeu-2H-pa1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bGg-So-T97"/>
-                <constraint firstItem="t2X-w3-MFd" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="ehO-u0-0gu"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="t2X-w3-MFd" secondAttribute="trailing" constant="10" id="j2d-Qc-3Hv"/>
             </constraints>
             <point key="canvasLocation" x="-8.3969465648854964" y="-11.267605633802818"/>
         </view>

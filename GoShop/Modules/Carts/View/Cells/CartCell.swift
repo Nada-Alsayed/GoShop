@@ -17,6 +17,9 @@ class CartCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     
     static let id = String(describing: CartCell.self)
+    var delegate : OnClickDelegate?
+    var delegateReload : ReloadViewDelegate?
+    var cellIndex : Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +34,14 @@ class CartCell: UITableViewCell {
     }
     
     @IBAction func deleteBtn(_ sender: Any) {
+        print("kkkkk")
+        delegate?.clicked(cellIndex!, opertion: { state in
+            print("deleted")
+            if state{
+                self.delegateReload?.reloadView()
+            }
+        })
+        
     }
     
     @IBAction func decreaseBtn(_ sender: Any) {
@@ -40,19 +51,19 @@ class CartCell: UITableViewCell {
     }
     
     func setUpCellUI(){
-        containerView.layer.cornerRadius = 25
-        productImg.layer.cornerRadius = 25
-        containerView.layer.shadowColor = UIColor.darkGray.cgColor
-        containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
-        containerView.layer.shadowOpacity = 0.6
-        containerView.layer.shadowRadius = 3.0
+//        containerView.layer.cornerRadius = 25
+        productImg.layer.cornerRadius = 13
+        //        containerView.layer.shadowColor = UIColor.darkGray.cgColor
+//        containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        containerView.layer.shadowOpacity = 0.6
+//        containerView.layer.shadowRadius = 3.0
         stack.layer.cornerRadius = 20
         stack.layer.masksToBounds = true
     }
     
     func setUpData(product: Favourite){
         productTitle.text = product.product.name
-        productPrice.text = "\(Float(product.product.price ?? 0))$"
+        productPrice.text = "$\(Float(product.product.price ?? 0))"
         productImg.kf.setImage(with:URL(string: product.product.image ?? ""),placeholder: UIImage(named: "black logo"))
     }
 }

@@ -23,4 +23,12 @@ class CartAPI:BaseAPI<CartNetworking>{
             compelition(response, nil)
         }
     }
+    
+    func updateCart(token:String ,item_id:Int ,quantity : Int,compelition :@escaping (BaseResponse<SubCart>?,Error?)->()){
+        self.fetchData(target: .updateCart(token: token, itemID: item_id, quantity: quantity), responseClass: BaseResponse<SubCart>.self) { response, err in
+            guard let response = response else { return  compelition(nil,err) }
+          //  print("hhhhh")
+            compelition(response, nil)
+        }
+    }
 }

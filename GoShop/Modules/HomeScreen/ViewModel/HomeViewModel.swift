@@ -6,19 +6,17 @@
 //
 
 import Foundation
+import UIKit
 
 class HomeViewModel{
     
     //MARK: - Variables
-
+    
     private let api : HomeAPI = HomeAPI()
-    var bindBannersToView : (()->()) = {}
+    private let apiWishlist : WishlistAPI = WishlistAPI()
+    let customer_token = UserDefaults.standard.string(forKey: ConstantStrings.KEY_USER_TOKEN)
     var bindProductsToView : (()->()) = {}
-    var banners: [Banner] = []{
-        didSet{
-            bindBannersToView()
-        }
-    }
+    var banners: [Banner] = []
     var products: [Product] = []{
         didSet{
             bindProductsToView()
@@ -26,7 +24,7 @@ class HomeViewModel{
     }
     
     //MARK: - Methods
-
+    
     func numberOfSections() -> Int{
         return 1
     }
@@ -45,6 +43,16 @@ class HomeViewModel{
             guard let response = response else {return}
             self.banners = response.data?.banners ?? []
             self.products = response.data?.products ?? []
+        }
+    }
+    
+    func postToWishlist(product_id: Double,vc:UIViewController,operation:@escaping()->()){
+        apiWishlist.postToWishlist(token: customer_token ?? "nil", product_ID: product_id) { response, error in
+            guard let response = response else {return}
+            print(response.message!)
+            
+            vc.showToast(controller: vc, message: response.message!, seconds: 0.8)
+            operation()
         }
     }
 }

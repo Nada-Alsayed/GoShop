@@ -23,7 +23,8 @@ class Product_Cell: UICollectionViewCell {
     //MARK: -Variables
     
     static let id = String(describing: Product_Cell.self)
-    var delegate:ClickToFavBtnDelegate?
+    var delegate:OnClickDelegate?
+    var delegateReload:ReloadViewDelegate?
     var cellIndex: Int?
     
     override func awakeFromNib() {
@@ -36,9 +37,7 @@ class Product_Cell: UICollectionViewCell {
     @IBAction func addToFavorites(_ sender: UIButton) {
         delegate?.clicked(cellIndex!, opertion: { state in
             if state{
-                self.favouriteBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-            }else{
-                self.favouriteBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+                self.delegateReload?.reloadView()
             }
         })
     }
@@ -56,7 +55,7 @@ class Product_Cell: UICollectionViewCell {
         productTitle.text = product.name
         discountLabel.text = "\(Int(product.discount ?? 0))%"
         oldPrice.text = "\(Float(product.oldPrice ?? 0))$"
-        currentPrice.text = "\(Float(product.price ?? 0))$"
+        currentPrice.text = "$\(Float(product.price ?? 0))"
         if product.inFavorites ?? false {
             favouriteBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }else{
@@ -67,8 +66,10 @@ class Product_Cell: UICollectionViewCell {
     func checkIfDiscountExist(value:Int){
         if value == 0{
             discountView.isHidden = true
+            oldPrice.isHidden = true
         }else{
             discountView.isHidden = false
+            oldPrice.isHidden = false
         }
     }
 }

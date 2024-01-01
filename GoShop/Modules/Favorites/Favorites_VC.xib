@@ -11,6 +11,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Favorites_VC" customModule="GoShop" customModuleProvider="target">
             <connections>
                 <outlet property="backImg" destination="BFf-hS-ST4" id="180-Kx-ODT"/>
+                <outlet property="favEmpty" destination="iNf-aN-Y4K" id="uzg-dF-VHE"/>
+                <outlet property="indicator" destination="gnd-cd-qlR" id="wsK-HS-FpQ"/>
                 <outlet property="searchView" destination="6A3-kz-xnl" id="po9-mP-M25"/>
                 <outlet property="tableView" destination="HYG-DK-Uxg" id="vn6-DB-TPg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -36,10 +38,6 @@
                         <constraint firstAttribute="width" constant="35" id="xcP-RU-Ng8"/>
                     </constraints>
                 </imageView>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HYG-DK-Uxg">
-                    <rect key="frame" x="8" y="195" width="377" height="623"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6A3-kz-xnl">
                     <rect key="frame" x="16" y="125" width="301" height="60"/>
                     <subviews>
@@ -76,19 +74,41 @@
                         <constraint firstAttribute="height" constant="50" id="OJ9-cv-lC5"/>
                     </constraints>
                 </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="HYG-DK-Uxg">
+                    <rect key="frame" x="8" y="195" width="377" height="623"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="iNf-aN-Y4K">
+                    <rect key="frame" x="0.0" y="185" width="393" height="633"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gnd-cd-qlR">
+                    <rect key="frame" x="181.66666666666666" y="411" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="cYq-7C-9Gf"/>
+                        <constraint firstAttribute="width" constant="30" id="kgv-hE-eII"/>
+                    </constraints>
+                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="gnd-cd-qlR" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="CRh-D5-Mof"/>
+                <constraint firstAttribute="trailing" secondItem="iNf-aN-Y4K" secondAttribute="trailing" id="DiE-B7-Ppm"/>
+                <constraint firstItem="iNf-aN-Y4K" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Etr-ha-szu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="h40-t7-RNk" secondAttribute="trailing" constant="16" id="GeQ-VH-SPc"/>
                 <constraint firstItem="tU1-sK-XwS" firstAttribute="leading" secondItem="6A3-kz-xnl" secondAttribute="trailing" constant="10" id="Hno-c8-wH5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HYG-DK-Uxg" secondAttribute="trailing" constant="8" id="Mse-Jn-4r2"/>
+                <constraint firstItem="gnd-cd-qlR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NX5-Ph-B3T"/>
                 <constraint firstItem="tU1-sK-XwS" firstAttribute="centerY" secondItem="6A3-kz-xnl" secondAttribute="centerY" id="R33-Kj-Axa"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="HYG-DK-Uxg" secondAttribute="bottom" id="TeS-hT-txC"/>
                 <constraint firstItem="HYG-DK-Uxg" firstAttribute="top" secondItem="6A3-kz-xnl" secondAttribute="bottom" constant="10" id="Uuc-pJ-Ozi"/>
                 <constraint firstItem="HYG-DK-Uxg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="c02-j3-Fph"/>
                 <constraint firstItem="6A3-kz-xnl" firstAttribute="top" secondItem="BFf-hS-ST4" secondAttribute="bottom" constant="16" id="dJS-hs-RSO"/>
+                <constraint firstItem="iNf-aN-Y4K" firstAttribute="top" secondItem="6A3-kz-xnl" secondAttribute="bottom" id="jR4-sa-gid"/>
                 <constraint firstItem="6A3-kz-xnl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="lio-sB-Dm4"/>
+                <constraint firstItem="iNf-aN-Y4K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mbe-0a-lgB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tU1-sK-XwS" secondAttribute="trailing" constant="16" id="nGv-mO-TpD"/>
                 <constraint firstItem="h40-t7-RNk" firstAttribute="centerY" secondItem="BFf-hS-ST4" secondAttribute="centerY" id="phH-2e-r74"/>
                 <constraint firstItem="BFf-hS-ST4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="t3D-Xa-42g"/>
@@ -99,6 +119,7 @@
     </objects>
     <resources>
         <image name="GoBackBtn" width="35" height="35"/>
+        <image name="favEmpty" width="502" height="502"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="screener" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">

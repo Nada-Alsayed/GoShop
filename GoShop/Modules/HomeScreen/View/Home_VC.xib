@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="bannerCollectionView" destination="TwV-a6-Mal" id="7RN-zH-O5r"/>
                 <outlet property="categoriesImg" destination="BKJ-pH-FpL" id="wOV-s4-M4B"/>
+                <outlet property="indicator" destination="yWc-OW-igf" id="NXP-DR-SPP"/>
                 <outlet property="personImg" destination="cxF-SY-FCn" id="Mvi-rl-Cbv"/>
                 <outlet property="productCollectionViewheightConstraint" destination="XjC-Gj-Vfo" id="hT9-aA-lxW"/>
                 <outlet property="productsCollectionView" destination="x0s-ZV-gSs" id="IZ1-hb-c8P"/>
@@ -162,6 +163,14 @@
                         <constraint firstAttribute="height" constant="50" id="wsh-Iw-VQA"/>
                     </constraints>
                 </imageView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="yWc-OW-igf">
+                    <rect key="frame" x="172.66666666666666" y="348" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="h7C-Qx-VYP"/>
+                        <constraint firstAttribute="height" constant="30" id="z3i-Vm-VKI"/>
+                    </constraints>
+                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -170,9 +179,11 @@
                 <constraint firstItem="g7c-ew-TtB" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="3Qp-sO-RSh"/>
                 <constraint firstItem="cxF-SY-FCn" firstAttribute="bottom" secondItem="BKJ-pH-FpL" secondAttribute="bottom" id="6xq-1d-OoR"/>
                 <constraint firstItem="g7c-ew-TtB" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="82N-pd-nsH"/>
+                <constraint firstItem="yWc-OW-igf" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="9jj-AQ-5ey"/>
                 <constraint firstItem="cxF-SY-FCn" firstAttribute="width" secondItem="BKJ-pH-FpL" secondAttribute="width" id="KKq-x4-7pi"/>
                 <constraint firstItem="cxF-SY-FCn" firstAttribute="top" secondItem="BKJ-pH-FpL" secondAttribute="top" id="WF9-Ur-CPi"/>
                 <constraint firstItem="BKJ-pH-FpL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="YQA-79-oVD"/>
+                <constraint firstItem="yWc-OW-igf" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="bQ9-4K-cAh"/>
                 <constraint firstItem="g7c-ew-TtB" firstAttribute="top" secondItem="BKJ-pH-FpL" secondAttribute="bottom" constant="6" id="iXz-d9-ykC"/>
                 <constraint firstItem="cxF-SY-FCn" firstAttribute="centerY" secondItem="BKJ-pH-FpL" secondAttribute="centerY" id="xSV-ht-cyF"/>
                 <constraint firstItem="cxF-SY-FCn" firstAttribute="height" secondItem="BKJ-pH-FpL" secondAttribute="height" id="zEf-ux-Iu7"/>

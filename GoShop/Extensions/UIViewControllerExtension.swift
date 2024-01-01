@@ -44,4 +44,16 @@ extension UIViewController {
         viewController.present(alertController, animated: true, completion: nil)
     }
     
+    func showAlertWithTwoAction(title: String?,titleAction: String?,titleNoAction: String?, message: String?, viewController: UIViewController, compilitionHandler1:@escaping () -> Void, compilitionHandler2:@escaping () -> Void){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: titleAction, style: .default) { _ in
+            compilitionHandler1()
+        }
+        let noAction = UIAlertAction(title: titleNoAction, style: .default) { _ in
+            compilitionHandler2()
+        }
+        alertController.addAction(okAction)
+        alertController.addAction(noAction)
+        viewController.present(alertController, animated: true, completion: nil)
+    }
 }

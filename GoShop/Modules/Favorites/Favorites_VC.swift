@@ -9,35 +9,44 @@ import UIKit
 
 class Favorites_VC: UIViewController {
     
+    //MARK: -IBOutlets
+
     @IBOutlet weak var backImg: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchView: UIView!
-   
+    @IBOutlet weak var favEmpty: UIImageView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
+    //MARK: -Variables
+
     var viewModel = FavoritesViewModel()
     var products = [Favourite]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         searchView.layer.cornerRadius = searchView.bounds.size.height / 2
-        addbackImgAction()
         setUpTableView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        print("Called")
+        addbackImgAction()
         bindData()
         viewModel.getData()
-        tableView.reloadData()
     }
     
     func bindData(){
+        indicator.isHidden = false
+        indicator.startAnimating()
+        self.tableView.isUserInteractionEnabled = false
         viewModel.bindProductsToView = { [weak self] in
             guard let self = self else {return}
             DispatchQueue.main.async {
                 self.products = self.viewModel.products
-                // self.indicator.stopAnimating()
-                // self.indicatorView.isHidden = true
+//                print("iii\(self.viewModel.products[0].product.inCart)")
+//                print("iii\(self.viewModel.products[1].product.inCart)")
+//                print("pp\(self.products[0].product.inCart)")
+//                print("pp\(self.products[1].product.inCart)")
+                self.hideImage(array: self.products)
+                self.indicator.stopAnimating()
                 self.tableView.reloadData()
+                self.tableView.isUserInteractionEnabled = true
             }
         }
     }
@@ -57,5 +66,12 @@ class Favorites_VC: UIViewController {
     @objc func goBack(){
         self.dismiss(animated: true)
     }
-
+    
+    func hideImage(array:[Favourite]){
+        if array.count == 0{
+            favEmpty.isHidden = false
+        }else{
+            favEmpty.isHidden = true
+        }
+    }
 }

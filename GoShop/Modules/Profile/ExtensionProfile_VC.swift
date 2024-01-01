@@ -41,9 +41,18 @@ extension Profile_VC :UITableViewDelegate,UITableViewDataSource{
             return 55
         }
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 && indexPath.row == 2{
             let vc = Favorites_VC()
+            vc.modalPresentationStyle = .fullScreen
+            present(vc,animated: true)
+        }else if indexPath.section == 1 && indexPath.row == 3{
+            let vc = AllAddresses_VC()
+            vc.modalPresentationStyle = .fullScreen
+            present(vc,animated: true)
+        }else if indexPath.section == 1 && indexPath.row == 1{
+            let vc = AllOrders_VC()
             vc.modalPresentationStyle = .fullScreen
             present(vc,animated: true)
         }

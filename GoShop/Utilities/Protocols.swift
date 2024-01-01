@@ -11,10 +11,14 @@ protocol ReloadViewDelegate {
     func reloadView()
 }
 
-protocol ClickToFavBtnDelegate {
+protocol OnClickDelegate {
     func clicked(_ row: Int, opertion:@escaping(Bool)->Void)
 }
 
 protocol ResponceMessage{
     func responsIsDone(message: String)
+}
+
+protocol GoBack{
+    func moveBack()
 }

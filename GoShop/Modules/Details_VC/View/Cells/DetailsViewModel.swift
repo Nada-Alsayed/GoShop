@@ -31,7 +31,7 @@ class DetailsViewModel{
             guard let self = self else{return}
             guard let response = response else {return}
             self.product = response.data ?? Product()
-            print("product details:\(self.product) ")
+           // print("product details:\(self.product) ")
         }
     }
     

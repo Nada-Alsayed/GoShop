@@ -28,7 +28,7 @@ class LoginViewModel{
           //  print("post method")
             guard let response = response else{return}
             if response.status == true{
-                print("messege: \(response.message)")
+                //print("messege: \(response.message)")
                 guard let currentCustomer = response.data else {
                     self.delegate?.SignInFailed(message:response.message ?? "")
                     return

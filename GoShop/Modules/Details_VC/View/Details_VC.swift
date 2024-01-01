@@ -43,7 +43,6 @@ class Details_VC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         if isBeingDismissed {
-            print("disappeared")
             delegate?.reloadView()
         }
     }
@@ -52,7 +51,7 @@ class Details_VC: UIViewController {
     //MARK: -IBActions
     
     @IBAction func addToFavourite(_ sender: Any) {
-        print("inFav : \(product?.inFavorites)")
+       // print("inFav : \(product?.inFavorites)")
         if(product?.inFavorites == false){
             product?.inFavorites = true
             viewModel.postToWishlist(product_id: (product?.id)! , vc: self)
@@ -67,19 +66,19 @@ class Details_VC: UIViewController {
     }
     
     @IBAction func addToCart(_ sender: Any) {
-        print("inRt : \(product?.inCart)")
+        //print("inRt : \(product?.inCart)")
         if product?.inCart == false {
             product?.inCart = true
             viewModel.postToCart(product_id: (product?.id)! , vc: self)
             cartBtn.setTitle(" In Cart", for: .normal)
         }else{
             showAlertWithAction(title: ConstantStrings.ALERT, titleAction:  ConstantStrings.DELETE_BTN, titleNoAction:  ConstantStrings.NO_ACTION_BTN, message:  ConstantStrings.CONFIRM_DELETE_CART, viewController: self) {
-                print("inRt3 : \(self.product?.inCart)")
-                self.product?.inCart = false
-                print("inRt3 : \(self.product?.inCart)")
+              //  print("inRt3 : \(self.product?.inCart)")
+             //   self.product?.inCart = false
+               // print("inRt3 : \(self.product?.inCart)")
                 self.viewModel.postToCart(product_id: (self.product?.id)! , vc: self)
                 self.cartBtn.setTitle(" Add To Cart", for: .normal)
-                print("inRt3 : \(self.product?.inCart)")
+              //  print("inRt3 : \(self.product?.inCart)")
 
             }
         }
@@ -98,8 +97,8 @@ class Details_VC: UIViewController {
         productDescribtion.text = product?.description
         productPrice.text = "\(Float(product?.price ?? 0))$"
         pageControler.numberOfPages = product?.images?.count ?? 0
-        print("inRt2 : \(product?.inCart)")
-        print("inFav2 : \(product?.inFavorites)")
+     //   print("inRt2 : \(product?.inCart)")
+     //   print("inFav2 : \(product?.inFavorites)")
 
         checkIfInFavorites(bool: product?.inFavorites ?? false)
         checkIfInCart(bool: product?.inCart ?? false)

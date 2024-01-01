@@ -11,6 +11,7 @@ class Home_VC: UIViewController {
     
     //MARK: - IBOutlets
     
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var personImg: UIImageView!
     @IBOutlet weak var bannerCollectionView: UICollectionView!
@@ -18,18 +19,18 @@ class Home_VC: UIViewController {
     @IBOutlet weak var productCollectionViewheightConstraint: NSLayoutConstraint!
     @IBOutlet weak var viewAllLabel: UILabel!
     @IBOutlet weak var categoriesImg: UIImageView!
-   
+    
     //MARK: - Variables
     
     var viewModel = HomeViewModel()
-    var favViewModel = DetailsViewModel()
     var banners = [Banner]()
     var products = [Product]()
     
     //MARK: - View Controller LifeCycle
-
+    
     override func viewWillAppear(_ animated: Bool) {
         productsCollectionView.addObserver(self, forKeyPath: "contentSize",options: .new , context: nil)
+        productsCollectionView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,7 +44,7 @@ class Home_VC: UIViewController {
             }
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchView.layer.cornerRadius = searchView.bounds.size.height / 2
@@ -51,31 +52,24 @@ class Home_VC: UIViewController {
         addAction()
         bindData()
         viewModel.getData()
-        favViewModel.delegate = self
     }
     
     func bindData(){
-        viewModel.bindBannersToView = { [weak self] in
-            guard let self = self else {return}
-            DispatchQueue.main.async {
-                self.banners = self.viewModel.banners
-               // self.indicator.stopAnimating()
-               // self.indicatorView.isHidden = true
-                self.bannerCollectionView.reloadData()
-            }
-        }
-        
+        self.indicator.startAnimating()
+        self.indicator.isHidden = false
         viewModel.bindProductsToView = { [weak self] in
             guard let self = self else {return}
             DispatchQueue.main.async {
+                self.banners = self.viewModel.banners
                 self.products = self.viewModel.products
-               // self.indicator.stopAnimating()
-               // self.indicatorView.isHidden = true
+                self.indicator.stopAnimating()
+                self.bannerCollectionView.reloadData()
                 self.productsCollectionView.reloadData()
+                self.productsCollectionView.isUserInteractionEnabled = true
             }
         }
     }
-
+    
     func addAction(){
         let tap_1 = UITapGestureRecognizer(target: self, action: #selector(moveToCategory) )
         categoriesImg.isUserInteractionEnabled = true
@@ -83,8 +77,8 @@ class Home_VC: UIViewController {
     }
     
     @objc func moveToCategory(){
-       let vc = Categories_VC()
-       vc.modalPresentationStyle = .fullScreen
-       self.present(vc, animated: true)
+        let vc = Categories_VC()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
 }
