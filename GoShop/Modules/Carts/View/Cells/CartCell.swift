@@ -19,7 +19,9 @@ class CartCell: UITableViewCell {
     static let id = String(describing: CartCell.self)
     var delegate : OnClickDelegate?
     var delegateReload : ReloadViewDelegate?
+    var delegateQuantity : CartQuantityDelegate?
     var cellIndex : Int?
+    var quantity : Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -45,9 +47,11 @@ class CartCell: UITableViewCell {
     }
     
     @IBAction func decreaseBtn(_ sender: Any) {
+        calculateQuantity(op: "-")
     }
     
     @IBAction func increaseBtn(_ sender: Any) {
+        calculateQuantity(op: "+")
     }
     
     func setUpCellUI(){
@@ -62,8 +66,26 @@ class CartCell: UITableViewCell {
     }
     
     func setUpData(product: Favourite){
+        quantity = product.quantity ?? 1
+        numberOfPices.text = "\(product.quantity ?? 1)"
         productTitle.text = product.product.name
-        productPrice.text = "$\(Float(product.product.price ?? 0))"
+        productPrice.text = calc(price: product.product.price ?? 0, quantity: product.quantity ?? 1)
         productImg.kf.setImage(with:URL(string: product.product.image ?? ""),placeholder: UIImage(named: "black logo"))
+    }
+    
+    func calculateQuantity(op : String){
+        if op == "+"{
+            quantity?+=1
+        }else{
+            quantity?-=1
+        }
+        delegateQuantity?.clickedQuantity(cellIndex!,quantity ?? 1, opertion: { item in
+            self.delegateReload?.reloadView()
+        })
+    }
+    
+    func calc(price : Double , quantity : Int)-> String{
+        let total = Float(price * Double(quantity))
+        return "\(total)"
     }
 }

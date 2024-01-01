@@ -10,7 +10,6 @@ import UIKit
 
 extension Favorites_VC :UITableViewDelegate,UITableViewDataSource{
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
     }

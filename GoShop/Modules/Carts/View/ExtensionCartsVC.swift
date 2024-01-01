@@ -30,9 +30,10 @@ extension Carts_VC :UITableViewDelegate,UITableViewDataSource, OnClickDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: CartCell.id, for: indexPath) as! CartCell
             cell.setUpData(product: products[indexPath.row])
+            cell.delegateReload = self
+            cell.delegateQuantity = self
             cell.delegate = self
             cell.cellIndex = indexPath.row
-            cell.delegateReload = self
             return cell
     }
     
@@ -53,5 +54,16 @@ extension Carts_VC : ReloadViewDelegate{
     func reloadView() {
         bindData()
         viewModel.getData()
+    }
+}
+
+extension Carts_VC :CartQuantityDelegate{
+    func clickedQuantity(_ row: Int, _ quantity: Int, opertion: @escaping (SubCart) -> Void) {
+        tableView.isUserInteractionEnabled = false
+        indicator.isHidden = false
+        indicator.startAnimating()
+        viewModel.updateCart(itemID: products[row].id , quantity: quantity) { response in
+            opertion(response)
+        }
     }
 }

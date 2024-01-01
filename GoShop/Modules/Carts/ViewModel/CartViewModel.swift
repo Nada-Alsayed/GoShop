@@ -14,10 +14,10 @@ class CartViewModel{
     
     private let api : CartAPI = CartAPI()
     let customer_token = UserDefaults.standard.string(forKey: ConstantStrings.KEY_USER_TOKEN)
-    var bindProductsToView : (()->()) = {}
-    var products: [Favourite] = []{
+    var bindResponseToView : (()->()) = {}
+    var response:DataClass = DataClass(){
         didSet{
-            bindProductsToView()
+            bindResponseToView()
         }
     }
 
@@ -28,14 +28,14 @@ class CartViewModel{
     }
     
     func productsNumberInSection(section:Int) -> Int{
-        return products.count
+        return response.cartItems.count
     }
     
     func getData(){
         api.getFromCart(token:customer_token ?? "nil" ) { [weak self] response, error in
             guard let self = self else{return}
             guard let response = response else {return}
-            self.products = response.data?.cartItems ?? []
+            self.response = response.data ?? DataClass()
         }
     }
     
@@ -45,6 +45,15 @@ class CartViewModel{
             print(response.message!)
             vc.showToast(controller: vc, message: response.message!, seconds: 0.8)
             operation()
+        }
+    }
+    
+    func updateCart(itemID: Int,quantity:Int,operation:@escaping(SubCart)->()){
+        api.updateCart(token: customer_token ?? "nil", item_id: itemID, quantity: quantity) {
+            response, error in
+            guard let response = response else {return}
+            print(response.message!)
+            operation(response.data!)
         }
     }
 }

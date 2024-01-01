@@ -81,12 +81,18 @@ class DataClass: Codable {
         case subTotal = "sub_total"
         case total
     }
+    
+    init() {
+        self.cartItems = []
+        self.subTotal = 0
+        self.total = 0
+    }
 }
 
 // MARK: - Datum
 class Favourite: Codable {
     let id: Int
-    let quantity: Int
+    let quantity: Int?
     let product: Product
 }
 

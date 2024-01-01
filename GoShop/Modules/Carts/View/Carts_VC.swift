@@ -16,8 +16,9 @@ class Carts_VC: UIViewController {
     @IBOutlet weak var cartEmptyImg: UIImageView!
     
     var viewModel = CartViewModel()
-    var products = [Favourite]()
-    var price: Double = 0
+    var data = DataClass()
+    var products :[Favourite] = []
+   // var price: Double = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class Carts_VC: UIViewController {
     }
 
     @IBAction func navigateToCard(_ sender: Any) {
-        checkIfCartEmpty(count: products.count)
+        checkIfCartEmpty(count: data.cartItems.count)
     }
     
     func navigateToMap(){
@@ -51,12 +52,13 @@ class Carts_VC: UIViewController {
     func bindData(){
         self.indicator.startAnimating()
         self.indicator.isHidden = false
-        viewModel.bindProductsToView = { [weak self] in
+        viewModel.bindResponseToView = { [weak self] in
             guard let self = self else {return}
             DispatchQueue.main.async {
-                self.products = self.viewModel.products
+                self.data = self.viewModel.response
+                self.products = self.viewModel.response.cartItems
                 self.indicator.stopAnimating()
-                self.hideEmptyImg(count: self.products.count)
+                self.hideEmptyImg(count: self.data.cartItems.count)
                 self.calcTotalPrice()
                 self.tableView.reloadData()
                 self.tableView.isUserInteractionEnabled = true
@@ -81,10 +83,7 @@ class Carts_VC: UIViewController {
     }
     
     func calcTotalPrice(){
-        for product in products{
-            self.price += product.product.price ?? 0
-        }
-        self.totalPrice.text = "$\(self.price)"
+        self.totalPrice.text = "$\(data.total)"
     }
     
     func hideEmptyImg(count:Int){
