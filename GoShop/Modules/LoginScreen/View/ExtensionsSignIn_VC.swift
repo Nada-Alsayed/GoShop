@@ -19,5 +19,4 @@ extension Login_VC : SignInDelegate{
         print("failed to login")
         showToast(controller: self, message: message, seconds: 1)
     }
-    
 }

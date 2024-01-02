@@ -51,16 +51,15 @@ class OnBoarding_VC: UIViewController {
     
     @objc func moveNext(){
         if currentPage == slides.count - 1 {
-               let vc = BottomTaPBar()
-               vc.modalPresentationStyle = .fullScreen
-               self.present(vc, animated: true)
-           } else if currentPage < slides.count - 1 {
-               currentPage += 1
-               let indexPath = IndexPath(item: currentPage, section: 0)
-               slideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-           }
+            let vc = BottomTaPBar()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        } else if currentPage < slides.count - 1 {
+            currentPage += 1
+            let indexPath = IndexPath(item: currentPage, section: 0)
+            slideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
-    
 }
 
 extension OnBoarding_VC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

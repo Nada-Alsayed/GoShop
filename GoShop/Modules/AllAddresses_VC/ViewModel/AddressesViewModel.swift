@@ -9,17 +9,19 @@ import Foundation
 
 class AddressesViewModel{
     
+    //MARK: -Variables
+
     private let api : AddressAPI = AddressAPI()
     private let apiCart : CartAPI = CartAPI()
     var orderAPI:OrderAPI = OrderAPI()
     let customer_token = UserDefaults.standard.string(forKey: ConstantStrings.KEY_USER_TOKEN)
     var bindAddressesToView : (()->()) = {}
+    var cartlistBind : (()->()) = {}
     var addresses: [Address] = []{
         didSet{
             bindAddressesToView()
         }
     }
-    var cartlistBind : (()->()) = {}
     var cartlist: [Favourite] = []{
         didSet{
             cartlistBind()
@@ -47,16 +49,16 @@ class AddressesViewModel{
     
     func deleteAddress(id:Int,operation:@escaping ()->()){
         api.deleteAddresses(token:customer_token ?? "nil", id: id ) { [weak self] response, error in
-            guard let self = self else{return}
-            guard let response = response else {return}
-            print(response.message)
+           // guard let self = self else{return}
+           // guard let response = response else {return}
+           // print(response.message)
             operation()
         }
     }
     
     func postOrder(address: Address,operation:@escaping ()->()){
         orderAPI.postOrder(token: customer_token ?? "", addressID: address.id, payMethod: 1, points: false, promoCode: 0) { response, error in
-            guard let response = response else { return }
+           // guard let response = response else { return }
             operation()
         }
     }

@@ -67,7 +67,7 @@ extension Home_VC : UICollectionViewDelegate,UICollectionViewDataSource,UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.tag == 1{
             let vc = Details_VC()
-            vc.modalPresentationStyle = .popover
+            vc.modalPresentationStyle = .fullScreen
             vc.id = products[indexPath.row].id ?? 0
             vc.delegate = self
             present(vc,animated: true)

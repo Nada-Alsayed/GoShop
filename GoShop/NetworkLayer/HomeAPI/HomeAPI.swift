@@ -12,7 +12,6 @@ class HomeAPI:BaseAPI<HomeNetworking>{
     func getData(compelition :@escaping (BaseResponse<HomeData>?,Error?)->())
     {
         guard let customer_token = UserDefaults.standard.string(forKey: ConstantStrings.KEY_USER_TOKEN) else {
-            
             print("No username found.")
             return 
         }

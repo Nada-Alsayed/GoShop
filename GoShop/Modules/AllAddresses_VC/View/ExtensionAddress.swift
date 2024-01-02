@@ -10,12 +10,18 @@ import UIKit
 
 extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
     
+    func setUpTableView(){
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: CellAddress.id, bundle: nil), forCellReuseIdentifier: CellAddress.id)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections()
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.addressesNumberInSection(section: section)
+        return addresses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,15 +35,34 @@ extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.isUserInteractionEnabled = false
+        guard let cell = tableView.cellForRow(at: indexPath) as? CellAddress else{
+           print("bs ya ahbal")
+            return
+        }
+        cellIndex = indexPath.row
+        cell.showImage()
+        print("nada")
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? CellAddress else{
+           print("bs ya ahbal")
+            return
+        }
+        cell.hideImage()
+        print("yoseff")
+    }
+    
+    func deliverOrder(rowIndex : Int){
+        self.tableView.isUserInteractionEnabled = false
         indicator.isHidden = false
-        indicator.stopAnimating()
-        checkIfCartEmpty(index: indexPath.row)
+        indicator.startAnimating()
+        checkIfCartEmpty(index: rowIndex)
     }
     
     func checkIfCartEmpty(index : Int){
         viewModel.getCartData {
-            if self.viewModel.cartlist.count == 0{
+            if self.viewModel.cartlist.isEmpty == true{
                 self.showToast(controller: self, message: "Cart is Empty", seconds: 0.8)
                 self.tableView.isUserInteractionEnabled = true
                 self.indicator.stopAnimating()
@@ -53,6 +78,8 @@ extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
                 self.tableView.isUserInteractionEnabled = true
                 self.indicator.stopAnimating()
                 self.showToast(controller: self, message: "Your Order On His Way", seconds: 0.8)
+                self.tableView.reloadData()
+                self.cellIndex = -1
             }
         }
     }
@@ -62,7 +89,7 @@ extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
         let deleteAction = UIContextualAction(style: .destructive, title: "") { (action, view, completionHandler) in
             self.showAlertWithAction(title: ConstantStrings.ALERT, titleAction: ConstantStrings.DELETE_BTN, titleNoAction: ConstantStrings.NO_ACTION_BTN, message: ConstantStrings.CONFIRM_DELETE_WISHLIST, viewController: self) {
                 self.viewModel.deleteAddress(id: self.addresses[indexPath.row].id, operation: {
-                    self.viewModel.addresses.remove(at: indexPath.row)
+                    self.addresses.remove(at: indexPath.row)
                     self.tableView.reloadData()
                     self.hideEmptyImg(count: self.addresses.count)
                 })

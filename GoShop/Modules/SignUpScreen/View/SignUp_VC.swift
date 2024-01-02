@@ -15,6 +15,7 @@ class SignUp_VC: UIViewController {
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
+    @IBOutlet weak var backImg: UIImageView!
     
     //MARK: - Variables
     var viewModel = SignUpViewModel()
@@ -23,9 +24,9 @@ class SignUp_VC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addbackImgAction()
         hideKeyboardWhenTappedAround()
         viewModel.delegate = self
-
     }
 
     //MARK: - IBActions
@@ -58,6 +59,16 @@ class SignUp_VC: UIViewController {
         }else{
             showToast(controller: self, message:ConstantStrings.ENTER_ALL_FIELDS_TOAST, seconds: 1)
         }
+    }
+    
+    func addbackImgAction(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(goBack))
+        backImg.isUserInteractionEnabled = true
+        backImg.addGestureRecognizer(tap)
+    }
+    
+    @objc func goBack(){
+        self.dismiss(animated: true)
     }
     
     func isValidEmail(_ email: String) -> Bool {

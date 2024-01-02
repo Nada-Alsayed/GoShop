@@ -88,6 +88,7 @@ class CartCell: UITableViewCell {
         }else{
             quantity?-=1
         }
+        decreaseBtn.setImage(nil, for: .normal)
         delegateQuantity?.clickedQuantity(cellIndex!,quantity ?? 1, opertion: { item in
             self.delegateReload?.reloadView()
         })

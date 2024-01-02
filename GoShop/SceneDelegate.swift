@@ -10,7 +10,7 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    var token = UserDefaults.standard.string(forKey: ConstantStrings.KEY_USER_TOKEN)
     var window: UIWindow?
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
             guard let url = URLContexts.first?.url else {
@@ -31,7 +31,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = BottomTaPBar()
+        if (token == "") {
+            window?.rootViewController = Splash_VC()
+        }else{
+            window?.rootViewController = BottomTaPBar()
+        }
         window?.makeKeyAndVisible()
         
     }

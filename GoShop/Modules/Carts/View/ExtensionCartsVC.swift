@@ -43,7 +43,7 @@ extension Carts_VC :UITableViewDelegate,UITableViewDataSource, OnClickDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = Details_VC()
-        vc.modalPresentationStyle = .popover
+        vc.modalPresentationStyle = .fullScreen
         vc.id = products[indexPath.row].product.id ?? 0
         vc.delegate = self
         present(vc,animated: true)

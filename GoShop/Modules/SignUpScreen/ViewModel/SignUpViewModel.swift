@@ -21,7 +21,6 @@ class SignUpViewModel{
     private var api:UserAPI = UserAPI()
     private var user: User?
     weak var delegate: SignUpDelegate?
-
     let defaults = UserDefaults.standard
     
 //    var bindData:((Customer) -> ()) = { _ in }
@@ -42,7 +41,6 @@ class SignUpViewModel{
                     return
                 }
                 self.setUserDefaults(customer: currentCustomer)
-                
                 Auth.auth().createUser(withEmail: user.email , password: user.password ) { authResult, error in
                     if let error = error {
                         print("Error creating user: \(error.localizedDescription)")

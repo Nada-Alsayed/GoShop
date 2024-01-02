@@ -7,7 +7,7 @@
 
 import Foundation
  
-//MARK: - what i post
+//MARK: -SignUpModel
 
 class User : Codable{
     var name, phone, email, password: String
@@ -21,14 +21,22 @@ class User : Codable{
     }
 }
 
-//MARK: - what i Get
+//MARK: -Customer
 
 class Customer : Codable{
-    var name, phone, email: String
-    var id: Int
-    var image: String
-    var token: String
+    var name, phone, email: String?
+    var id: Int?
+    var image: String?
+    var token: String?
     
+    init(name: String, phone: String, email: String, id: Int, image: String, token: String) {
+        self.name = name
+        self.phone = phone
+        self.email = email
+        self.id = id
+        self.image = image
+        self.token = token
+    }
     init() {
         self.name = ""
         self.phone = ""

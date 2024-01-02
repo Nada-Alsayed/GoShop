@@ -55,6 +55,10 @@ extension Profile_VC :UITableViewDelegate,UITableViewDataSource{
             let vc = AllOrders_VC()
             vc.modalPresentationStyle = .fullScreen
             present(vc,animated: true)
+        }else if indexPath.section == 1 && indexPath.row == 0{
+            let vc = ProfileDetails_VC()
+            vc.modalPresentationStyle = .fullScreen
+            present(vc,animated: true)
         }
     }
 //

@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Login_VC" customModule="GoShop" customModuleProvider="target">
             <connections>
                 <outlet property="appleView" destination="bTa-XV-lcS" id="Hcd-GT-A05"/>
+                <outlet property="backImg" destination="Krs-5z-sQR" id="vii-FJ-sdd"/>
                 <outlet property="emailTF" destination="42g-fE-Bu3" id="jTl-f7-CZl"/>
                 <outlet property="facebookView" destination="SiB-bd-9p6" id="Nk0-Zg-1aT"/>
                 <outlet property="googleView" destination="otg-hK-b9b" id="fwC-ej-lcz"/>
@@ -237,8 +238,17 @@
                                 <constraint firstItem="otg-hK-b9b" firstAttribute="leading" secondItem="SiB-bd-9p6" secondAttribute="leading" id="wJ5-xH-Tzl"/>
                             </constraints>
                         </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoBackBtn" translatesAutoresizingMaskIntoConstraints="NO" id="Krs-5z-sQR">
+                            <rect key="frame" x="8" y="8" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="Cbf-8g-Taa"/>
+                                <constraint firstAttribute="width" constant="40" id="R9w-ng-GdG"/>
+                            </constraints>
+                        </imageView>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="Krs-5z-sQR" firstAttribute="leading" secondItem="2Ur-Sc-NdR" secondAttribute="leading" constant="8" id="3qY-6u-ibV"/>
+                        <constraint firstItem="Krs-5z-sQR" firstAttribute="top" secondItem="2Ur-Sc-NdR" secondAttribute="top" constant="8" id="6D5-xr-qTJ"/>
                         <constraint firstItem="eBv-nK-yQE" firstAttribute="width" secondItem="E0r-1M-RnG" secondAttribute="width" multiplier="0.979644" id="LmE-th-cQI"/>
                         <constraint firstItem="eBv-nK-yQE" firstAttribute="top" secondItem="E0r-1M-RnG" secondAttribute="top" constant="8" id="Tvc-Bu-8bd"/>
                         <constraint firstAttribute="bottom" secondItem="eBv-nK-yQE" secondAttribute="bottom" id="UV9-3g-bVw"/>
@@ -261,6 +271,7 @@
         </view>
     </objects>
     <resources>
+        <image name="GoBackBtn" width="35" height="35"/>
         <image name="black logo" width="137" height="83"/>
         <image name="iconApple" width="13" height="15"/>
         <image name="iconFacebook" width="16" height="15"/>

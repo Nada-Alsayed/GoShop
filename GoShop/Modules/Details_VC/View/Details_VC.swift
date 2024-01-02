@@ -19,6 +19,8 @@ class Details_VC: UIViewController {
     @IBOutlet weak var favoriteBtn: UIButton!
     @IBOutlet weak var cartBtn: UIButton!
    
+    @IBOutlet weak var backImg: UIImageView!
+    
     //MARK: -Variables
     
     var viewModel : DetailsViewModel = DetailsViewModel()
@@ -35,6 +37,7 @@ class Details_VC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addbackImgAction()
         setUpCollectionView()
         bindData()
         viewModel.getData(product_id:id )
@@ -85,6 +88,16 @@ class Details_VC: UIViewController {
     }
     
     //MARK: -Methods
+    
+    func addbackImgAction(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(goBack))
+        backImg.isUserInteractionEnabled = true
+        backImg.addGestureRecognizer(tap)
+    }
+    
+    @objc func goBack(){
+        self.dismiss(animated: true)
+    }
     
     func setUpCollectionView(){
         imageCollection.delegate = self

@@ -11,6 +11,7 @@ import Alamofire
 enum UsersNetworking{
     case postUser(name: String,phone: String,email: String,password: String, image : String)
     case loginUser(email: String,password: String)
+    case logOutUser(token : String)
 }
 
 extension UsersNetworking : TargetType{
@@ -19,6 +20,8 @@ extension UsersNetworking : TargetType{
         case .postUser:
            return "https://student.valuxapps.com/api/"
         case .loginUser:
+            return "https://student.valuxapps.com/api/"
+        case .logOutUser:
             return "https://student.valuxapps.com/api/"
         }
     }
@@ -29,6 +32,8 @@ extension UsersNetworking : TargetType{
             return "register"
         case .loginUser:
             return "login"
+        case .logOutUser:
+            return "logout"
         }
     }
     
@@ -39,6 +44,8 @@ extension UsersNetworking : TargetType{
             
         case .loginUser(email: let email, password: let password):
             return .requestWithParameters(parameters: ["email":email,"password":password], encoding: JSONEncoding.default)
+        case .logOutUser(token: let token):
+            return .requestWithParameters(parameters: ["fcm_token":token], encoding: JSONEncoding.default)
         }
     }
     
@@ -47,6 +54,8 @@ extension UsersNetworking : TargetType{
         case .postUser:
             return .post
         case .loginUser:
+            return .post
+        case .logOutUser:
             return .post
         }
     }
@@ -57,6 +66,10 @@ extension UsersNetworking : TargetType{
             return ["lang":"en"]
         case .loginUser:
             return ["lang":"en"]
+        case .logOutUser(token: let token):
+            return ["lang":"en"
+                    ,"Content-Type":"application/json"
+                    ,"Authorization":token ]
         }
     }
 }

@@ -26,3 +26,7 @@ protocol ResponceMessage{
 protocol GoBack{
     func moveBack()
 }
+
+protocol AllAddresesClickDelagate{
+    func click()
+}

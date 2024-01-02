@@ -54,6 +54,8 @@ class Home_VC: UIViewController {
         viewModel.getData()
     }
     
+    //MARK: - Methods
+    
     func bindData(){
         self.indicator.startAnimating()
         self.indicator.isHidden = false

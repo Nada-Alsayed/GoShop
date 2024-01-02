@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SignUp_VC" customModule="GoShop" customModuleProvider="target">
             <connections>
+                <outlet property="backImg" destination="UQ6-gc-SVm" id="ghp-hb-Zee"/>
                 <outlet property="emailTF" destination="os9-qN-APW" id="wnq-uA-uj1"/>
                 <outlet property="passwordTF" destination="eCg-5b-pMB" id="HoW-cf-aSb"/>
                 <outlet property="phoneTF" destination="m9P-eJ-kc6" id="ZEc-Is-bax"/>
@@ -121,6 +122,13 @@
                                         <action selector="signUpBtn:" destination="-1" eventType="touchUpInside" id="pG3-7A-xzW"/>
                                     </connections>
                                 </button>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoBackBtn" translatesAutoresizingMaskIntoConstraints="NO" id="UQ6-gc-SVm">
+                                    <rect key="frame" x="8" y="8" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Z1o-1n-JEm"/>
+                                        <constraint firstAttribute="width" constant="40" id="jXC-o0-82n"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
@@ -130,6 +138,7 @@
                                 <constraint firstItem="Ih4-vX-sl8" firstAttribute="top" secondItem="bDI-Ae-orx" secondAttribute="bottom" constant="3" id="2oP-vH-dAf"/>
                                 <constraint firstItem="boh-kW-UKJ" firstAttribute="leading" secondItem="bzB-Pw-MpQ" secondAttribute="leading" id="4In-uI-bgN"/>
                                 <constraint firstItem="Ih4-vX-sl8" firstAttribute="leading" secondItem="bDI-Ae-orx" secondAttribute="leading" id="4nQ-Hd-Bw3"/>
+                                <constraint firstItem="UQ6-gc-SVm" firstAttribute="leading" secondItem="KM9-7I-uZX" secondAttribute="leading" constant="8" id="5bc-ZO-8ja"/>
                                 <constraint firstItem="6Xv-No-ja3" firstAttribute="centerX" secondItem="KM9-7I-uZX" secondAttribute="centerX" id="6lI-DA-8Lb"/>
                                 <constraint firstItem="bDI-Ae-orx" firstAttribute="top" secondItem="VX9-PP-Hnx" secondAttribute="bottom" constant="50" id="6qH-zD-Y7j"/>
                                 <constraint firstItem="m9P-eJ-kc6" firstAttribute="top" secondItem="xYH-Du-9D4" secondAttribute="bottom" constant="6" id="BS5-0s-BOe"/>
@@ -148,6 +157,7 @@
                                 <constraint firstItem="boh-kW-UKJ" firstAttribute="top" secondItem="ccD-t3-D5B" secondAttribute="bottom" constant="26" id="fHt-dO-94S"/>
                                 <constraint firstAttribute="trailing" secondItem="ccD-t3-D5B" secondAttribute="trailing" constant="16" id="fP1-ge-W7b"/>
                                 <constraint firstItem="ccD-t3-D5B" firstAttribute="top" secondItem="bzB-Pw-MpQ" secondAttribute="bottom" constant="6" id="gFD-Y2-6Nd"/>
+                                <constraint firstItem="UQ6-gc-SVm" firstAttribute="top" secondItem="KM9-7I-uZX" secondAttribute="top" constant="8" id="gJg-ww-Ro9"/>
                                 <constraint firstItem="ccD-t3-D5B" firstAttribute="leading" secondItem="KM9-7I-uZX" secondAttribute="leading" constant="16" id="jiN-dE-3p0"/>
                                 <constraint firstItem="xYH-Du-9D4" firstAttribute="top" secondItem="os9-qN-APW" secondAttribute="bottom" constant="26" id="k6A-bx-obC"/>
                                 <constraint firstItem="bDI-Ae-orx" firstAttribute="leading" secondItem="KM9-7I-uZX" secondAttribute="leading" constant="16" id="kSX-af-DWI"/>
@@ -179,6 +189,7 @@
         </view>
     </objects>
     <resources>
+        <image name="GoBackBtn" width="35" height="35"/>
         <image name="black logo" width="137" height="83"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
