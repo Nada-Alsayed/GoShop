@@ -9,6 +9,8 @@ import UIKit
 
 class CartCell: UITableViewCell {
 
+    //MARK: -IBOutlets
+
     @IBOutlet weak var productImg: UIImageView!
     @IBOutlet weak var productTitle: UILabel!
     @IBOutlet weak var productPrice: UILabel!
@@ -17,7 +19,8 @@ class CartCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var decreaseBtn: UIButton!
     
-    
+    //MARK: -Variables
+
     static let id = String(describing: CartCell.self)
     var delegate : OnClickDelegate?
     var delegateReload : ReloadViewDelegate?
@@ -33,10 +36,11 @@ class CartCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
+    //MARK: -IBActions
+
     @IBAction func deleteBtn(_ sender: Any) {
         delegate?.clicked(cellIndex!, opertion: { state in
             print("deleted")
@@ -44,15 +48,10 @@ class CartCell: UITableViewCell {
                 self.delegateReload?.reloadView()
             }
         })
-        
     }
     
     @IBAction func decreaseBtn(_ sender: Any) {
-        if quantity == 1{
-            decreaseBtn.setTitle("", for: .normal)
-            decreaseBtn.setImage(UIImage(named: "icon-delete"), for: .normal)
-            deleteItemFromCart()
-        }else{
+        if quantity != 1{
             calculateQuantity(op: "-")
         }
     }
@@ -61,6 +60,8 @@ class CartCell: UITableViewCell {
         calculateQuantity(op: "+")
     }
     
+    //MARK: -Methods
+
     func setUpCellUI(){
         productImg.layer.cornerRadius = 13
         stack.layer.cornerRadius = 20
@@ -73,12 +74,8 @@ class CartCell: UITableViewCell {
         productTitle.text = product.product.name
         productPrice.text = calc(price: product.product.price ?? 0, quantity: product.quantity ?? 1)
         productImg.kf.setImage(with:URL(string: product.product.image ?? ""),placeholder: UIImage(named: "black logo"))
-        if quantity == 1{
-            decreaseBtn.setTitle("", for: .normal)
-            decreaseBtn.setImage(UIImage(named: "icon-delete"), for: .normal)
-        }else{
+        if quantity != 1{
             decreaseBtn.setTitle("-", for: .normal)
-            decreaseBtn.setImage(nil, for: .normal)
         }
     }
     
@@ -88,7 +85,6 @@ class CartCell: UITableViewCell {
         }else{
             quantity?-=1
         }
-        decreaseBtn.setImage(nil, for: .normal)
         delegateQuantity?.clickedQuantity(cellIndex!,quantity ?? 1, opertion: { item in
             self.delegateReload?.reloadView()
         })
@@ -101,11 +97,9 @@ class CartCell: UITableViewCell {
     
     func deleteItemFromCart(){
         delegate?.clicked(cellIndex!, opertion: { state in
-            print("deleted")
             if state{
                 self.delegateReload?.reloadView()
             }
         })
     }
-    
 }

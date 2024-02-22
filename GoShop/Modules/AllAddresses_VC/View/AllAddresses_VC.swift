@@ -19,9 +19,11 @@ class AllAddresses_VC: UIViewController {
     
     //MARK: -Variables
     
-    var cellIndex:Int = -1
+    var cellIndex:Int = -10
     var viewModel = AddressesViewModel()
     var addresses :[Address] = []
+    var destination : String?
+    var delegateReload : ReloadViewDelegate?
     
     //MARK: -View Controller LifeCycle
 
@@ -32,6 +34,19 @@ class AllAddresses_VC: UIViewController {
         addbackImgAction()
         bindData()
         viewModel.getData()
+    }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        if isBeingDismissed {
+//            delegateReload?.reloadView()
+//        }
+//    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if isBeingDismissed {
+            delegateReload?.reloadView()
+        }
     }
     
     //MARK: -IBActions
@@ -89,5 +104,16 @@ class AllAddresses_VC: UIViewController {
     
     func setUI(){
         orderBtn.layer.cornerRadius = 20
+        checkDestination()
+    }
+    
+    func checkDestination(){
+        if destination == ConstantStrings.DESTINATION_PRIFILE {
+            orderBtn.isHidden = true
+        }else if  destination == ConstantStrings.DESTINATION_CART{
+            orderBtn.isHidden = false
+        }else{
+            print("not available destination")
+        }
     }
 }

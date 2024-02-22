@@ -31,7 +31,6 @@ class OrderDetailsViewModel{
         api.cancelOrder(token: customer_token ?? "", orderID: orderId) { [weak self] response, error in
             guard let self = self else{return}
             guard let response = response else {return}
-            print("hhhh\(response.data)")
         }
     }
     

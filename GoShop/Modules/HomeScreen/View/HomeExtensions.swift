@@ -100,7 +100,7 @@ extension Home_VC :OnClickDelegate{
     }
 }
 
-extension Home_VC : ResponceMessage {
+extension Home_VC : ResponseMessage {
     
     func responsIsDone(message: String) {
         showToast(controller: self, message: message, seconds: 1)
@@ -112,5 +112,7 @@ extension Home_VC : ReloadViewDelegate{
         productsCollectionView.isUserInteractionEnabled = false
         bindData()
         viewModel.getData()
+        bindCartItemsNumber()
+        cartViewModel.getData()
     }
 }

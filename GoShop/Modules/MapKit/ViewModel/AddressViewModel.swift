@@ -21,9 +21,10 @@ class AddressViewModel{
         addressAPI.addToAddresses(token: customer_token ?? "", latitude: address.latitude, longitude: address.longitude, city: address.city, region: address.region, addressDetails: address.details, name: address.name) { response, error in
             guard let response = response else { return }
             guard let address = response.data else {return}
-            self.postOrder(address: address){
-                compeletionHandeler()
-            }
+            compeletionHandeler()
+//            self.postOrder(address: address){
+//                compeletionHandeler()
+//            }
         }
     }
     

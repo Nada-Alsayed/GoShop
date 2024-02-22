@@ -14,13 +14,14 @@ class Login_VC: UIViewController {
     
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var passwordTF: UITextField!
-    
     @IBOutlet weak var facebookView: UIView!
     @IBOutlet weak var googleView: UIView!
     @IBOutlet weak var appleView: UIView!
-    
     @IBOutlet weak var backImg: UIImageView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
     //MARK: - Variables
+    
     var viewModel = LoginViewModel()
     
     //MARK: - View Controller Lifecycle
@@ -28,34 +29,6 @@ class Login_VC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        //        if let token = AccessToken.current,
-        //                !token.isExpired {
-        //                // User is logged in, do work such as go to next view controller.
-        //            let token = token.tokenString
-        //            let request = GraphRequest(graphPath: "me",
-        //                                       parameters: ["fields" : "email,name"],
-        //                                       tokenString: token,
-        //                                       version: nil ,
-        //                                       httpMethod: .get)
-        //
-        //            request.start { connection, result, error in
-        //                print("result : \(result)")
-        //            }
-        //
-        //
-        //        }else{
-        // loginButton.center = view.center
-        //  loginButton.delegate = self
-        //            loginButton.permissions = ["public_profile", "email"]
-        //            view.addSubview(loginButton)
-        // Observe access token changes
-        // This will trigger after successfully login / logout
-        //        NotificationCenter.default.addObserver(forName: .AccessTokenDidChange, object: nil, queue: OperationQueue.main) { (notification) in
-        //
-        //            // Print out access token
-        //            print("FB Access Token: \(String(describing: AccessToken.current?.tokenString))")
-        //        }
-        // }
         hideKeyboardWhenTappedAround()
         setupSubViewsDesign()
         addActions()
@@ -64,12 +37,17 @@ class Login_VC: UIViewController {
     //MARK: - IBActions
     
     @IBAction func loginBtn(_ sender: Any) {
-        print("login")
         let email = emailTF.text ?? ""
         let password = passwordTF.text ?? ""
         if !(password.isEmpty ) &&
             !(email.isEmpty ){
-            viewModel.Original_Login(password: password, email: email)
+            if (viewModel.isValidEmail(email) || viewModel.isValidPassword(password)){
+                indicator.isHidden = false
+                indicator.startAnimating()
+                viewModel.Original_Login(password: password, email: email)
+            }else{
+                showToast(controller: self, message:ConstantStrings.NOT_VALID_DATA_TOAST, seconds: 1)
+            }
         }else{
             showToast(controller: self, message:ConstantStrings.ENTER_ALL_FIELDS_TOAST, seconds: 1)
         }
@@ -167,17 +145,3 @@ class Login_VC: UIViewController {
         }
     }
 }
-//extension Login_VC : SignInDelegate{
-//
-//    func signInSuccessfully() {
-//        let vc = BottomTaPBar()
-//        vc.modalPresentationStyle = .fullScreen
-//        self.present(vc,animated: true)
-//    }
-//
-//    func SignInFailed(message: String) {
-//        print("failed to login")
-//        showToast(controller: self, message: message, seconds: 1)
-//    }
-//
-//}

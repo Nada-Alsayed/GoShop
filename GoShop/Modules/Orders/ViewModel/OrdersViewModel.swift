@@ -25,10 +25,8 @@ class OrderViewModel{
         apiOrder.getOrders(token: customer_token ?? "") { [weak self] response, error in
             guard let self = self else{return}
             guard let response = response else {return}
-            print(response.data?.data)
             self.orders = response.data?.data ?? []
             self.filterOrderList(orders: self.orders)
-            //print(self.orders)
         }
     }
     

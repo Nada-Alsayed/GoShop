@@ -42,7 +42,6 @@ class CartViewModel{
     func postToCart(product_id: Double,vc:UIViewController,operation:@escaping()->()){
         api.postToCart(token: customer_token ?? "nil", product_ID: product_id) { response, error in
             guard let response = response else {return}
-            print(response.message!)
             vc.showToast(controller: vc, message: response.message!, seconds: 0.8)
             operation()
         }
@@ -52,7 +51,6 @@ class CartViewModel{
         api.updateCart(token: customer_token ?? "nil", item_id: itemID, quantity: quantity) {
             response, error in
             guard let response = response else {return}
-            print(response.message!)
             operation(response.data!)
         }
     }

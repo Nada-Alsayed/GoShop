@@ -10,21 +10,25 @@ import UIKit
 class Home_VC: UIViewController {
     
     //MARK: - IBOutlets
-    
+  
+    @IBOutlet weak var cartView: UIView!
+    @IBOutlet weak var itemsLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var personImg: UIImageView!
     @IBOutlet weak var bannerCollectionView: UICollectionView!
     @IBOutlet weak var productsCollectionView: UICollectionView!
     @IBOutlet weak var productCollectionViewheightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var viewAllLabel: UILabel!
     @IBOutlet weak var categoriesImg: UIImageView!
     
     //MARK: - Variables
     
     var viewModel = HomeViewModel()
+    var cartViewModel = CartViewModel()
     var banners = [Banner]()
     var products = [Product]()
+    var cartItems = [Favourite]()
+    var sum = 0
     
     //MARK: - View Controller LifeCycle
     
@@ -47,11 +51,14 @@ class Home_VC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cartView.layer.cornerRadius = 20
         searchView.layer.cornerRadius = searchView.bounds.size.height / 2
         setUpCollectionViews()
         addAction()
         bindData()
         viewModel.getData()
+        bindCartItemsNumber()
+        cartViewModel.getData()
     }
     
     //MARK: - Methods
@@ -72,6 +79,16 @@ class Home_VC: UIViewController {
         }
     }
     
+    func bindCartItemsNumber(){
+        cartViewModel.bindResponseToView = {[weak self] in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.cartItems = self.cartViewModel.response.cartItems
+                self.sumCartItems(products: self.cartItems)
+            }
+        }
+    }
+    
     func addAction(){
         let tap_1 = UITapGestureRecognizer(target: self, action: #selector(moveToCategory) )
         categoriesImg.isUserInteractionEnabled = true
@@ -82,5 +99,19 @@ class Home_VC: UIViewController {
         let vc = Categories_VC()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
+    }
+    
+    func sumCartItems(products:[Favourite]){
+        sum = 0
+        for i in products{
+            print ("hhh\(i.quantity ?? 0)")
+            sum += i.quantity ?? 0
+        }
+        setCartItemsNumber(sum: sum)
+    }
+    
+    func setCartItemsNumber(sum:Int){
+        UserDefaults.standard.setValue(sum, forKey: ConstantStrings.KEY_Cart_ITEMS)
+        self.itemsLabel.text = "\(sum )"
     }
 }

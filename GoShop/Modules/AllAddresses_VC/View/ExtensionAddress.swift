@@ -27,7 +27,9 @@ extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellAddress.id, for: indexPath) as! CellAddress
         cell.setUpData(address: addresses[indexPath.row])
-            return cell
+        cell.hideImage()
+
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -36,21 +38,21 @@ extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CellAddress else{
-           print("bs ya ahbal")
             return
         }
-        cellIndex = indexPath.row
-        cell.showImage()
-        print("nada")
+        cell.selectionStyle = .none
+        if destination == ConstantStrings.DESTINATION_CART{
+            cellIndex = indexPath.row
+            print("ceel index\(cellIndex)")
+            cell.showImage()
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CellAddress else{
-           print("bs ya ahbal")
             return
         }
         cell.hideImage()
-        print("yoseff")
     }
     
     func deliverOrder(rowIndex : Int){
@@ -62,7 +64,7 @@ extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
     
     func checkIfCartEmpty(index : Int){
         viewModel.getCartData {
-            if self.viewModel.cartlist.isEmpty == true{
+            if self.viewModel.cartlist.count == 0{
                 self.showToast(controller: self, message: "Cart is Empty", seconds: 0.8)
                 self.tableView.isUserInteractionEnabled = true
                 self.indicator.stopAnimating()
@@ -73,13 +75,14 @@ extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func postOrderToAPI(cellIndex : Int){
-        showAlertWithAction(title: "CartAlert", titleAction: "Send", titleNoAction: "No", message: "Are You sure you want to send your rder to this address", viewController: self) {
+        showAlertWithAction(title: "Cart Alert", titleAction: "Send", titleNoAction: "No", message: "Are You sure you want to send your rder to this address", viewController: self) {
+            print("index1 \(cellIndex)")
             self.viewModel.postOrder(address: self.addresses[cellIndex]) {
                 self.tableView.isUserInteractionEnabled = true
                 self.indicator.stopAnimating()
                 self.showToast(controller: self, message: "Your Order On His Way", seconds: 0.8)
+                print("index2 \(cellIndex)")
                 self.tableView.reloadData()
-                self.cellIndex = -1
             }
         }
     }

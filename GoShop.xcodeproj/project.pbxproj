@@ -17,6 +17,12 @@
 		043A94AE2B347DC600C18190 /* Details_VC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 043A94AC2B347DC600C18190 /* Details_VC.xib */; };
 		044EF03B2B333F640016EFDA /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044EF03A2B333F640016EFDA /* SignUpViewModel.swift */; };
 		0459EA3C2B44B91100A8CDAF /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459EA3B2B44B91100A8CDAF /* ProductModel.swift */; };
+		0459EA412B44BB2800A8CDAF /* CategoryProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459EA3F2B44BB2800A8CDAF /* CategoryProducts.swift */; };
+		0459EA422B44BB2800A8CDAF /* CategoryProducts.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0459EA402B44BB2800A8CDAF /* CategoryProducts.xib */; };
+		0459EA442B44BCAA00A8CDAF /* ExtensionCategoryProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459EA432B44BCAA00A8CDAF /* ExtensionCategoryProducts.swift */; };
+		0459EA472B44BEA900A8CDAF /* categoryProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459EA462B44BEA900A8CDAF /* categoryProductViewModel.swift */; };
+		0459EA4A2B44BF8400A8CDAF /* CategoryNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459EA492B44BF8400A8CDAF /* CategoryNetworking.swift */; };
+		0459EA4C2B44BF9B00A8CDAF /* CategoryAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0459EA4B2B44BF9B00A8CDAF /* CategoryAPI.swift */; };
 		047366E12B339E9C0084F34E /* ConstantStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047366E02B339E9C0084F34E /* ConstantStrings.swift */; };
 		047366E42B33B49B0084F34E /* ExtensionsSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047366E32B33B49B0084F34E /* ExtensionsSignUp.swift */; };
 		047366E82B33BB3D0084F34E /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047366E72B33BB3D0084F34E /* LoginViewModel.swift */; };
@@ -142,6 +148,12 @@
 		043A94AC2B347DC600C18190 /* Details_VC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Details_VC.xib; sourceTree = "<group>"; };
 		044EF03A2B333F640016EFDA /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		0459EA3B2B44B91100A8CDAF /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
+		0459EA3F2B44BB2800A8CDAF /* CategoryProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryProducts.swift; sourceTree = "<group>"; };
+		0459EA402B44BB2800A8CDAF /* CategoryProducts.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryProducts.xib; sourceTree = "<group>"; };
+		0459EA432B44BCAA00A8CDAF /* ExtensionCategoryProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionCategoryProducts.swift; sourceTree = "<group>"; };
+		0459EA462B44BEA900A8CDAF /* categoryProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = categoryProductViewModel.swift; sourceTree = "<group>"; };
+		0459EA492B44BF8400A8CDAF /* CategoryNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNetworking.swift; sourceTree = "<group>"; };
+		0459EA4B2B44BF9B00A8CDAF /* CategoryAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAPI.swift; sourceTree = "<group>"; };
 		047366E02B339E9C0084F34E /* ConstantStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantStrings.swift; sourceTree = "<group>"; };
 		047366E32B33B49B0084F34E /* ExtensionsSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsSignUp.swift; sourceTree = "<group>"; };
 		047366E72B33BB3D0084F34E /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
@@ -319,6 +331,42 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		0459EA3D2B44BABA00A8CDAF /* categoriesProducts */ = {
+			isa = PBXGroup;
+			children = (
+				0459EA452B44BE7800A8CDAF /* ViewModel */,
+				0459EA3E2B44BADD00A8CDAF /* View */,
+			);
+			path = categoriesProducts;
+			sourceTree = "<group>";
+		};
+		0459EA3E2B44BADD00A8CDAF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0459EA3F2B44BB2800A8CDAF /* CategoryProducts.swift */,
+				0459EA402B44BB2800A8CDAF /* CategoryProducts.xib */,
+				0459EA432B44BCAA00A8CDAF /* ExtensionCategoryProducts.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0459EA452B44BE7800A8CDAF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0459EA462B44BEA900A8CDAF /* categoryProductViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0459EA482B44BF5600A8CDAF /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				0459EA492B44BF8400A8CDAF /* CategoryNetworking.swift */,
+				0459EA4B2B44BF9B00A8CDAF /* CategoryAPI.swift */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		047366DF2B339E7D0084F34E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +463,7 @@
 		048140552B209AE10049B7D9 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				0459EA3D2B44BABA00A8CDAF /* categoriesProducts */,
 				0482AD8B2B42B246000DCA19 /* ProfileDetails */,
 				047DD2FD2B40B34B00C43F78 /* OrderDetails */,
 				047DD2ED2B40653700C43F78 /* Orders */,
@@ -794,6 +843,7 @@
 		04BFE0EA2B1C7962008193FB /* NetworkLayer */ = {
 			isa = PBXGroup;
 			children = (
+				0459EA482B44BF5600A8CDAF /* Categories */,
 				04EF7A572B3C2A8100FD887D /* Order */,
 				04EF7A522B3C1CD400FD887D /* Address */,
 				048727DF2B37BF0600BBCE60 /* Product */,
@@ -1075,6 +1125,7 @@
 				048329E22B390F6C00517B4D /* CartCell.xib in Resources */,
 				047DD3022B40B72D00C43F78 /* OrderDetails_VC.xib in Resources */,
 				047DD3072B40C3F700C43F78 /* ProductCell.xib in Resources */,
+				0459EA422B44BB2800A8CDAF /* CategoryProducts.xib in Resources */,
 				048892772B25B58500EDBFED /* Login_VC.xib in Resources */,
 				048727D92B37A8C500BBCE60 /* FavoritesCell.xib in Resources */,
 			);
@@ -1180,7 +1231,9 @@
 				048892762B25B58500EDBFED /* Login_VC.swift in Sources */,
 				047DD30F2B40E14300C43F78 /* CellOrderProduct.swift in Sources */,
 				04BFE0EF2B1C7EFB008193FB /* BaseAPI.swift in Sources */,
+				0459EA4C2B44BF9B00A8CDAF /* CategoryAPI.swift in Sources */,
 				04C82EB62B307B1500F05734 /* CategoriesExtensions.swift in Sources */,
+				0459EA412B44BB2800A8CDAF /* CategoryProducts.swift in Sources */,
 				047DD3092B40CC3700C43F78 /* ExtensionOrderDetails.swift in Sources */,
 				047366E12B339E9C0084F34E /* ConstantStrings.swift in Sources */,
 				048329E62B391CDD00517B4D /* CartViewModel.swift in Sources */,
@@ -1205,10 +1258,13 @@
 				04BFE0F72B1CAC14008193FB /* UserAPI.swift in Sources */,
 				04BA7D8D2B29AEE9007C093A /* Product_Cell.swift in Sources */,
 				04EF7A542B3C1CF500FD887D /* AddressAPI.swift in Sources */,
+				0459EA4A2B44BF8400A8CDAF /* CategoryNetworking.swift in Sources */,
 				048727DB2B37AF5200BBCE60 /* ExtensionFavorites.swift in Sources */,
 				04BA7D992B29DDB2007C093A /* RealmManager.swift in Sources */,
+				0459EA472B44BEA900A8CDAF /* categoryProductViewModel.swift in Sources */,
 				048727E12B37BF2700BBCE60 /* ProductAPI.swift in Sources */,
 				048892852B25FCD300EDBFED /* BottomTaPBar.swift in Sources */,
+				0459EA442B44BCAA00A8CDAF /* ExtensionCategoryProducts.swift in Sources */,
 				044EF03B2B333F640016EFDA /* SignUpViewModel.swift in Sources */,
 				0488927F2B25FBB100EDBFED /* Home_VC.swift in Sources */,
 			);
@@ -1360,12 +1416,13 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GoShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GoShop.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1391,12 +1448,13 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.GoShop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.GoShop.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

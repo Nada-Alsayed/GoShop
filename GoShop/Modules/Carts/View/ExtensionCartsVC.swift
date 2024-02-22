@@ -8,16 +8,7 @@
 import Foundation
 import UIKit
 
-extension Carts_VC :UITableViewDelegate,UITableViewDataSource, OnClickDelegate{
-    
-    func clicked(_ row: Int, opertion: @escaping (Bool) -> Void) {
-        print("lllllll")
-        tableView.isUserInteractionEnabled = false
-        viewModel.postToCart(product_id: products[row].product.id ?? 0, vc: self){
-            opertion(true)
-        }
-    }
-    
+extension Carts_VC :UITableViewDelegate,UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.numberOfSections()
@@ -50,12 +41,29 @@ extension Carts_VC :UITableViewDelegate,UITableViewDataSource, OnClickDelegate{
     }
 }
 
+//MARK: -OnClick Extension
+
+extension Carts_VC : OnClickDelegate{
+    func clicked(_ row: Int, opertion: @escaping (Bool) -> Void) {
+        showAlertWithAction(title: ConstantStrings.ALERT, titleAction: ConstantStrings.DELETE_BTN, titleNoAction: ConstantStrings.NO_ACTION_BTN, message: ConstantStrings.CONFIRM_DELETE_CART, viewController: self) {
+            self.tableView.isUserInteractionEnabled = false
+            self.viewModel.postToCart(product_id: self.products[row].product.id ?? 0, vc: self){
+                opertion(true)
+            }
+        }
+    }
+}
+
+//MARK: -Reload View Extension
+
 extension Carts_VC : ReloadViewDelegate{
     func reloadView() {
         bindData()
         viewModel.getData()
     }
 }
+
+//MARK: -Update Cart Extension
 
 extension Carts_VC :CartQuantityDelegate{
     func clickedQuantity(_ row: Int, _ quantity: Int, opertion: @escaping (SubCart) -> Void) {

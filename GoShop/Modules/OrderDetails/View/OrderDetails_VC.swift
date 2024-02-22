@@ -76,7 +76,6 @@ class OrderDetails_VC: UIViewController {
         viewModel.bindOrderToView = { [weak self] in
             guard let self = self else {return}
             DispatchQueue.main.async {
-                print("kkkk")
                 self.orderDetails = self.viewModel.orderDetails
                 self.setUpData(orderDetails: self.orderDetails)
                 self.productsCollectionView.reloadData()

@@ -10,7 +10,11 @@ import UIKit
 class Favorites_VC: UIViewController {
     
     //MARK: -IBOutlets
-
+    
+    @IBOutlet weak var labelView: UIView!
+    
+    @IBOutlet weak var cartItemsLabel: UILabel!
+    
     @IBOutlet weak var backImg: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchView: UIView!
@@ -18,12 +22,14 @@ class Favorites_VC: UIViewController {
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     //MARK: -Variables
-
+    var sum = 0
     var viewModel = FavoritesViewModel()
     var products = [Favourite]()
-
+    var cartItmsNumber :Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        labelView.layer.cornerRadius = 20
         searchView.layer.cornerRadius = searchView.bounds.size.height / 2
         setUpTableView()
         addbackImgAction()
@@ -39,10 +45,7 @@ class Favorites_VC: UIViewController {
             guard let self = self else {return}
             DispatchQueue.main.async {
                 self.products = self.viewModel.products
-//                print("iii\(self.viewModel.products[0].product.inCart)")
-//                print("iii\(self.viewModel.products[1].product.inCart)")
-//                print("pp\(self.products[0].product.inCart)")
-//                print("pp\(self.products[1].product.inCart)")
+                self.sumCartItems(products: self.viewModel.cartItems)
                 self.hideImage(array: self.products)
                 self.indicator.stopAnimating()
                 self.tableView.reloadData()
@@ -73,5 +76,19 @@ class Favorites_VC: UIViewController {
         }else{
             favEmpty.isHidden = true
         }
+    }
+    
+    func sumCartItems(products:[Favourite]){
+        sum = 0
+        for i in products{
+            print ("hhh\(i.quantity ?? 0)")
+            sum += i.quantity ?? 0
+        }
+        setCartItemsNumber(sum: sum)
+    }
+    
+    func setCartItemsNumber(sum:Int){
+        UserDefaults.standard.setValue(sum, forKey: ConstantStrings.KEY_Cart_ITEMS)
+        self.cartItemsLabel.text = "\(sum )"
     }
 }

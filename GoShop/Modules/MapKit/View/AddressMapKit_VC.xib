@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressMapKit_VC" customModule="GoShop" customModuleProvider="target">
             <connections>
                 <outlet property="backBtn" destination="Lzg-E9-k2s" id="u78-7u-Mxn"/>
+                <outlet property="indicator" destination="gkw-41-3xb" id="fN1-tq-hwP"/>
                 <outlet property="myMapKit" destination="chk-5a-gyV" id="Yd3-Y8-Ydc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,11 +33,22 @@
                         <constraint firstAttribute="width" constant="50" id="f8r-5c-Uv0"/>
                     </constraints>
                 </imageView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gkw-41-3xb">
+                    <rect key="frame" x="171.66666666666666" y="401" width="50" height="50"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="VKW-OY-XFI"/>
+                        <constraint firstAttribute="height" constant="50" id="zUk-AY-vA5"/>
+                    </constraints>
+                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Lzg-E9-k2s" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="3iV-3l-97z"/>
+                <constraint firstItem="gkw-41-3xb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="3pb-af-9n3"/>
+                <constraint firstItem="gkw-41-3xb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="50z-XB-UYA"/>
                 <constraint firstAttribute="bottom" secondItem="chk-5a-gyV" secondAttribute="bottom" id="EQH-bL-lxb"/>
                 <constraint firstItem="Lzg-E9-k2s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="PNz-Oj-BQ9"/>
                 <constraint firstItem="chk-5a-gyV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Sm4-Xr-CFe"/>
@@ -50,6 +62,9 @@
         <image name="GoBackBtn" width="35" height="35"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

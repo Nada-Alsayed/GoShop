@@ -19,7 +19,7 @@ protocol CartQuantityDelegate {
     func clickedQuantity(_ row: Int,_ quantity: Int, opertion:@escaping(SubCart)->Void)
 }
 
-protocol ResponceMessage{
+protocol ResponseMessage{
     func responsIsDone(message: String)
 }
 

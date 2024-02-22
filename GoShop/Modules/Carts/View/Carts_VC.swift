@@ -9,17 +9,22 @@ import UIKit
 
 class Carts_VC: UIViewController {
 
+    //MARK: -IBOutlets
+
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var cartEmptyImg: UIImageView!
     
+    //MARK: -Variables
+
     var viewModel = CartViewModel()
     var data = DataClass()
     var products :[Favourite] = []
-   // var price: Double = 0
     
+    //MARK: -View Controller LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         bottomView.layer.cornerRadius = 13
@@ -32,10 +37,14 @@ class Carts_VC: UIViewController {
         tableView.reloadData()
     }
 
+    //MARK: -IBActions
+
     @IBAction func navigateToCard(_ sender: Any) {
         checkIfCartEmpty(count: data.cartItems.count)
     }
     
+    //MARK: -Methods
+
     func navigateToMap(){
         let vc = AddressMapKit_VC()
         vc.delegateReload = self
@@ -45,6 +54,8 @@ class Carts_VC: UIViewController {
    
     func navigateToAddresses_VC(){
         let vc = AllAddresses_VC()
+        vc.delegateReload = self
+        vc.destination = ConstantStrings.DESTINATION_CART
         vc.modalPresentationStyle = .fullScreen
         self.present(vc,animated: true)
     }

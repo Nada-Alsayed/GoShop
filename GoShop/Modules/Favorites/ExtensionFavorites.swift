@@ -82,6 +82,7 @@ extension Favorites_VC : OnClickDelegate {
             tableView.isUserInteractionEnabled = false
             products[row].product.inCart = true
             viewModel.postToCart(product_id: products[row].product.id ?? 0, vc: self) {
+                self.setCartItemsNumber(sum: self.sum)
                 opertion(true)
             }
         }else if products[row].product.inCart == true {
@@ -89,6 +90,7 @@ extension Favorites_VC : OnClickDelegate {
                 self.products[row].product.inCart = false
                 self.tableView.isUserInteractionEnabled = false
                 self.viewModel.postToCart(product_id: self.products[row].product.id ?? 0, vc: self) {
+                    self.setCartItemsNumber(sum: self.sum)
                     opertion(false)
                 }
             }

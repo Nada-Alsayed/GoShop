@@ -15,7 +15,8 @@ class AddressMapKit_VC: UIViewController{
     
     @IBOutlet weak var myMapKit: MKMapView!
     @IBOutlet weak var backBtn: UIImageView!
-   
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
     //MARK: -Variables
     
     var viewModel = AddressViewModel()
@@ -131,7 +132,10 @@ class AddressMapKit_VC: UIViewController{
     
     func showAddressAlert(address:Address){
         showAlertWithAction(title: ConstantStrings.ALERT, titleAction: ConstantStrings.ADD_BTN, titleNoAction: ConstantStrings.NO_ACTION_BTN, message: ConstantStrings.CONFIRM_ADD_ADDRESS, viewController: self) {
+            self.indicator.isHidden = false
+            self.indicator.startAnimating()
             self.viewModel.postAddress(address: address){
+                self.indicator.stopAnimating()
                 self.dismiss(animated: true)
             }
         }

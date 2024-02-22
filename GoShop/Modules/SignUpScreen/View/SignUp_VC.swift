@@ -16,8 +16,10 @@ class SignUp_VC: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var phoneTF: UITextField!
     @IBOutlet weak var backImg: UIImageView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     
     //MARK: - Variables
+    
     var viewModel = SignUpViewModel()
 
     //MARK: - View Controller Lifecycle
@@ -27,32 +29,33 @@ class SignUp_VC: UIViewController {
         addbackImgAction()
         hideKeyboardWhenTappedAround()
         viewModel.delegate = self
+        viewModel.delegateResponse = self
     }
 
     //MARK: - IBActions
 
     @IBAction func signUpBtn(_ sender: Any) {
-        print("SignUp")
-        let password = passwordTF.text ?? ""
-        let name = userNameTF.text ?? ""
-        let phone = phoneTF.text ?? ""
-        let email = emailTF.text ?? ""
-        
-        checkIfValidData(name: name,email: email,pass: password,phone: phone)
+        let user = userAuth(name: userNameTF.text ?? "", email: emailTF.text ?? "", pass: passwordTF.text ?? "", phone: phoneTF.text ?? "")
+        checkIfValidData(user: user)
     }
     
-    func checkIfValidData(name: String,email: String,pass: String,phone: String){
-        if !(name.isEmpty ) &&
-            !(email.isEmpty ) &&
-            !(pass.isEmpty ) &&
-            !(phone.isEmpty ) {
+    func userAuth(name: String,email: String,pass: String,phone: String) -> User{
+        return User(name: name, phone: phone, email: email, password: pass, image: "")
+    }
+    
+    func checkIfValidData(user:User){
+        if !(user.name.isEmpty ) &&
+            !(user.email.isEmpty ) &&
+            !(user.phone.isEmpty ) &&
+            !(user.password.isEmpty ) {
 
-            if isValidEmail(email)
-                && isValidPassword(pass)
-                && isValidPhoneNumber(phone)
+            if viewModel.isValidEmail(user.email)
+                && viewModel.isValidPassword(user.password)
+                && viewModel.isValidPhoneNumber(user.phone)
             {
-                print("nnnnn")
-                viewModel.signUp(user: User(name: name, phone: phone, email: email, password: pass, image: ""))
+                indicator.isHidden = true
+                indicator.startAnimating()
+                viewModel.signUp(user: user)
             } else {
                 showToast(controller: self, message:ConstantStrings.NOT_VALID_DATA_TOAST, seconds: 1)
             }
@@ -70,22 +73,11 @@ class SignUp_VC: UIViewController {
     @objc func goBack(){
         self.dismiss(animated: true)
     }
-    
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return emailPredicate.evaluate(with: email)
-    }
+}
 
-    func isValidPassword(_ password: String) -> Bool {
-        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$"
-        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-        return passwordPredicate.evaluate(with: password)
-    }
-    
-    func isValidPhoneNumber(_ phoneNumber: String) -> Bool {
-        let phoneRegex = #"^\+?[0-9]{1,}$"#
-        let phonePredicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        return phonePredicate.evaluate(with: phoneNumber)
+extension SignUp_VC: ResponseMessage{
+    func responsIsDone(message: String) {
+        print("here")
+        showToast(controller: self, message: message, seconds: 1)
     }
 }

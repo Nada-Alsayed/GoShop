@@ -49,6 +49,7 @@ extension Profile_VC :UITableViewDelegate,UITableViewDataSource{
             present(vc,animated: true)
         }else if indexPath.section == 1 && indexPath.row == 3{
             let vc = AllAddresses_VC()
+            vc.destination = ConstantStrings.DESTINATION_PRIFILE
             vc.modalPresentationStyle = .fullScreen
             present(vc,animated: true)
         }else if indexPath.section == 1 && indexPath.row == 1{

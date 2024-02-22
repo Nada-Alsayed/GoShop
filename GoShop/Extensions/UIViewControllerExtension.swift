@@ -52,6 +52,7 @@ extension UIViewController {
         let noAction = UIAlertAction(title: titleNoAction, style: .default) { _ in
             compilitionHandler2()
         }
+        
         alertController.addAction(okAction)
         alertController.addAction(noAction)
         viewController.present(alertController, animated: true, completion: nil)

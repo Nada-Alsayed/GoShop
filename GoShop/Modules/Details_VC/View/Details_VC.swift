@@ -11,6 +11,8 @@ class Details_VC: UIViewController {
     
     //MARK: -IBOutLets
     
+    @IBOutlet weak var cartItemsLabel: UILabel!
+    @IBOutlet weak var cartItemsView: UIView!
     @IBOutlet weak var imageCollection: UICollectionView!
     @IBOutlet weak var pageControler: UIPageControl!
     @IBOutlet weak var productTitle: UILabel!
@@ -18,29 +20,37 @@ class Details_VC: UIViewController {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var favoriteBtn: UIButton!
     @IBOutlet weak var cartBtn: UIButton!
-   
     @IBOutlet weak var backImg: UIImageView!
     
     //MARK: -Variables
     
     var viewModel : DetailsViewModel = DetailsViewModel()
-    var id: Double = 0.0
+    var cartViewModel = CartViewModel()
     var delegate : ReloadViewDelegate?
+    var cartItems = [Favourite]()
+    var id: Double = 0.0
     var product:Product?
+
+    var sum = 0
     var currentPage = 0 {
         didSet {
             pageControler.currentPage = currentPage
         }
     }
     
+    
     //MARK: -LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cartItemsView.layer.cornerRadius = 20
         addbackImgAction()
         setUpCollectionView()
         bindData()
         viewModel.getData(product_id:id )
+        cartItemsLabel.text = UserDefaults.standard.string(forKey: ConstantStrings.KEY_Cart_ITEMS)
+        bindCartItemsNumber()
+        cartViewModel.getData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,20 +79,20 @@ class Details_VC: UIViewController {
     }
     
     @IBAction func addToCart(_ sender: Any) {
-        //print("inRt : \(product?.inCart)")
         if product?.inCart == false {
             product?.inCart = true
-            viewModel.postToCart(product_id: (product?.id)! , vc: self)
-            cartBtn.setTitle(" In Cart", for: .normal)
+            viewModel.postToCart(product_id: (product?.id)! , vc: self){
+                self.cartBtn.setTitle(" In Cart", for: .normal)
+                self.bindCartItemsNumber()
+                self.cartViewModel.getData()
+            }
         }else{
             showAlertWithAction(title: ConstantStrings.ALERT, titleAction:  ConstantStrings.DELETE_BTN, titleNoAction:  ConstantStrings.NO_ACTION_BTN, message:  ConstantStrings.CONFIRM_DELETE_CART, viewController: self) {
-              //  print("inRt3 : \(self.product?.inCart)")
-             //   self.product?.inCart = false
-               // print("inRt3 : \(self.product?.inCart)")
-                self.viewModel.postToCart(product_id: (self.product?.id)! , vc: self)
-                self.cartBtn.setTitle(" Add To Cart", for: .normal)
-              //  print("inRt3 : \(self.product?.inCart)")
-
+                self.viewModel.postToCart(product_id: (self.product?.id)! , vc: self){
+                    self.cartBtn.setTitle(" Add To Cart", for: .normal)
+                    self.bindCartItemsNumber()
+                    self.cartViewModel.getData()
+                }
             }
         }
     }
@@ -110,9 +120,6 @@ class Details_VC: UIViewController {
         productDescribtion.text = product?.description
         productPrice.text = "\(Float(product?.price ?? 0))$"
         pageControler.numberOfPages = product?.images?.count ?? 0
-     //   print("inRt2 : \(product?.inCart)")
-     //   print("inFav2 : \(product?.inFavorites)")
-
         checkIfInFavorites(bool: product?.inFavorites ?? false)
         checkIfInCart(bool: product?.inCart ?? false)
     }
@@ -124,6 +131,16 @@ class Details_VC: UIViewController {
                 self.product = self.viewModel.product
                 self.setUpData()
                 self.imageCollection.reloadData()
+            }
+        }
+    }
+    
+    func bindCartItemsNumber(){
+        cartViewModel.bindResponseToView = {[weak self] in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.cartItems = self.cartViewModel.response.cartItems
+                self.sumCartItems(products: self.cartItems)
             }
         }
     }
@@ -144,5 +161,19 @@ class Details_VC: UIViewController {
           cartBtn.setTitle(" Add To Cart", for: .normal)
             //cartBtn.titleLabel?.text = "Add To Cart"
         }
+    }
+    
+    func sumCartItems(products:[Favourite]){
+        sum = 0
+        for i in products{
+            print ("hhh\(i.quantity ?? 0)")
+            sum += i.quantity ?? 0
+        }
+        setCartItemsNumber(sum: sum)
+    }
+    
+    func setCartItemsNumber(sum:Int){
+        UserDefaults.standard.setValue(sum, forKey: ConstantStrings.KEY_Cart_ITEMS)
+        self.cartItemsLabel.text = "\(sum )"
     }
 }
