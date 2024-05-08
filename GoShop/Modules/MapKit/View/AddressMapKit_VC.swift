@@ -15,7 +15,8 @@ class AddressMapKit_VC: UIViewController{
     
     @IBOutlet weak var myMapKit: MKMapView!
     @IBOutlet weak var backBtn: UIImageView!
-   
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    
     //MARK: -Variables
     
     var viewModel = AddressViewModel()
@@ -99,7 +100,7 @@ class AddressMapKit_VC: UIViewController{
     func zoomToUserLoction(location:CLLocation){
         let region = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000)
         myMapKit.setRegion(region, animated: true)
-        setPinToLocation(location: location.coordinate)
+        setPinToLocation(location: location)
         convertLocationToPlacemark(location: location)
     }
     
@@ -112,8 +113,8 @@ class AddressMapKit_VC: UIViewController{
             }
             
             if let placemark = places?.first {
-                var details = "\(placemark.subThoroughfare ?? "nil"), \(placemark.thoroughfare ?? "nil"), \(placemark.subLocality ?? "nil"), \(placemark.locality ?? "nil")"
-                var address = Address(name: placemark.name!, city: placemark.locality ?? "" , region: placemark.country! , details: details, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, notes: placemark.locality, id: 0)
+                let details = "\(placemark.subThoroughfare ?? "nil"), \(placemark.thoroughfare ?? "nil"), \(placemark.subLocality ?? "nil"), \(placemark.locality ?? "nil")"
+                let address = Address(name: placemark.name!, city: placemark.locality ?? "" , region: placemark.country! , details: details, latitude: location.coordinate.latitude, longitude: location.coordinate.longitude, notes: placemark.locality, id: 0)
                 self.showAddressAlert(address: address)
                 
             } else {
@@ -122,15 +123,21 @@ class AddressMapKit_VC: UIViewController{
         }
     }
     
-    func setPinToLocation(location:CLLocationCoordinate2D){
+    func setPinToLocation(location:CLLocation){
         myMapKit.removeAnnotations(myMapKit.annotations)
-        pin.coordinate = location
+        pin.coordinate = location.coordinate
         myMapKit.addAnnotation(pin)
+        convertLocationToPlacemark(location: location)
     }
     
     func showAddressAlert(address:Address){
         showAlertWithAction(title: ConstantStrings.ALERT, titleAction: ConstantStrings.ADD_BTN, titleNoAction: ConstantStrings.NO_ACTION_BTN, message: ConstantStrings.CONFIRM_ADD_ADDRESS, viewController: self) {
-            self.viewModel.postAddress(address: address)
+            self.indicator.isHidden = false
+            self.indicator.startAnimating()
+            self.viewModel.postAddress(address: address){
+                self.indicator.stopAnimating()
+                self.dismiss(animated: true)
+            }
         }
     }
     
@@ -173,9 +180,10 @@ extension AddressMapKit_VC : MKMapViewDelegate{
           if gestureRecognizer.state == .ended {
               let tapPoint = gestureRecognizer.location(in: myMapKit)
               let tapCoordinate = myMapKit.convert(tapPoint, toCoordinateFrom: myMapKit)
+              let tappedLocation = CLLocation(latitude: tapCoordinate.latitude, longitude: tapCoordinate.longitude)
               myMapKit.removeAnnotations(myMapKit.annotations)
               print("Tapped location: \(tapCoordinate)")
-              setPinToLocation(location: tapCoordinate)
+              setPinToLocation(location: tappedLocation)
           }
       }
 }

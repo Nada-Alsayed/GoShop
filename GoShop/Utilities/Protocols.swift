@@ -15,10 +15,18 @@ protocol OnClickDelegate {
     func clicked(_ row: Int, opertion:@escaping(Bool)->Void)
 }
 
-protocol ResponceMessage{
+protocol CartQuantityDelegate {
+    func clickedQuantity(_ row: Int,_ quantity: Int, opertion:@escaping(SubCart)->Void)
+}
+
+protocol ResponseMessage{
     func responsIsDone(message: String)
 }
 
 protocol GoBack{
     func moveBack()
+}
+
+protocol AllAddresesClickDelagate{
+    func click()
 }

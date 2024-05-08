@@ -10,13 +10,12 @@ import UIKit
 
 extension Favorites_VC :UITableViewDelegate,UITableViewDataSource{
     
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections()
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.productsNumberInSection(section: section)
+        return products.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -35,7 +34,7 @@ extension Favorites_VC :UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = Details_VC()
-        vc.modalPresentationStyle = .popover
+        vc.modalPresentationStyle = .fullScreen
         vc.id = products[indexPath.row].product.id ?? 0
         vc.delegate = self
         present(vc,animated: true)
@@ -51,7 +50,7 @@ extension Favorites_VC :UITableViewDelegate,UITableViewDataSource{
                 self.viewModel.postToWishlist(product_id: self.products[indexPath.row].product.id ?? 0, operation: {
                     self.tableView.isUserInteractionEnabled = true
                     self.indicator.stopAnimating()
-                    self.viewModel.products.remove(at: indexPath.row)
+                    self.products.remove(at: indexPath.row)
                     self.tableView.reloadData()
                     self.hideImage(array: self.products)
                 })
@@ -83,6 +82,7 @@ extension Favorites_VC : OnClickDelegate {
             tableView.isUserInteractionEnabled = false
             products[row].product.inCart = true
             viewModel.postToCart(product_id: products[row].product.id ?? 0, vc: self) {
+                self.setCartItemsNumber(sum: self.sum)
                 opertion(true)
             }
         }else if products[row].product.inCart == true {
@@ -90,6 +90,7 @@ extension Favorites_VC : OnClickDelegate {
                 self.products[row].product.inCart = false
                 self.tableView.isUserInteractionEnabled = false
                 self.viewModel.postToCart(product_id: self.products[row].product.id ?? 0, vc: self) {
+                    self.setCartItemsNumber(sum: self.sum)
                     opertion(false)
                 }
             }

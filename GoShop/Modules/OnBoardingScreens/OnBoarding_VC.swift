@@ -9,18 +9,23 @@ import UIKit
 
 class OnBoarding_VC: UIViewController {
     
+    //MARK: -IBOutlets
+
     @IBOutlet weak var nextBtn: UIImageView!
     @IBOutlet weak var slideCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     
+    //MARK: -Variables
+
     var slides: [OnBoardingSlide] = []
-    
     var currentPage = 0 {
         didSet {
             pageControl.currentPage = currentPage
         }
     }
     
+    //MARK: -View Controller Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
@@ -28,11 +33,13 @@ class OnBoarding_VC: UIViewController {
         addAction()
     }
     
+    //MARK: -Methods
+
     func setData(){
         slides = [
-            OnBoardingSlide(title: "20% Discount New Arrival Product", description: "Experience a variety of amazing items from different places around the world.", img: UIImage(named:"Slide1")!),
-            OnBoardingSlide(title: "Take Advantage Of The Offer Shopping", description: "Our products are prepared by only the best.", img: UIImage(named:"Slide2")!),
-            OnBoardingSlide(title: "All Types Of Offers Within Your Reach", description: "Your orders will be delivered instantly irrespective of your location around the world.", img: UIImage(named:"Slide3")!)
+            OnBoardingSlide(title:OnBoardingStrings.title_1.rawValue , description: OnBoardingStrings.description_1.rawValue, img: UIImage(named:"Slide1")!),
+            OnBoardingSlide(title: OnBoardingStrings.title_2.rawValue, description: OnBoardingStrings.description_2.rawValue, img: UIImage(named:"Slide2")!),
+            OnBoardingSlide(title:OnBoardingStrings.title_3.rawValue, description: OnBoardingStrings.description_3.rawValue, img: UIImage(named:"Slide3")!)
         ]
         pageControl.numberOfPages = slides.count
     }
@@ -51,17 +58,27 @@ class OnBoarding_VC: UIViewController {
     
     @objc func moveNext(){
         if currentPage == slides.count - 1 {
-               let vc = BottomTaPBar()
-               vc.modalPresentationStyle = .fullScreen
-               self.present(vc, animated: true)
-           } else if currentPage < slides.count - 1 {
-               currentPage += 1
-               let indexPath = IndexPath(item: currentPage, section: 0)
-               slideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-           }
+            let vc = BottomTaPBar()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        } else if currentPage < slides.count - 1 {
+            currentPage += 1
+            let indexPath = IndexPath(item: currentPage, section: 0)
+            slideCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        }
     }
     
+    private enum OnBoardingStrings : String{
+        case title_1 = "20% Discount New Arrival Product"
+        case title_2 = "Take Advantage Of The Offer Shopping"
+        case title_3 = "All Types Of Offers Within Your Reach"
+        case description_1 = "Experience a variety of amazing items from different places around the world."
+        case description_2 = "Our products are prepared by only the best."
+        case description_3 = "Your orders will be delivered instantly irrespective of your location around the world."
+    }
 }
+
+//MARK: -Extensions
 
 extension OnBoarding_VC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     

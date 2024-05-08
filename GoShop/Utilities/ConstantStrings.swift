@@ -25,17 +25,23 @@ class ConstantStrings{
     static let CONFIRM_LOGOUT_MESSEGE = "Are you sure you want to logout?"
     static let NOT_VALID_DATA_TOAST = "Not valid data"
     static let ENTER_ALL_FIELDS_TOAST = "Please enter all fields"
-    static let CHECK_NETWORK_TOAST = "Check your network conniction"
-    static let ADDED_TOAST = "Recipe added to your favorites successfully"
     static let SignUp_Failed = "Register Failed."
     
     //MARK: - UserDefaults
+    
     static let KEY_USERNAME = "UserName"
     static let KEY_USEREMAIL = "UserEmail"
     static let KEY_USER_ID = "CustomerID"
     static let KEY_USER_TOKEN = "CustomerToken"
+    static let KEY_Cart_ITEMS = "CartItems"
     
+    //MARK: -Static TableView Data
+
     static let lables = ["Personal Details","My Order","My Favorites","Shipping Address","My Card" ,"Settings"]
     static let images = ["icon-profile","icon-order","icon-favs","icon-address","icon-card" ,"icon-settings"]
     
+    //MARK: -Destination to order
+    
+    static let DESTINATION_PRIFILE = "profile"
+    static let DESTINATION_CART = "cart"
 }

@@ -13,3 +13,4 @@ struct OnBoardingSlide{
     let description: String
     let img: UIImage
 }
+

@@ -10,13 +10,14 @@ import Foundation
 extension SignUp_VC: SignUpDelegate {
         
     func signUpSuccessfully() {
-        let vc = BottomTaPBar()
+        indicator.stopAnimating()
+        let vc = OnBoarding_VC()
         vc.modalPresentationStyle = .fullScreen
         self.present(vc,animated: true)
     }
     
     func SignUpFailed() {
-        print("failed to login")
+        indicator.stopAnimating()
         showToast(controller: self, message: ConstantStrings.SignUp_Failed, seconds: 1)
     }
 }

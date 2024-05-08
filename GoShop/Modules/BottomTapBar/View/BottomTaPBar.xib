@@ -24,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8I-hO-exK">
-                    <rect key="frame" x="1" y="752" width="393" height="100"/>
+                    <rect key="frame" x="1" y="757.33333333333337" width="393" height="94.666666666666629"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="t2X-w3-MFd" userLabel="ParentHS">
                             <rect key="frame" x="16" y="4" width="361" height="70"/>
@@ -73,12 +73,11 @@
                     <constraints>
                         <constraint firstItem="t2X-w3-MFd" firstAttribute="leading" secondItem="K8I-hO-exK" secondAttribute="leading" constant="16" id="1w7-aw-d9g"/>
                         <constraint firstItem="t2X-w3-MFd" firstAttribute="top" secondItem="K8I-hO-exK" secondAttribute="top" constant="4" id="3Vp-aU-8pJ"/>
-                        <constraint firstAttribute="height" constant="100" id="6q3-CV-XaY"/>
                         <constraint firstAttribute="trailing" secondItem="t2X-w3-MFd" secondAttribute="trailing" constant="16" id="TIv-NW-vWA"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oeu-2H-pa1" userLabel="ContainerView">
-                    <rect key="frame" x="0.0" y="59" width="393" height="687"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="692.33333333333337"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
@@ -89,6 +88,7 @@
                 <constraint firstItem="K8I-hO-exK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="1" id="5oD-6m-dzx"/>
                 <constraint firstAttribute="trailing" secondItem="K8I-hO-exK" secondAttribute="trailing" constant="-1" id="5td-Jw-bxx"/>
                 <constraint firstItem="Oeu-2H-pa1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Elg-44-TPr"/>
+                <constraint firstItem="K8I-hO-exK" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.11111" id="HQt-iz-oRJ"/>
                 <constraint firstAttribute="bottom" secondItem="K8I-hO-exK" secondAttribute="bottom" id="KLG-qf-Dni"/>
                 <constraint firstItem="Oeu-2H-pa1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VfN-GN-Ilr"/>
                 <constraint firstItem="Oeu-2H-pa1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bGg-So-T97"/>

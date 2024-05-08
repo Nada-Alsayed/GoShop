@@ -8,7 +8,7 @@
 import Foundation
 
 class UserAPI:BaseAPI<UsersNetworking>{
-   
+    
     func postUser(user:User,compelition :@escaping (BaseResponse<Customer>?,Error?)->())
     {
         print("hhh")
@@ -25,6 +25,16 @@ class UserAPI:BaseAPI<UsersNetworking>{
         self.fetchData(target: .loginUser(email: user.email, password:  user.password), responseClass: BaseResponse<Customer>.self) { result, err in
             print("B:\(result?.status)")
             print("B:\(result?.message)")
+            compelition(result, nil)
+        }
+    }
+    
+    func logOutUser(token:String, compelition :@escaping (BaseResponse<Customer>?,Error?)->())
+    {
+        print("LogOut")
+        self.fetchData(target: .logOutUser(token: token), responseClass: BaseResponse<Customer>.self) { result, err in
+            print("Logout : \(result?.status)")
+            print("Logout : \(result?.message)")
             compelition(result, nil)
         }
     }

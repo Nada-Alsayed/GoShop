@@ -15,28 +15,42 @@ class AllAddresses_VC: UIViewController {
     @IBOutlet weak var backImg: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyImg: UIImageView!
+    @IBOutlet weak var orderBtn: UIButton!
     
     //MARK: -Variables
     
+    var cellIndex:Int = -10
     var viewModel = AddressesViewModel()
     var addresses :[Address] = []
+    var destination : String?
+    var delegateReload : ReloadViewDelegate?
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        print("Nadod")
-//        addresses = []
-//        viewModel.getData()
-//        tableView.reloadData()
-//        hideEmptyImg(count: addresses.count)
-//    }
-    
+    //MARK: -View Controller LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
+        setUI()
         addbackImgAction()
         bindData()
         viewModel.getData()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//        if isBeingDismissed {
+//            delegateReload?.reloadView()
+//        }
+//    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        if isBeingDismissed {
+            delegateReload?.reloadView()
+        }
+    }
+    
+    //MARK: -IBActions
+
     @IBAction func addAddress(_ sender: Any) {
         let vc = AddressMapKit_VC()
         vc.delegateReload = self
@@ -44,11 +58,16 @@ class AllAddresses_VC: UIViewController {
         present(vc,animated: true)
     }
     
-    func setUpTableView(){
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: CellAddress.id, bundle: nil), forCellReuseIdentifier: CellAddress.id)
+    
+    @IBAction func DeliverOrderToAddress(_ sender: Any) {
+        if cellIndex>=0{
+            deliverOrder(rowIndex: cellIndex)
+        }else{
+            showToast(controller: self, message: "You have to pick up address first", seconds: 0.8)
+        }
     }
+    
+    //MARK: -Methods
     
     func bindData(){
         indicator.isHidden = false
@@ -59,6 +78,8 @@ class AllAddresses_VC: UIViewController {
                 self.indicator.stopAnimating()
                 self.hideEmptyImg(count: self.addresses.count)
                 self.tableView.reloadData()
+                self.cellIndex = -1
+                self.tableView.isUserInteractionEnabled = true
             }
         }
     }
@@ -79,5 +100,20 @@ class AllAddresses_VC: UIViewController {
     
     @objc func goBack(){
         self.dismiss(animated: true)
+    }
+    
+    func setUI(){
+        orderBtn.layer.cornerRadius = 20
+        checkDestination()
+    }
+    
+    func checkDestination(){
+        if destination == ConstantStrings.DESTINATION_PRIFILE {
+            orderBtn.isHidden = true
+        }else if  destination == ConstantStrings.DESTINATION_CART{
+            orderBtn.isHidden = false
+        }else{
+            print("not available destination")
+        }
     }
 }

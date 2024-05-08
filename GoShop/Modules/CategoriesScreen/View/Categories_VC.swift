@@ -19,6 +19,8 @@ class Categories_VC: UIViewController {
     var viewModel = CategoriesViewModel()
     var categories = [Category]()
     
+    //MARK: -View Controller LifeCycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTable()
@@ -27,13 +29,13 @@ class Categories_VC: UIViewController {
         viewModel.getData()
     }
     
+    //MARK: -Methods
+
     func bindData(){
         viewModel.bindCategoriesToView = { [weak self] in
             guard let self = self else {return}
             DispatchQueue.main.async {
                 self.categories = self.viewModel.categories
-                // self.indicator.stopAnimating()
-                // self.indicatorView.isHidden = true
                 self.categoriesTableView.reloadData()
             }
         }

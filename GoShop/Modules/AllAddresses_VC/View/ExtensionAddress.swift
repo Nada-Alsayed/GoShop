@@ -10,18 +10,26 @@ import UIKit
 
 extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
     
+    func setUpTableView(){
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: CellAddress.id, bundle: nil), forCellReuseIdentifier: CellAddress.id)
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return viewModel.numberOfSections()
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.addressesNumberInSection(section: section)
+        return addresses.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellAddress.id, for: indexPath) as! CellAddress
         cell.setUpData(address: addresses[indexPath.row])
-            return cell
+        cell.hideImage()
+
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -29,10 +37,29 @@ extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.isUserInteractionEnabled = false
+        guard let cell = tableView.cellForRow(at: indexPath) as? CellAddress else{
+            return
+        }
+        cell.selectionStyle = .none
+        if destination == ConstantStrings.DESTINATION_CART{
+            cellIndex = indexPath.row
+            print("ceel index\(cellIndex)")
+            cell.showImage()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? CellAddress else{
+            return
+        }
+        cell.hideImage()
+    }
+    
+    func deliverOrder(rowIndex : Int){
+        self.tableView.isUserInteractionEnabled = false
         indicator.isHidden = false
-        indicator.stopAnimating()
-        checkIfCartEmpty(index: indexPath.row)
+        indicator.startAnimating()
+        checkIfCartEmpty(index: rowIndex)
     }
     
     func checkIfCartEmpty(index : Int){
@@ -48,11 +75,14 @@ extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
     }
     
     func postOrderToAPI(cellIndex : Int){
-        showAlertWithAction(title: "CartAlert", titleAction: "Send", titleNoAction: "No", message: "Are You sure you want to send your rder to this address", viewController: self) {
+        showAlertWithAction(title: "Cart Alert", titleAction: "Send", titleNoAction: "No", message: "Are You sure you want to send your rder to this address", viewController: self) {
+            print("index1 \(cellIndex)")
             self.viewModel.postOrder(address: self.addresses[cellIndex]) {
                 self.tableView.isUserInteractionEnabled = true
                 self.indicator.stopAnimating()
                 self.showToast(controller: self, message: "Your Order On His Way", seconds: 0.8)
+                print("index2 \(cellIndex)")
+                self.tableView.reloadData()
             }
         }
     }
@@ -62,7 +92,7 @@ extension AllAddresses_VC : UITableViewDelegate,UITableViewDataSource{
         let deleteAction = UIContextualAction(style: .destructive, title: "") { (action, view, completionHandler) in
             self.showAlertWithAction(title: ConstantStrings.ALERT, titleAction: ConstantStrings.DELETE_BTN, titleNoAction: ConstantStrings.NO_ACTION_BTN, message: ConstantStrings.CONFIRM_DELETE_WISHLIST, viewController: self) {
                 self.viewModel.deleteAddress(id: self.addresses[indexPath.row].id, operation: {
-                    self.viewModel.addresses.remove(at: indexPath.row)
+                    self.addresses.remove(at: indexPath.row)
                     self.tableView.reloadData()
                     self.hideEmptyImg(count: self.addresses.count)
                 })

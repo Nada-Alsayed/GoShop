@@ -9,24 +9,28 @@ import UIKit
 import Kingfisher
 
 class CategoriesCell: UITableViewCell {
+    
+    //MARK: -IBOutlets
 
     @IBOutlet weak var categoryImg: UIImageView!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var myContentView: UIView!
     @IBOutlet weak var stack: UIStackView!
     
+    //MARK: -Variables
+
     var index: Int = 0
     static let identifier = String(describing: CategoriesCell.self)
     
+    //MARK: -Cell Cycle
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setCellUI()
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
+    //MARK: -Methods
+
     override func updateConstraints() {
         super.updateConstraints()
         stack.arrangedSubviews.forEach { $0.removeFromSuperview() }
@@ -42,9 +46,7 @@ class CategoriesCell: UITableViewCell {
     func setCellUI(){
         myContentView.layer.cornerRadius = 20
         stack.layer.cornerRadius = 20
-        
         stack.layer.masksToBounds = true
-        
         myContentView.layer.shadowColor = UIColor.black.cgColor
         myContentView.layer.shadowOffset = CGSize(width: 3, height: 3)
         myContentView.layer.shadowOpacity = 0.6

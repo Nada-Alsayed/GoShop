@@ -22,7 +22,7 @@ class DetailsViewModel{
             bindProductToView()
         }
     }
-    var delegate : ResponceMessage?
+    var delegate : ResponseMessage?
     
     //MARK: -Methods
     
@@ -47,7 +47,7 @@ class DetailsViewModel{
         }
     }
     
-    func postToCart(product_id: Double,vc:UIViewController){
+    func postToCart(product_id: Double,vc:UIViewController,operation:@escaping()->()){
         apiCart.postToCart(token: customer_token ?? "nil", product_ID: product_id) { response, error in
         //    guard let self = self else{return}
          //   print("llll")
@@ -56,6 +56,7 @@ class DetailsViewModel{
             print(response.message!)
 
             vc.showToast(controller: vc, message: response.message!, seconds: 0.8)
+            operation()
         }
     }
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CellAddress: UITableViewCell {
+class CellAddress: UITableViewCell {    
 
     @IBOutlet weak var container: UIView!
     
@@ -15,18 +15,21 @@ class CellAddress: UITableViewCell {
     @IBOutlet weak var details: UILabel!
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var country: UILabel!
+    @IBOutlet weak var checkedImg: UIImageView!
     
     static let id = String(describing: CellAddress.self)
-   
+    var cellIndex:Int = 0
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        // setTapGesture()
         setUpCellUI()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+      //  checkedImg.isHidden = false
         // Configure the view for the selected state
     }
     
@@ -44,4 +47,25 @@ class CellAddress: UITableViewCell {
         city.text = address.city
         country.text = address.region
     }
+    
+    func showImage(){
+        checkedImg.isHidden = false
+    }
+    
+    func hideImage(){
+        checkedImg.isHidden = true
+    }
+    
+//    func setTapGesture(){
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(selectAddress))
+//        checkedImg.isUserInteractionEnabled = true
+//        checkedImg.addGestureRecognizer(tap)
+//    }
+//
+//    @objc func selectAddress(){
+//        print("Vooo :)")
+//    }
+    
 }
+
+

@@ -29,11 +29,18 @@ extension Categories_VC : UITableViewDelegate,UITableViewDataSource{
     func setupTable(){
         categoriesTableView.delegate = self
         categoriesTableView.dataSource = self
-        
         registerCell()
     }
     
     func registerCell(){
         categoriesTableView.register(UINib(nibName: CategoriesCell.identifier, bundle: nil), forCellReuseIdentifier: CategoriesCell.identifier)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = CategoryProducts()
+        vc.modalPresentationStyle = .fullScreen
+        vc.id = categories[indexPath.row].id
+        vc.categoryName = categories[indexPath.row].name
+        present(vc,animated: true)
     }
 }

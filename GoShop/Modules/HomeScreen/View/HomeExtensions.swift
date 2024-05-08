@@ -67,7 +67,7 @@ extension Home_VC : UICollectionViewDelegate,UICollectionViewDataSource,UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if collectionView.tag == 1{
             let vc = Details_VC()
-            vc.modalPresentationStyle = .popover
+            vc.modalPresentationStyle = .fullScreen
             vc.id = products[indexPath.row].id ?? 0
             vc.delegate = self
             present(vc,animated: true)
@@ -100,7 +100,7 @@ extension Home_VC :OnClickDelegate{
     }
 }
 
-extension Home_VC : ResponceMessage {
+extension Home_VC : ResponseMessage {
     
     func responsIsDone(message: String) {
         showToast(controller: self, message: message, seconds: 1)
@@ -112,5 +112,7 @@ extension Home_VC : ReloadViewDelegate{
         productsCollectionView.isUserInteractionEnabled = false
         bindData()
         viewModel.getData()
+        bindCartItemsNumber()
+        cartViewModel.getData()
     }
 }
