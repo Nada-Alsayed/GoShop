@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Lottie
 
 class Favorites_VC: UIViewController {
     
     //MARK: -IBOutlets
+    @IBOutlet weak var v: UIView!
     
     @IBOutlet weak var labelView: UIView!
     
@@ -29,12 +31,39 @@ class Favorites_VC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLottie()
         labelView.layer.cornerRadius = labelView.layer.bounds.height / 2
         searchView.layer.cornerRadius = searchView.bounds.size.height / 2
         setUpTableView()
         addbackImgAction()
         bindData()
         viewModel.getData()
+    }
+    
+    func setLottie(){
+        let jsonName = "emptyFav"
+        let animation = LottieAnimation.named(jsonName)
+        let lottieAnimationView = LottieAnimationView(animation: animation)
+        lottieAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        v.addSubview(lottieAnimationView)
+        
+        NSLayoutConstraint.activate([
+            lottieAnimationView.centerXAnchor.constraint(equalTo: v.centerXAnchor),
+            lottieAnimationView.centerYAnchor.constraint(equalTo: v.centerYAnchor),
+            lottieAnimationView.widthAnchor.constraint(equalTo: v.widthAnchor),
+            lottieAnimationView.heightAnchor.constraint(equalTo: v.heightAnchor)
+        ])
+        
+        lottieAnimationView.loopMode = .loop
+        lottieAnimationView.play()
+    }
+    
+    func startLottie(){
+        v.isHidden = false
+    }
+    
+    func endLottie(){
+        v.isHidden = true
     }
     
     func bindData(){
@@ -72,9 +101,9 @@ class Favorites_VC: UIViewController {
     
     func hideImage(array:[Favourite]){
         if array.count == 0{
-            favEmpty.isHidden = false
+            startLottie()
         }else{
-            favEmpty.isHidden = true
+            endLottie()
         }
     }
     

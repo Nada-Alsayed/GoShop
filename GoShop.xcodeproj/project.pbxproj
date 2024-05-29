@@ -127,6 +127,7 @@
 		04FB68E92B177101000CB104 /* GoShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04FB68E72B177101000CB104 /* GoShop.xcdatamodeld */; };
 		04FB68EB2B177104000CB104 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FB68EA2B177104000CB104 /* Assets.xcassets */; };
 		04FB68EE2B177104000CB104 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FB68EC2B177104000CB104 /* LaunchScreen.storyboard */; };
+		210F04BA2C0743C200258DE9 /* emptyFav.json in Resources */ = {isa = PBXBuildFile; fileRef = 210F04B92C0743C200258DE9 /* emptyFav.json */; };
 		7E3FDCD0244756F26A199875 /* Pods_GoShop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86898E7D67EFC48F2C36F656 /* Pods_GoShop.framework */; };
 /* End PBXBuildFile section */
 
@@ -255,6 +256,7 @@
 		04FB68ED2B177104000CB104 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		04FB68EF2B177104000CB104 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A83605F4DAF103B857A57C2 /* Pods-GoShop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoShop.debug.xcconfig"; path = "Target Support Files/Pods-GoShop/Pods-GoShop.debug.xcconfig"; sourceTree = "<group>"; };
+		210F04B92C0743C200258DE9 /* emptyFav.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = emptyFav.json; sourceTree = "<group>"; };
 		46968606449049B0EEB906BA /* Pods-GoShop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoShop.release.xcconfig"; path = "Target Support Files/Pods-GoShop/Pods-GoShop.release.xcconfig"; sourceTree = "<group>"; };
 		86898E7D67EFC48F2C36F656 /* Pods_GoShop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoShop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -977,6 +979,7 @@
 			isa = PBXGroup;
 			children = (
 				04158F6B2B33FAB700E87160 /* GoShop.entitlements */,
+				210F04B92C0743C200258DE9 /* emptyFav.json */,
 				047366DF2B339E7D0084F34E /* Utilities */,
 				04A8E75A2B3244B3008D576A /* GoogleService-Info.plist */,
 				04BA7D972B29DD93007C093A /* RealmManager */,
@@ -1110,6 +1113,7 @@
 				0459EA422B44BB2800A8CDAF /* CategoryProducts.xib in Resources */,
 				048892772B25B58500EDBFED /* Login_VC.xib in Resources */,
 				048727D92B37A8C500BBCE60 /* FavoritesCell.xib in Resources */,
+				210F04BA2C0743C200258DE9 /* emptyFav.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

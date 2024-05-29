@@ -37,9 +37,9 @@ class OnBoarding_VC: UIViewController {
 
     func setData(){
         slides = [
-            OnBoardingSlide(title:OnBoardingStrings.title_1.rawValue , description: OnBoardingStrings.description_1.rawValue, img: UIImage(named:"Slide1")!),
-            OnBoardingSlide(title: OnBoardingStrings.title_2.rawValue, description: OnBoardingStrings.description_2.rawValue, img: UIImage(named:"Slide2")!),
-            OnBoardingSlide(title:OnBoardingStrings.title_3.rawValue, description: OnBoardingStrings.description_3.rawValue, img: UIImage(named:"Slide3")!)
+            OnBoardingSlide(title:OnBoardingStrings.title_1.rawValue , description: OnBoardingStrings.description_1.rawValue, img: UIImage(named:"5")!),
+            OnBoardingSlide(title: OnBoardingStrings.title_2.rawValue, description: OnBoardingStrings.description_2.rawValue, img: UIImage(named:"3")!),
+            OnBoardingSlide(title:OnBoardingStrings.title_3.rawValue, description: OnBoardingStrings.description_3.rawValue, img: UIImage(named:"2")!)
         ]
         pageControl.numberOfPages = slides.count
     }

@@ -13,11 +13,11 @@
             <connections>
                 <outlet property="backImg" destination="BFf-hS-ST4" id="180-Kx-ODT"/>
                 <outlet property="cartItemsLabel" destination="e7l-du-nXw" id="rSj-gO-B3D"/>
-                <outlet property="favEmpty" destination="iNf-aN-Y4K" id="uzg-dF-VHE"/>
                 <outlet property="indicator" destination="gnd-cd-qlR" id="wsK-HS-FpQ"/>
                 <outlet property="labelView" destination="r8K-rv-2yf" id="DjR-eB-sy2"/>
                 <outlet property="searchView" destination="6A3-kz-xnl" id="po9-mP-M25"/>
                 <outlet property="tableView" destination="HYG-DK-Uxg" id="vn6-DB-TPg"/>
+                <outlet property="v" destination="eez-2p-RUi" id="GGe-F7-gsm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -71,10 +71,10 @@
                     <rect key="frame" x="8" y="196" width="377" height="622"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="favEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="iNf-aN-Y4K">
-                    <rect key="frame" x="0.0" y="186" width="393" height="632"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </imageView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eez-2p-RUi">
+                    <rect key="frame" x="0.0" y="126" width="393" height="692"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gnd-cd-qlR">
                     <rect key="frame" x="181.66666666666666" y="411" width="30" height="30"/>
                     <constraints>
@@ -130,9 +130,9 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="gnd-cd-qlR" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="CRh-D5-Mof"/>
-                <constraint firstAttribute="trailing" secondItem="iNf-aN-Y4K" secondAttribute="trailing" id="DiE-B7-Ppm"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ctq-ut-gAH" secondAttribute="trailing" constant="8" id="EQ2-2Q-aee"/>
-                <constraint firstItem="iNf-aN-Y4K" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Etr-ha-szu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="eez-2p-RUi" secondAttribute="bottom" id="Gte-Gi-W04"/>
+                <constraint firstItem="eez-2p-RUi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Hfr-9N-pht"/>
                 <constraint firstItem="tU1-sK-XwS" firstAttribute="leading" secondItem="6A3-kz-xnl" secondAttribute="trailing" constant="10" id="Hno-c8-wH5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="HYG-DK-Uxg" secondAttribute="trailing" constant="8" id="Mse-Jn-4r2"/>
                 <constraint firstItem="gnd-cd-qlR" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="NX5-Ph-B3T"/>
@@ -141,12 +141,12 @@
                 <constraint firstItem="HYG-DK-Uxg" firstAttribute="top" secondItem="6A3-kz-xnl" secondAttribute="bottom" constant="10" id="Uuc-pJ-Ozi"/>
                 <constraint firstItem="HYG-DK-Uxg" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="c02-j3-Fph"/>
                 <constraint firstItem="6A3-kz-xnl" firstAttribute="top" secondItem="BFf-hS-ST4" secondAttribute="bottom" constant="16" id="dJS-hs-RSO"/>
-                <constraint firstItem="iNf-aN-Y4K" firstAttribute="top" secondItem="6A3-kz-xnl" secondAttribute="bottom" id="jR4-sa-gid"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="eez-2p-RUi" secondAttribute="trailing" id="eA2-2L-9fO"/>
                 <constraint firstItem="6A3-kz-xnl" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="lio-sB-Dm4"/>
-                <constraint firstItem="iNf-aN-Y4K" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="mbe-0a-lgB"/>
                 <constraint firstItem="Ctq-ut-gAH" firstAttribute="centerY" secondItem="BFf-hS-ST4" secondAttribute="centerY" id="mbu-o5-wjS"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="tU1-sK-XwS" secondAttribute="trailing" constant="16" id="nGv-mO-TpD"/>
                 <constraint firstItem="BFf-hS-ST4" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="t3D-Xa-42g"/>
+                <constraint firstItem="eez-2p-RUi" firstAttribute="top" secondItem="BFf-hS-ST4" secondAttribute="bottom" constant="16" id="taD-up-eGr"/>
                 <constraint firstItem="BFf-hS-ST4" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="tgW-fT-62a"/>
             </constraints>
             <point key="canvasLocation" x="9.9236641221374047" y="-11.267605633802818"/>
@@ -155,7 +155,6 @@
     <resources>
         <image name="GoBackBtn" width="35" height="35"/>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
-        <image name="favEmpty" width="502" height="502"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <image name="screener" width="50" height="50"/>
         <systemColor name="labelColor">
