@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -25,11 +26,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fuQ-dr-ygb">
-                    <rect key="frame" x="0.0" y="125" width="393" height="650"/>
+                    <rect key="frame" x="0.0" y="118" width="393" height="657"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="71T-f7-krG">
-                    <rect key="frame" x="181.66666666666666" y="435" width="30" height="30"/>
+                    <rect key="frame" x="181.66666666666666" y="431.66666666666669" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="30" id="vST-Kf-IHV"/>
                         <constraint firstAttribute="height" constant="30" id="zaC-VF-I7h"/>
@@ -37,21 +38,21 @@
                     <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </activityIndicatorView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoBackBtn" translatesAutoresizingMaskIntoConstraints="NO" id="sHp-2N-t5Q">
-                    <rect key="frame" x="16" y="67" width="50" height="50"/>
+                    <rect key="frame" x="16" y="75" width="35" height="35"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="4qL-fh-3nh"/>
-                        <constraint firstAttribute="height" constant="50" id="Fnx-2i-Gpd"/>
+                        <constraint firstAttribute="width" constant="35" id="4qL-fh-3nh"/>
+                        <constraint firstAttribute="height" constant="35" id="Fnx-2i-Gpd"/>
                     </constraints>
                 </imageView>
                 <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionImg" translatesAutoresizingMaskIntoConstraints="NO" id="0qg-UD-SH2">
-                    <rect key="frame" x="0.0" y="125" width="393" height="650"/>
+                    <rect key="frame" x="0.0" y="118" width="393" height="657"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8RM-SZ-PcN">
-                    <rect key="frame" x="327" y="67" width="50" height="50"/>
+                    <rect key="frame" x="342" y="75" width="35" height="35"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="50" id="9rf-g8-3Iu"/>
-                        <constraint firstAttribute="height" constant="50" id="RWu-9H-BZ6"/>
+                        <constraint firstAttribute="width" constant="35" id="9rf-g8-3Iu"/>
+                        <constraint firstAttribute="height" constant="35" id="RWu-9H-BZ6"/>
                     </constraints>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain">
@@ -92,7 +93,7 @@
                 <constraint firstItem="973-MF-XCH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="CxO-Y7-eFQ"/>
                 <constraint firstItem="fuQ-dr-ygb" firstAttribute="top" secondItem="sHp-2N-t5Q" secondAttribute="bottom" constant="8" id="Gmu-t3-Dtz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8RM-SZ-PcN" secondAttribute="trailing" constant="16" id="Jqi-ei-alq"/>
-                <constraint firstItem="sHp-2N-t5Q" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="Khb-FL-kqm"/>
+                <constraint firstItem="sHp-2N-t5Q" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="Khb-FL-kqm"/>
                 <constraint firstItem="973-MF-XCH" firstAttribute="top" secondItem="fuQ-dr-ygb" secondAttribute="bottom" constant="3" id="NWq-9q-37e"/>
                 <constraint firstItem="71T-f7-krG" firstAttribute="centerX" secondItem="fuQ-dr-ygb" secondAttribute="centerX" id="bpe-sU-O6b"/>
                 <constraint firstItem="0qg-UD-SH2" firstAttribute="top" secondItem="fuQ-dr-ygb" secondAttribute="top" id="c3a-pz-xQQ"/>

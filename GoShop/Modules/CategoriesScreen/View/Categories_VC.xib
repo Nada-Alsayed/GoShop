@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,21 +22,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoBackBtn" translatesAutoresizingMaskIntoConstraints="NO" id="pFc-2W-Orl">
-                    <rect key="frame" x="16" y="59" width="50" height="50"/>
+                    <rect key="frame" x="16" y="75" width="35" height="35"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="ZOH-hr-teB"/>
-                        <constraint firstAttribute="width" constant="50" id="shE-ok-iSf"/>
+                        <constraint firstAttribute="height" constant="35" id="ZOH-hr-teB"/>
+                        <constraint firstAttribute="width" constant="35" id="shE-ok-iSf"/>
                     </constraints>
                 </imageView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ot6-E9-rho">
-                    <rect key="frame" x="8" y="125" width="377" height="685"/>
+                    <rect key="frame" x="8" y="126" width="377" height="684"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Cgz-Jl-Ej1">
-                    <rect key="frame" x="342" y="67.666666666666671" width="35" height="33.333333333333343"/>
+                    <rect key="frame" x="347" y="76" width="30" height="33.333333333333329"/>
                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="35" id="KgT-8q-B6X"/>
+                        <constraint firstAttribute="width" constant="30" id="KgT-8q-B6X"/>
                         <constraint firstAttribute="height" constant="35" id="SYB-I5-l6U"/>
                     </constraints>
                 </imageView>
@@ -43,7 +44,7 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="pFc-2W-Orl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="3R9-tn-cB2"/>
+                <constraint firstItem="pFc-2W-Orl" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="3R9-tn-cB2"/>
                 <constraint firstItem="Ot6-E9-rho" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="J8E-8L-JpI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Cgz-Jl-Ej1" secondAttribute="trailing" constant="16" id="Yqy-UX-sYt"/>
                 <constraint firstItem="Ot6-E9-rho" firstAttribute="top" secondItem="pFc-2W-Orl" secondAttribute="bottom" constant="16" id="b6R-yl-tF0"/>

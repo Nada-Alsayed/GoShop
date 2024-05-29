@@ -29,7 +29,7 @@ class Favorites_VC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        labelView.layer.cornerRadius = 20
+        labelView.layer.cornerRadius = labelView.layer.bounds.height / 2
         searchView.layer.cornerRadius = searchView.bounds.size.height / 2
         setUpTableView()
         addbackImgAction()

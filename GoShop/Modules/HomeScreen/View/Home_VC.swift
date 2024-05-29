@@ -10,7 +10,8 @@ import UIKit
 class Home_VC: UIViewController {
     
     //MARK: - IBOutlets
-  
+    @IBOutlet weak var cartbg: UIView!
+    
     @IBOutlet weak var cartView: UIView!
     @IBOutlet weak var itemsLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
@@ -51,7 +52,7 @@ class Home_VC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cartView.layer.cornerRadius = 20
+        cartbg.layer.cornerRadius =  cartbg.layer.bounds.height / 2
         searchView.layer.cornerRadius = searchView.bounds.size.height / 2
         setUpCollectionViews()
         addAction()

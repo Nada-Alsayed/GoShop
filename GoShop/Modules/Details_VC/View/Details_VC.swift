@@ -43,7 +43,7 @@ class Details_VC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        cartItemsView.layer.cornerRadius = 20
+        cartItemsView.layer.cornerRadius = cartItemsView.layer.frame.height / 2
         addbackImgAction()
         setUpCollectionView()
         bindData()

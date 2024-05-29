@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import FirebaseAuth
+//import FirebaseAuth
 
 protocol SignUpDelegate:AnyObject {
     func signUpSuccessfully()
@@ -36,23 +36,24 @@ class SignUpViewModel{
                     return
                 }
                 self.setUserDefaults(customer: currentCustomer)
-                Auth.auth().createUser(withEmail: user.email , password: user.password ) { authResult, error in
-                    if let error = error {
-                        print("Error creating user: \(error.localizedDescription)")
-                        return
-                    }
-                    print("creating User and send mail")
-                    guard let user = authResult?.user else{return}
-                    user.sendEmailVerification { error in
-                        if let error = error {
-                            // Handle the error
-                            print("Error sending email verification: \(error.localizedDescription)")
-                            return
-                        }
-                        print("Email verification sent successfully")
-                        self.delegate?.signUpSuccessfully()
-                    }
-                }
+                self.delegate?.signUpSuccessfully()
+
+//                Auth.auth().createUser(withEmail: user.email , password: user.password ) { authResult, error in
+//                    if let error = error {
+//                        print("Error creating user: \(error.localizedDescription)")
+//                        return
+//                    }
+//                    print("creating User and send mail")
+//                    guard let user = authResult?.user else{return}
+//                    user.sendEmailVerification { error in
+//                        if let error = error {
+//                            // Handle the error
+//                            print("Error sending email verification: \(error.localizedDescription)")
+//                            return
+//                        }
+//                        print("Email verification sent successfully")
+//                    }
+//                }
                 
             
         }

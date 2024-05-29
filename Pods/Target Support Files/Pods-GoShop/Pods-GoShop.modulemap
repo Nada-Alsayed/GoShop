@@ -1,0 +1,6 @@
+framework module Pods_GoShop {
+  umbrella header "Pods-GoShop-umbrella.h"
+
+  export *
+  module * { export * }
+}

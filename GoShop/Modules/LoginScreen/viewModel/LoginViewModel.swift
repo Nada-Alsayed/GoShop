@@ -6,9 +6,9 @@
 //
 
 import Foundation
-import GoogleSignIn
-import Firebase
-import FirebaseAuth
+//import GoogleSignIn
+//import Firebase
+//import FirebaseAuth
 
 protocol SignInDelegate:AnyObject {
     func signInSuccessfully()
@@ -36,24 +36,24 @@ class LoginViewModel{
         }
     }
     
-    func Google_Login(_vc: UIViewController) {
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        let config = GIDConfiguration(clientID: clientID)
-        
-        GIDSignIn.sharedInstance.configuration = config
-        GIDSignIn.sharedInstance.signIn(withPresenting: _vc) { signInResult, error in
-            if let error = error {
-                print("Google Sign-In Error: \(error.localizedDescription)")
-                return
-            }
-            
-            guard let signInResult = signInResult else { return }
-            let user = signInResult.user
-            let emailAddress = user.profile?.email
-            let fullName = user.profile?.name
-            let profilePicUrl = user.profile?.imageURL(withDimension: 320)
-        }
-    }
+//    func Google_Login(_vc: UIViewController) {
+//        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+//        let config = GIDConfiguration(clientID: clientID)
+//        
+//        GIDSignIn.sharedInstance.configuration = config
+//        GIDSignIn.sharedInstance.signIn(withPresenting: _vc) { signInResult, error in
+//            if let error = error {
+//                print("Google Sign-In Error: \(error.localizedDescription)")
+//                return
+//            }
+//            
+//            guard let signInResult = signInResult else { return }
+//            let user = signInResult.user
+//            let emailAddress = user.profile?.email
+//            let fullName = user.profile?.name
+//            let profilePicUrl = user.profile?.imageURL(withDimension: 320)
+//        }
+//    }
     
     func isValidEmail(_ email: String) -> Bool {
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"

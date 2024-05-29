@@ -58,7 +58,7 @@ class OnBoarding_VC: UIViewController {
     
     @objc func moveNext(){
         if currentPage == slides.count - 1 {
-            let vc = BottomTaPBar()
+            let vc = Splash_VC()
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         } else if currentPage < slides.count - 1 {

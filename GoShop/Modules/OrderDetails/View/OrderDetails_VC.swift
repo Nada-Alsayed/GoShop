@@ -58,7 +58,7 @@ class OrderDetails_VC: UIViewController {
     
     func setUI(){
         cancelBtn.isUserInteractionEnabled = false
-        cancelBtn.layer.cornerRadius = 20
+        cancelBtn.layer.cornerRadius = cancelBtn.layer.frame.height / 2
     }
     
     func setUpData(orderDetails:OrderDetails){

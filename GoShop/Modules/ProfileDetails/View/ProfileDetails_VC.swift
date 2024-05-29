@@ -61,7 +61,7 @@ class ProfileDetails_VC: UIViewController {
     //MARK: -UI and Tap Gesture Methods
     
     func setUI(){
-        signOutBtn.layer.cornerRadius = 20
+        signOutBtn.layer.cornerRadius = signOutBtn.layer.frame.height / 2
     }
     
     func addbackImgAction(){

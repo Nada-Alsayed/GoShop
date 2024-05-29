@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FBSDKLoginKit
+//import FBSDKLoginKit
 
 class Login_VC: UIViewController {
     
@@ -92,7 +92,7 @@ class Login_VC: UIViewController {
     }
     @objc func signInWithGoogle(){
         print("Google")
-        viewModel.Google_Login(_vc: self)
+       // viewModel.Google_Login(_vc: self)
     }
     
     @objc func signInWithFacebook(){
@@ -105,43 +105,43 @@ class Login_VC: UIViewController {
     }
     
     func facebookLogin() {
-        let loginManager = LoginManager()
-        loginManager.logIn(permissions: ["public_profile"], from: self) { (result, error) in
-            if let error = error {
-                // Handle login error here
-                print("Error: \(error.localizedDescription)")
-            } else if let result = result, !result.isCancelled {
-                // Login successful, you can access the user's Facebook data here
-                self.fetchFacebookUserData()
-            } else {
-                // Login was canceled by the user
-                print("Login was cancelled.")
-            }
-        }
+//        let loginManager = LoginManager()
+//        loginManager.logIn(permissions: ["public_profile"], from: self) { (result, error) in
+//            if let error = error {
+//                // Handle login error here
+//                print("Error: \(error.localizedDescription)")
+//            } else if let result = result, !result.isCancelled {
+//                // Login successful, you can access the user's Facebook data here
+//                self.fetchFacebookUserData()
+//            } else {
+//                // Login was canceled by the user
+//                print("Login was cancelled.")
+//            }
+//        }
     }
     
     // MARK: - Fetch Facebook User Data
     
     func fetchFacebookUserData() {
-        if AccessToken.current != nil {
-            // You can make a Graph API request here to fetch user data
-            GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
-                if let error = error {
-                    // Handle API request error here
-                    print("Error: \(error.localizedDescription)")
-                } else if let userData = result as? [String: Any] {
-                    // Access the user data here
-                    let userID = userData["id"] as? String
-                    let name = userData["name"] as? String
-                    
-                    // Handle the user data as needed
-                    print("User ID: \(userID ?? "")")
-                    print("Name: \(name ?? "")")
-                    
-                }
-            }
-        } else {
-            print("No active Facebook access token.")
-        }
-    }
+//        if AccessToken.current != nil {
+//            // You can make a Graph API request here to fetch user data
+//            GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start { (connection, result, error) in
+//                if let error = error {
+//                    // Handle API request error here
+//                    print("Error: \(error.localizedDescription)")
+//                } else if let userData = result as? [String: Any] {
+//                    // Access the user data here
+//                    let userID = userData["id"] as? String
+//                    let name = userData["name"] as? String
+//                    
+//                    // Handle the user data as needed
+//                    print("User ID: \(userID ?? "")")
+//                    print("Name: \(name ?? "")")
+//                    
+//                }
+//            }
+//        } else {
+//            print("No active Facebook access token.")
+//        }
+   }
 }

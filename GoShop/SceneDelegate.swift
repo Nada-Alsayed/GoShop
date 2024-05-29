@@ -7,7 +7,7 @@
 
 import UIKit
 import FBSDKCoreKit
-import FBSDKLoginKit
+//import FBSDKLoginKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var token = UserDefaults.standard.string(forKey: ConstantStrings.KEY_USER_TOKEN)
@@ -32,7 +32,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         if (token == nil || token == "") {
-            window?.rootViewController = Splash_VC()
+            window?.rootViewController = OnBoarding_VC()
         }else{
             window?.rootViewController = BottomTaPBar()
         }
