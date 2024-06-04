@@ -6,11 +6,24 @@
 //
 
 import UIKit
+import FBSDKCoreKit
+//import FBSDKLoginKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-
+    var token = UserDefaults.standard.string(forKey: ConstantStrings.KEY_USER_TOKEN)
     var window: UIWindow?
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+            guard let url = URLContexts.first?.url else {
+                return
+            }
 
+            ApplicationDelegate.shared.application(
+                UIApplication.shared,
+                open: url,
+                sourceApplication: nil,
+                annotation: [UIApplication.OpenURLOptionsKey.annotation]
+            )
+        }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -18,9 +31,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = OnBoarding_VC()
+        if (token == nil || token == "") {
+            window?.rootViewController = OnBoarding_VC()
+        }else{
+            window?.rootViewController = BottomTaPBar()
+        }
         window?.makeKeyAndVisible()
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

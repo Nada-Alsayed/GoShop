@@ -10,24 +10,32 @@ import UIKit
 class Home_VC: UIViewController {
     
     //MARK: - IBOutlets
+    @IBOutlet weak var cartbg: UIView!
     
+    @IBOutlet weak var cartView: UIView!
+    @IBOutlet weak var itemsLabel: UILabel!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var personImg: UIImageView!
     @IBOutlet weak var bannerCollectionView: UICollectionView!
     @IBOutlet weak var productsCollectionView: UICollectionView!
     @IBOutlet weak var productCollectionViewheightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var viewAllLabel: UILabel!
     @IBOutlet weak var categoriesImg: UIImageView!
-   
+    
     //MARK: - Variables
     
     var viewModel = HomeViewModel()
+    var cartViewModel = CartViewModel()
     var banners = [Banner]()
     var products = [Product]()
+    var cartItems = [Favourite]()
+    var sum = 0
     
     //MARK: - View Controller LifeCycle
-
+    
     override func viewWillAppear(_ animated: Bool) {
         productsCollectionView.addObserver(self, forKeyPath: "contentSize",options: .new , context: nil)
+        productsCollectionView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -41,37 +49,47 @@ class Home_VC: UIViewController {
             }
         }
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cartbg.layer.cornerRadius =  cartbg.layer.bounds.height / 2
+        searchView.layer.cornerRadius = searchView.bounds.size.height / 2
         setUpCollectionViews()
         addAction()
         bindData()
         viewModel.getData()
+        bindCartItemsNumber()
+        cartViewModel.getData()
     }
     
+    //MARK: - Methods
+    
     func bindData(){
-        viewModel.bindBannersToView = { [weak self] in
-            guard let self = self else {return}
-            DispatchQueue.main.async {
-                self.banners = self.viewModel.banners
-               // self.indicator.stopAnimating()
-               // self.indicatorView.isHidden = true
-                self.bannerCollectionView.reloadData()
-            }
-        }
+        self.indicator.startAnimating()
+        self.indicator.isHidden = false
         viewModel.bindProductsToView = { [weak self] in
             guard let self = self else {return}
             DispatchQueue.main.async {
+                self.banners = self.viewModel.banners
                 self.products = self.viewModel.products
-               // self.indicator.stopAnimating()
-               // self.indicatorView.isHidden = true
+                self.indicator.stopAnimating()
+                self.bannerCollectionView.reloadData()
                 self.productsCollectionView.reloadData()
+                self.productsCollectionView.isUserInteractionEnabled = true
             }
         }
     }
-
+    
+    func bindCartItemsNumber(){
+        cartViewModel.bindResponseToView = {[weak self] in
+            guard let self = self else {return}
+            DispatchQueue.main.async {
+                self.cartItems = self.cartViewModel.response.cartItems
+                self.sumCartItems(products: self.cartItems)
+            }
+        }
+    }
+    
     func addAction(){
         let tap_1 = UITapGestureRecognizer(target: self, action: #selector(moveToCategory) )
         categoriesImg.isUserInteractionEnabled = true
@@ -79,10 +97,22 @@ class Home_VC: UIViewController {
     }
     
     @objc func moveToCategory(){
-       let vc = Categories_VC()
-       vc.modalPresentationStyle = .fullScreen
-       self.present(vc, animated: true)
+        let vc = Categories_VC()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
     }
-
     
+    func sumCartItems(products:[Favourite]){
+        sum = 0
+        for i in products{
+            print ("hhh\(i.quantity ?? 0)")
+            sum += i.quantity ?? 0
+        }
+        setCartItemsNumber(sum: sum)
+    }
+    
+    func setCartItemsNumber(sum:Int){
+        UserDefaults.standard.setValue(sum, forKey: ConstantStrings.KEY_Cart_ITEMS)
+        self.itemsLabel.text = "\(sum )"
+    }
 }

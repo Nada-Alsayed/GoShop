@@ -10,86 +10,122 @@ import UIKit
 class BottomTaPBar: UIViewController {
     
     //MARK: - IBOutlets
-
     @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var homeViewOnClick: UIView!
-    @IBOutlet weak var homeViewDefault: UIView!
-    @IBOutlet weak var homeOnClickBG: UIView!
-    @IBOutlet weak var homeOnClickImgView: UIView!
-    @IBOutlet weak var homeDefaultImgView: UIView!
-    @IBOutlet weak var homeView: UIStackView!
     
-    @IBOutlet weak var cartView: UIView!
-    
+    @IBOutlet weak var homeBtn: UIButton!
+    @IBOutlet weak var cartBtn: UIButton!
+    @IBOutlet weak var profileBtn: UIButton!
     @IBOutlet weak var containerView: UIView!
     
     
     //MARK: - Variables
-
-    var isHomeSelected = true
-    var isFavoriteSelected = false
-    
+    var selectedButton: UIButton?
+    var animation : CAKeyframeAnimation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        showHomeVC()
+        
+        animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation!.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
+        animation!.duration = 0.25
+        animation!.values =  [10,0]
+        
         tabBarDesign()
-        addTapRecogniser()
-    }
-
-    func addTapRecogniser(){
-        let homeTap = UITapGestureRecognizer(target: self, action: #selector(homeStackOnClick))
-        homeView.isUserInteractionEnabled = true
-        homeView.addGestureRecognizer(homeTap)
-        
-        
-        let favoriteTap = UITapGestureRecognizer(target: self, action: #selector(favoriteStackOnClick))
-        cartView.isUserInteractionEnabled = true
-        cartView.addGestureRecognizer(favoriteTap)
+        selectedButton = homeBtn
+        setSelectedImage(homeBtn)
+        showHomeVC()
     }
     
     func tabBarDesign(){
-        homeViewOnClick.isHidden = true
-        homeViewDefault.isHidden = false
-        homeDefaultImgView.layer.cornerRadius = 20
-        bottomView.layer.cornerRadius = 25
+        bottomView.layer.cornerRadius = 30
+        bottomView.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMinXMinYCorner]
+       // bottomView.layer.masksToBounds = true
         bottomView.layer.shadowColor = UIColor.black.cgColor
-        bottomView.layer.shadowOffset = CGSize(width: 0, height: 4)
+        bottomView.layer.shadowOffset = CGSize(width: 2, height: 3)
         bottomView.layer.shadowOpacity = 0.8
-        bottomView.layer.shadowRadius = 5.0
+        bottomView.layer.shadowRadius = 8.0
     }
     
-    func showHomeVC(){
-        let home = Home_VC()
-        self.addChild(home)
-        home.view.frame = containerView.bounds
-        containerView.addSubview(home.view)
-        home.didMove(toParent: self)
+    @IBAction func tabBarTapped(_ sender: UIButton) {
+        guard sender != selectedButton else {
+            return
+        }
+        
+        if let previousSelectedButton = selectedButton {
+            resetButtonImage(previousSelectedButton)
+        }
+        
+        setSelectedImage(sender)
+        selectedButton = sender
     }
     
-    @objc func homeStackOnClick(){
-        if isHomeSelected == false {
-            homeViewOnClick.isHidden = false
-            homeViewDefault.isHidden = true
-            homeOnClickBG.layer.cornerRadius = 20
-            homeOnClickBG.layer.masksToBounds = true
-            homeOnClickImgView.layer.cornerRadius = 20
-            isFavoriteSelected = false
-            isHomeSelected = true
+    func resetButtonImage(_ button: UIButton) {
+        let originalImageName = getImageNameForButtonTag(button.tag)
+        let originalImage = UIImage(named: originalImageName)
+        setButtonImage(button, image: originalImage)
+    }
+    
+    func setSelectedImage(_ button: UIButton) {
+        let selectedImageName = getSelectedImageNameForButtonTag(button.tag)
+        let selectedImage = UIImage(named: selectedImageName)
+        setButtonImage(button, image: selectedImage)
+        switch button.tag {
+        case 0:
             showHomeVC()
+        case 1:
+            showCartVC()
+        case 2:
+            showProfileVC()
+        default:
+            break
         }
     }
     
-    @objc func favoriteStackOnClick(){
-        if isFavoriteSelected == false {
-            homeViewOnClick.isHidden = true
-            homeViewDefault.isHidden = false
-            homeDefaultImgView.layer.cornerRadius = 20
-            homeDefaultImgView.layer.masksToBounds = true
-            isFavoriteSelected = true
-            isHomeSelected = false
-            
+    func setButtonImage(_ button: UIButton, image: UIImage?) {
+        UIView.transition(with: button, duration: 0.5, options: .curveLinear) {
+            button.layer.add(self.animation!, forKey: "key")
+            button.setImage(image, for: .normal)
         }
     }
-
+    
+    func getImageNameForButtonTag(_ tag: Int) -> String {
+        switch tag {
+        case 0: return "home"
+        case 1: return "cart"
+        case 2: return "profile"
+        default: return ""
+        }
+    }
+    
+    func getSelectedImageNameForButtonTag(_ tag: Int) -> String {
+        switch tag {
+        case 0: return "selectedHome"
+        case 1: return "selectedCart"
+        case 2: return "selectedProfile"
+        default: return ""
+        }
+    }
+    func showHomeVC(){
+        let vc = Home_VC()
+        self.addChild(vc)
+        vc.view.frame = containerView.bounds
+        containerView.addSubview(vc.view)
+        vc.didMove(toParent: self)
+    }
+    
+    func showCartVC(){
+        let vc = Carts_VC()
+        self.addChild(vc)
+        vc.view.frame = containerView.bounds
+        containerView.addSubview(vc.view)
+        vc.didMove(toParent: self)
+    }
+    
+    func showProfileVC(){
+        let vc = Profile_VC()
+        self.addChild(vc)
+        vc.view.frame = containerView.bounds
+        containerView.addSubview(vc.view)
+        vc.didMove(toParent: self)
+    }
 }

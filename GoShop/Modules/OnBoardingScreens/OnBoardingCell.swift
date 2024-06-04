@@ -16,6 +16,7 @@ class OnBoardingCell: UICollectionViewCell {
     @IBOutlet weak var slideDescription: UILabel!
     
     func setUpCell(_ slide : OnBoardingSlide){
+        slideImg.layer.cornerRadius = 20
         slideImg.image = slide.img
         slideTitle.text = slide.title
         slideDescription.text = slide.description

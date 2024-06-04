@@ -8,51 +8,153 @@
 import Foundation
 
 // MARK: - BaseResponse
-struct BaseResponse<T: Codable>: Codable {
+class BaseResponse<T: Codable>: Codable {
     let status: Bool?
     let message: String?
     let data: T?
 }
 
 // MARK: - HomeData
-struct HomeData: Codable {
+class HomeData: Codable {
     let banners: [Banner]?
     let products: [Product]?
     let ad: String?
 }
 
-struct Banner: Codable {
+class Banner: Codable {
     let id: Int
     let image: String?
     let category, product: String?
 }
 
-// MARK: - Product
-struct Product: Codable {
-    let id, price, oldPrice, discount: Double?
-    let image: String?
-    let name, description: String?
-    let inFavorites, inCart: Bool?
-    let images: [String]?
-    
+// MARK: - Data
+class MyData <T: Codable>: Codable {
+    let data: T?
+}
+
+struct SubCart: Codable {
+    let cart: Favourite
+    let subTotal, total: Int
+
     enum CodingKeys: String, CodingKey {
-        case id, price
-        case oldPrice = "old_price"
-        case discount, image, name, description
-        case inFavorites = "in_favorites"
-        case inCart = "in_cart"
-        case images
+        case cart
+        case subTotal = "sub_total"
+        case total
     }
 }
 
+class DataClass: Codable {
+    let cartItems: [Favourite]
+    let subTotal, total: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case cartItems = "cart_items"
+        case subTotal = "sub_total"
+        case total
+    }
+    
+    init() {
+        self.cartItems = []
+        self.subTotal = 0
+        self.total = 0
+    }
+}
+
+// MARK: - Datum
+class Favourite: Codable {
+    let id: Int
+    let quantity: Int?
+    let product: Product
+}
+
 // MARK: - CategoryData
-struct CategoryData: Codable {
+class CategoryData: Codable {
     let data: [Category]
 }
 
 // MARK: - Category
-struct Category: Codable {
+class Category: Codable {
     let id: Int?
     let name: String?
     let image: String?
+}
+
+struct Address: Codable {
+    let name, city, region, details: String
+    let latitude, longitude: Double
+    let notes: String?
+    let id: Int
+    init(name: String, city: String, region: String, details: String, latitude: Double, longitude: Double, notes: String?, id: Int) {
+        self.name = name
+        self.city = city
+        self.region = region
+        self.details = details
+        self.latitude = latitude
+        self.longitude = longitude
+        self.notes = notes
+        self.id = id
+    }
+    init() {
+        self.name = ""
+        self.city = ""
+        self.region = ""
+        self.details = ""
+        self.latitude = 0
+        self.longitude = 0
+        self.notes = ""
+        self.id = 0
+    }
+}
+
+struct Order: Codable {
+    let paymentMethod: String
+    let cost: Int
+    let vat: Double
+    let discount, points: Int
+    let total: Double
+    let id: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case paymentMethod = "payment_method"
+        case cost, vat, discount, points, total, id
+    }
+}
+struct Datum: Codable {
+    let id: Int?
+    let total: Double?
+    let date: String?
+    let status: String?
+}
+
+struct OrderDetails: Codable {
+    let id, cost, discount, points: Int
+    let vat, total: Double
+    let pointsCommission: Int
+    let promoCode, paymentMethod, date, status: String
+    let address: Address
+    let products: [Product]
+    
+    enum CodingKeys: String, CodingKey {
+        case id, cost, discount, points, vat, total
+        case pointsCommission = "points_commission"
+        case promoCode = "promo_code"
+        case paymentMethod = "payment_method"
+        case date, status, address, products
+    }
+    
+    init() {
+        self.id = 0
+        self.cost = 0
+        self.discount = 0
+        self.points = 0
+        self.vat = 0
+        self.total = 0
+        self.pointsCommission = 0
+        self.promoCode = ""
+        self.paymentMethod = ""
+        self.date = ""
+        self.status = ""
+        self.address = Address()
+        self.products = []
+    }
 }

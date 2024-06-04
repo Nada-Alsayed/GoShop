@@ -34,7 +34,7 @@ class Banner_Cell: UICollectionViewCell {
     }
     
     func setupCell(_ banner : Banner){
-        bannerImg.kf.setImage(with:URL(string: banner.image ?? ""))
+        bannerImg.kf.setImage(with:URL(string: banner.image ?? ""),placeholder: UIImage(named: "black logo"))
         
     }
     

@@ -1,0 +1,55 @@
+PODS:
+  - Alamofire (5.9.1)
+  - FBAEMKit (17.0.0):
+    - FBSDKCoreKit_Basics (= 17.0.0)
+  - FBSDKCoreKit (17.0.0):
+    - FBAEMKit (= 17.0.0)
+    - FBSDKCoreKit_Basics (= 17.0.0)
+  - FBSDKCoreKit_Basics (17.0.0)
+  - KeychainSwift (20.0.0)
+  - Kingfisher (7.11.0)
+  - lottie-ios (4.4.1)
+  - ReachabilitySwift (5.2.2)
+  - Realm (10.49.2):
+    - Realm/Headers (= 10.49.2)
+  - Realm/Headers (10.49.2)
+  - RealmSwift (10.49.2):
+    - Realm (= 10.49.2)
+
+DEPENDENCIES:
+  - Alamofire
+  - FBSDKCoreKit
+  - KeychainSwift (~> 20.0)
+  - Kingfisher (~> 7.0)
+  - lottie-ios
+  - ReachabilitySwift
+  - RealmSwift
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+    - KeychainSwift
+    - Kingfisher
+    - lottie-ios
+    - ReachabilitySwift
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
+  FBAEMKit: 31a20c2d8744d8c57d3a5b7ae4e27b4fdd819193
+  FBSDKCoreKit: dac911b656816f8d0b06e5fa4bac60e89505bb3b
+  FBSDKCoreKit_Basics: 92b7b7458d57091370b0b6cc197578874c3b4b16
+  KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
+  Kingfisher: b9c985d864d43515f404f1ef4a8ce7d802ace3ac
+  lottie-ios: e047b1d2e6239b787cc5e9755b988869cf190494
+  ReachabilitySwift: 2128f3a8c9107e1ad33574c6e58e8285d460b149
+  Realm: c1a96376972e5f6c26276a0cd6dee15eeefaf53c
+  RealmSwift: db6ea9e15607653352baa42321bd9586850b7f04
+
+PODFILE CHECKSUM: d24e932338fd1ca0efa4a4f77d1ae0023818a865
+
+COCOAPODS: 1.14.3

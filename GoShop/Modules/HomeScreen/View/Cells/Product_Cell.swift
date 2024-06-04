@@ -18,31 +18,58 @@ class Product_Cell: UICollectionViewCell {
     @IBOutlet weak var currentPrice: UILabel!
     @IBOutlet weak var discountView: UIView!
     @IBOutlet weak var discountLabel: UILabel!
-    @IBOutlet weak var LoveView: UIView!
-    @IBOutlet weak var loveImg: UIImageView!
+    @IBOutlet weak var favouriteBtn: UIButton!
     
     //MARK: -Variables
     
     static let id = String(describing: Product_Cell.self)
+    var delegate:OnClickDelegate?
+    var delegateReload:ReloadViewDelegate?
+    var cellIndex: Int?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         setUpCellUI()
     }
     
+    //MARK: -IBActions
+    
+    @IBAction func addToFavorites(_ sender: UIButton) {
+        delegate?.clicked(cellIndex!, opertion: { state in
+            if state{
+                self.delegateReload?.reloadView()
+            }
+        })
+    }
+    
+    //MARK: -Methods
+
     private func setUpCellUI(){
         productImg.layer.cornerRadius = 25
         discountView.layer.cornerRadius = discountView.bounds.size.height / 2
-        LoveView.layer.cornerRadius = LoveView.bounds.size.height / 2
     }
     
     func setupCell(_ product : Product){
-        productImg.kf.setImage(with:URL(string: product.image ?? "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo54hpuEkGK1gxr7JFQ6e9J7JoVv_PaFVDZVr9fvbhJTBBiyRxUpcpA360_JbGE_nrMAk&usqp=CAU"))
+        checkIfDiscountExist(value: Int(product.discount ?? 0))
+        productImg.kf.setImage(with:URL(string: product.image ?? ""),placeholder: UIImage(named: "black logo"))
         productTitle.text = product.name
         discountLabel.text = "\(Int(product.discount ?? 0))%"
-        oldPrice.text = "\(Float(product.oldPrice ?? 0))"
-        currentPrice.text = "\(Float(product.price ?? 0))"
+        oldPrice.text = "\(Float(product.oldPrice ?? 0))$"
+        currentPrice.text = "$\(Float(product.price ?? 0))"
+        if product.inFavorites ?? false {
+            favouriteBtn.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }else{
+            favouriteBtn.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
     
-
+    func checkIfDiscountExist(value:Int){
+        if value == 0{
+            discountView.isHidden = true
+            oldPrice.isHidden = true
+        }else{
+            discountView.isHidden = false
+            oldPrice.isHidden = false
+        }
+    }
 }

@@ -1,18 +1,41 @@
-////
-////  UserAPI.swift
-////  GoShop
-////
-////  Created by MAC on 03/12/2023.
-////
 //
-//import Foundation
+//  UserAPI.swift
+//  GoShop
 //
-//class UserAPI:BaseAPI<MoviesNetworking>{
-//   
-//    func getUsers(compelition :@escaping ([User]?,Error?)->())
-//    {
-//        self.fetchData(target: .getUsers, responseClass: [User].self) { users, err in
-//            compelition(users, nil)
-//        }
-//    }
-//}
+//  Created by MAC on 03/12/2023.
+//
+
+import Foundation
+
+class UserAPI:BaseAPI<UsersNetworking>{
+    
+    func postUser(user:User,compelition :@escaping (BaseResponse<Customer>?,Error?)->())
+    {
+        print("hhh")
+        self.fetchData(target: .postUser(name: user.name, phone: user.phone, email: user.email, password: user.password, image: ""), responseClass: BaseResponse<Customer>.self) { result, err in
+            print("A:\(result?.status)")
+            print("A:\(result?.message)")
+            compelition(result, nil)
+        }
+    }
+    
+    func loginUser(user:User,compelition :@escaping (BaseResponse<Customer>?,Error?)->())
+    {
+        print("HHH")
+        self.fetchData(target: .loginUser(email: user.email, password:  user.password), responseClass: BaseResponse<Customer>.self) { result, err in
+            print("B:\(result?.status)")
+            print("B:\(result?.message)")
+            compelition(result, nil)
+        }
+    }
+    
+    func logOutUser(token:String, compelition :@escaping (BaseResponse<Customer>?,Error?)->())
+    {
+        print("LogOut")
+        self.fetchData(target: .logOutUser(token: token), responseClass: BaseResponse<Customer>.self) { result, err in
+            print("Logout : \(result?.status)")
+            print("Logout : \(result?.message)")
+            compelition(result, nil)
+        }
+    }
+}

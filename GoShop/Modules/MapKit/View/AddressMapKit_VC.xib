@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressMapKit_VC" customModule="GoShop" customModuleProvider="target">
+            <connections>
+                <outlet property="backBtn" destination="Lzg-E9-k2s" id="u78-7u-Mxn"/>
+                <outlet property="indicator" destination="gkw-41-3xb" id="fN1-tq-hwP"/>
+                <outlet property="myMapKit" destination="chk-5a-gyV" id="Yd3-Y8-Ydc"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chk-5a-gyV">
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                    <standardMapConfiguration key="preferredConfiguration"/>
+                </mapView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GoBackBtn" translatesAutoresizingMaskIntoConstraints="NO" id="Lzg-E9-k2s">
+                    <rect key="frame" x="8" y="67" width="35" height="35"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="R3Z-bp-RjE"/>
+                        <constraint firstAttribute="width" constant="35" id="f8r-5c-Uv0"/>
+                    </constraints>
+                </imageView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="gkw-41-3xb">
+                    <rect key="frame" x="171.66666666666666" y="401" width="50" height="50"/>
+                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="VKW-OY-XFI"/>
+                        <constraint firstAttribute="height" constant="50" id="zUk-AY-vA5"/>
+                    </constraints>
+                    <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </activityIndicatorView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Lzg-E9-k2s" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="8" id="3iV-3l-97z"/>
+                <constraint firstItem="gkw-41-3xb" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="3pb-af-9n3"/>
+                <constraint firstItem="gkw-41-3xb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="50z-XB-UYA"/>
+                <constraint firstAttribute="bottom" secondItem="chk-5a-gyV" secondAttribute="bottom" id="EQH-bL-lxb"/>
+                <constraint firstItem="Lzg-E9-k2s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="PNz-Oj-BQ9"/>
+                <constraint firstItem="chk-5a-gyV" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Sm4-Xr-CFe"/>
+                <constraint firstAttribute="trailing" secondItem="chk-5a-gyV" secondAttribute="trailing" id="ipy-H1-xgF"/>
+                <constraint firstItem="chk-5a-gyV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ztY-V0-qth"/>
+            </constraints>
+            <point key="canvasLocation" x="75.572519083969468" y="-11.267605633802818"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="GoBackBtn" width="35" height="35"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
