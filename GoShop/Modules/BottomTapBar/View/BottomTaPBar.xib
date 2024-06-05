@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K8I-hO-exK">
-                    <rect key="frame" x="1" y="757.33333333333337" width="393" height="94.666666666666629"/>
+                    <rect key="frame" x="1" y="766.66666666666663" width="393" height="85.333333333333371"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="t2X-w3-MFd" userLabel="ParentHS">
                             <rect key="frame" x="16" y="4" width="361" height="70"/>
@@ -77,7 +78,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oeu-2H-pa1" userLabel="ContainerView">
-                    <rect key="frame" x="0.0" y="59" width="393" height="692.33333333333337"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="701.66666666666663"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
             </subviews>
@@ -88,7 +89,7 @@
                 <constraint firstItem="K8I-hO-exK" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="1" id="5oD-6m-dzx"/>
                 <constraint firstAttribute="trailing" secondItem="K8I-hO-exK" secondAttribute="trailing" constant="-1" id="5td-Jw-bxx"/>
                 <constraint firstItem="Oeu-2H-pa1" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Elg-44-TPr"/>
-                <constraint firstItem="K8I-hO-exK" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.11111" id="HQt-iz-oRJ"/>
+                <constraint firstItem="K8I-hO-exK" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.1" id="HQt-iz-oRJ"/>
                 <constraint firstAttribute="bottom" secondItem="K8I-hO-exK" secondAttribute="bottom" id="KLG-qf-Dni"/>
                 <constraint firstItem="Oeu-2H-pa1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VfN-GN-Ilr"/>
                 <constraint firstItem="Oeu-2H-pa1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="bGg-So-T97"/>
